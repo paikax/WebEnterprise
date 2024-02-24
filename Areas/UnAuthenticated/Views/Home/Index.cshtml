@@ -1,0 +1,25 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Home";
+}
+@using Microsoft.VisualBasic
+@using WebEnterprise.Constants
+
+
+
+<div class="wrapper">
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                
+                $(".product__panel-item").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+}

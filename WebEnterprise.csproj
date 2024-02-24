@@ -1,0 +1,64 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-BookShopping-267aa8d6-818f-4116-9713-e09a8af647e2</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="3.6.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.14" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.15">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.15">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
+    <PackageReference Include="MimeKit" Version="3.6.1" />
+    <PackageReference Include="NToastNotify" Version="6.0.1" />
+    <PackageReference Include="toastr" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="Areas\UnAuthenticated\Views\Home\Index.cshtml" />
+    <AdditionalFiles Include="Areas\UnAuthenticated\Views\Home\Privacy.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\ApplicationDbContextModelSnapshot.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Books\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Books\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Books\Update.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Carts\CartIndex.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Carts\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Carts\OrderConfirmation.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Carts\Summary.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Categories\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Categories\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Categories\Update.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Managements\Detail.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Managements\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Orders\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Orders\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Orders\OrderDetails.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Orders\OrderView.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Orders\_Detail.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Orders\_OrderDetails.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Authenticated\Controllers\" />
+  </ItemGroup>
+
+</Project>

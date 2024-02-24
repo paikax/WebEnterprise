@@ -1,0 +1,28 @@
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using WebEnterprise.Models;
+
+namespace WebEnterprise.Data
+{
+    public class ApplicationDbContext : IdentityDbContext
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
+
+        public DbSet<User> Users { get; set; }
+        public DbSet<Faculty> Faculties { get; set; }
+        public DbSet<Contribution> Contributions { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<TermAndCondition> TermsAndConditions { get; set; }
+        public DbSet<ContributionClosureDate> ClosureDates { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            // Add any customizations to model configuration here
+            // For example, defining relationships, specifying constraints, etc.
+        }
+    }
+}

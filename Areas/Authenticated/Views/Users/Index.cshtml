@@ -1,0 +1,30 @@
+﻿@model IEnumerable<WebEnterprise.Models.User>
+
+@{
+    ViewData["Title"] = "Users";
+    Layout = "_Layout";
+}
+
+@if (Model.Any())
+{
+    <div class="container">
+    </div>
+}
+else
+{
+    <h1>NO any user</h1>
+}
+
+@section Scripts{
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                
+                $("#tblData tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+}`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
