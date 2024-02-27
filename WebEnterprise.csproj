@@ -33,10 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\ApplicationDbContextModelSnapshot.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Books\Create.cshtml" />
     <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Books\Index.cshtml" />
     <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Books\Update.cshtml" />
