@@ -23,7 +23,7 @@
 
         <div class="radio-field">
             <ion-icon name="transgender"></ion-icon>
-            <span asp-validation-for="Input.Gender"></span>
+            <label asp-for="Input.Gender"></label>
             <div class="radio-box">
                 <label><input asp-for="Input.Gender" type="radio" name="gender" id="male" value="Male"> Male</label>
                 <label><input asp-for="Input.Gender" type="radio" name="gender" id="female" value="Female"> Female</label> 
@@ -67,8 +67,7 @@
         <button type="submit" class="submit-Btn">Register</button>
 
         <div class="switch-form">
-            <p>Already have an account?
-            <a href="#">Login</a></p>
+           <p>Already have an account? <a href="/Identity/Account/Login">Login</a></p>
         </div>
 
     </form>
