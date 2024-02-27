@@ -4,10 +4,9 @@
 @{
     ViewData["Title"] = "Log in";
 }
-<div class="container">
-    <h1 class="display-4">Login</h1>
-    <hr />
-    <form method="post">
+<div class="container flex-center">
+    <h1 class="display-4 text-center">Login</h1>
+    <form method="post" class="input-form">
          <div class="input-field">
             <ion-icon name="mail"></ion-icon>
             <input asp-for="Input.Email" type="email" required/>
