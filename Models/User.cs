@@ -15,6 +15,10 @@ public class User : IdentityUser
     [StringLength(50, ErrorMessage = "Full Name should be less than 50 characters")]
     public string FullName { get; set; }
     [NotMapped] public string Role { get; set; }
+    
+    public string Gender { get; set; }
+    
+    public string DoB { get; set; }
 
     public DateTime CreatedAt { get; set; }
     public string CreatedBy { get; set; }

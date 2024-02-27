@@ -23,11 +23,11 @@
 
         <div class="radio-field">
             <ion-icon name="transgender"></ion-icon>
-            <label asp-for="Input.Gender"></label>
+            <span asp-validation-for="Input.Gender"></span>
             <div class="radio-box">
-                <label><input asp-for="Input.Gender" type="radio" name="gender" id="male" value="male"> Male</label>
-                <label><input asp-for="Input.Gender" type="radio" name="gender" id="female" value="female"> Female</label> 
-                <label><input asp-for="Input.Gender" type="radio" name="gender" id="other" value="other"> Other</label> 
+                <label><input asp-for="Input.Gender" type="radio" name="gender" id="male" value="Male"> Male</label>
+                <label><input asp-for="Input.Gender" type="radio" name="gender" id="female" value="Female"> Female</label> 
+                <label><input asp-for="Input.Gender" type="radio" name="gender" id="other" value="Other"> Other</label>
             </div>
             <span asp-validation-for="Input.Gender" class="text-danger"></span>
         </div>

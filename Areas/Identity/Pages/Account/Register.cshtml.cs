@@ -112,6 +112,9 @@ namespace WebEnterprise.Areas.Identity.Pages.Account
                     UserName = Input.Email,
                     Email = Input.Email,
                     FullName = Input.FullName,
+                    PhoneNumber = Input.Phone,
+                    DoB = Input.DoB,
+                    Gender = Input.Gender
                 };
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
