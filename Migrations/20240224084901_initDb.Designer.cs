@@ -12,8 +12,8 @@ using WebEnterprise.Data;
 namespace WebEnterprise.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240222080446_INITDB")]
-    partial class INITDB
+    [Migration("20240224084901_initDb")]
+    partial class initDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

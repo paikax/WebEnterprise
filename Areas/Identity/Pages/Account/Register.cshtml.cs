@@ -65,6 +65,18 @@ namespace WebEnterprise.Areas.Identity.Pages.Account
             [Display(Name = "Full Name")]
             public string FullName { get; set; }
 
+            [Required(ErrorMessage = "Please select your Gender")]
+            [Display(Name = "Gender")]
+            public string Gender { get; set; }
+
+            [Required(ErrorMessage = "Phone number is required")]
+            [Display(Name = "Phone Number")]
+            public string Phone { get; set; }
+
+            [Required(ErrorMessage = "Date of Birth is required")]
+            [Display(Name = "Date of Birth")]
+            public string DoB { get; set; }
+
             [Required(ErrorMessage = "Password is required")]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [RegularExpression("^(?=.*[A-Z])(?=.*[a-z])(?=.*[^a-zA-Z0-9]).+$", ErrorMessage = "Please include at least one uppercase letter, one lowercase letter, and one special character.")]
