@@ -47,10 +47,10 @@ input[type="date"]:focus {
 
 input[type="date"] {
     user-select: none;
-      -moz-user-select: none;
-      -khtml-user-select: none;
-      -webkit-user-select: none;
-      -o-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 }
 
 .wrapper {
@@ -569,19 +569,22 @@ input[type="radio"] {
     padding-left: 5px;
 }
 
+.radio-field > ion-icon {
+    transform: translateY(15px);
+}
+
 .radio-box {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    padding: 0 10%;
     border-bottom: 2px solid var(--primary-color);
 }
 
 .radio-box > label {
-    padding: 0 20px;
     font-size: 1.1rem;
+    user-select: none;
 }
-
-
 
 .input-field > input{
     border: none;
@@ -626,11 +629,14 @@ ion-icon {
 
 .check-box input{
     transform: translateY(1px);
-}
-
-input[type=checkbox]:checked{
     accent-color: var(--primary-color);
 }
+
+.check-box label{
+    user-select: none;
+    cursor: pointer;
+}
+
 
 .submit-Btn {
     width: 100%;
@@ -638,15 +644,14 @@ input[type=checkbox]:checked{
     font-size: 1.3rem;
     border: 1px solid #fff;
     border-radius: 10px;
-    background: #161d68;
+    background: var(--primary-color);
     color: white;
     cursor: pointer;
-    margin-bottom: 20px;
 }
 
 .submit-Btn:hover {
-    transform: scale(0.98);
-    transition: .2s ease-out;
+    transform: translateY(-2px);
+    transition: .15s ease-in-out;
 }
 .switch-form {
     display: flex;
