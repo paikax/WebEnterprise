@@ -69,6 +69,8 @@ namespace WebEnterprise.Areas.Identity.Pages.Account
             [Display(Name = "Gender")]
             public string Gender { get; set; }
 
+            
+
             [Required(ErrorMessage = "Phone number is required")]
             [Display(Name = "Phone Number")]
             public string Phone { get; set; }

@@ -4,74 +4,78 @@
     ViewData["Title"] = "Register";
 }
 
-<div class="container flex-center">
-    <h1 class="display-4 text-center">Register</h1>
-    <form method="post" class="input-form">
-        <div class="input-field">
-            <ion-icon name="mail"></ion-icon>
-            <input asp-for="Input.Email" type="email" required/>
-            <label asp-for="Input.Email"></label>
-            <span asp-validation-for="Input.Email" class="text-danger"></span>
-        </div>
+<div class="page-container">
+    <div class="form-container">
+        <form method="post" class="input-form">
+            <h1>Register</h1>
 
-        <div class="input-field">
-            <ion-icon name="person"></ion-icon>
-            <input asp-for="Input.FullName" type="text" required />
-            <label asp-for="Input.FullName"></label>
-            <span asp-validation-for="Input.FullName" class="text-danger"></span>
-        </div>
-
-        <div class="radio-field">
-            <ion-icon name="transgender"></ion-icon>
-            <label asp-for="Input.Gender"></label>
-            <div class="radio-box">
-                <label><input asp-for="Input.Gender" type="radio" name="gender" id="male" value="male"> Male</label>
-                <label><input asp-for="Input.Gender" type="radio" name="gender" id="female" value="female"> Female</label> 
-                <label><input asp-for="Input.Gender" type="radio" name="gender" id="other" value="other"> Other</label> 
+            <div class="input-field">
+                <ion-icon name="mail"></ion-icon>
+                <input asp-for="Input.Email" type="email" required/>
+                <label asp-for="Input.Email"></label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
-            <span asp-validation-for="Input.Gender" class="text-danger"></span>
-        </div>
 
-        <div class="input-field">
-            <ion-icon name="call"></ion-icon>
-            <input asp-for="Input.Phone" type="number" required />
-            <label asp-for="Input.Phone"></label>
-            <span asp-validation-for="Input.Phone" class="text-danger"></span>
-        </div>
+            <div class="input-field">
+                <ion-icon name="person"></ion-icon>
+                <input asp-for="Input.FullName" type="text" required />
+                <label asp-for="Input.FullName"></label>
+                <span asp-validation-for="Input.FullName" class="text-danger"></span>
+            </div>
 
-        <div class="input-field">
-            <ion-icon name="calendar"></ion-icon>
-            <input asp-for="Input.DoB" type="date" required />
-            <label asp-for="Input.DoB"></label>
-            <span asp-validation-for="Input.DoB" class="text-danger"></span>
-        </div>
+            <div class="radio-field">
+                <ion-icon name="transgender"></ion-icon>
+                <label asp-for="Input.Gender"></label>
+                <div class="radio-box">
+                    <label><input asp-for="Input.Gender" type="radio" name="gender" id="male" value="male"> Male</label>
+                    <label><input asp-for="Input.Gender" type="radio" name="gender" id="female" value="female"> Female</label> 
+                    <label><input asp-for="Input.Gender" type="radio" name="gender" id="other" value="other"> Other</label> 
+                </div>
+                <span asp-validation-for="Input.Gender" class="text-danger"></span>
+            </div>
 
-        <div class="input-field">
-            <ion-icon name="lock-closed"></ion-icon>
-            <input asp-for="Input.Password" type="password" required/>
-            <label asp-for="Input.Password"></label>
-            <span asp-validation-for="Input.Password" class="text-danger"></span>
-        </div>
+            <div class="input-field">
+                <ion-icon name="call"></ion-icon>
+                <input asp-for="Input.Phone" type="number" required />
+                <label asp-for="Input.Phone"></label>
+                <span asp-validation-for="Input.Phone" class="text-danger"></span>
+            </div>
 
-         <div class="input-field">
-            <ion-icon name="lock-closed"></ion-icon>
-            <input asp-for="Input.ConfirmPassword" type="password" required/>
-            <label asp-for="Input.ConfirmPassword"></label>
-            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-        </div>
+            <div class="input-field">
+                <ion-icon name="calendar"></ion-icon>
+                <input asp-for="Input.DoB" type="date" required />
+                <label asp-for="Input.DoB"></label>
+                <span asp-validation-for="Input.DoB" class="text-danger"></span>
+            </div>
 
-        <div class="check-box">
-            <label><input type='checkbox' id='remember' required/> I agree to the terms & conditions</label>
-        </div>
+            <div class="input-field">
+                <ion-icon name="lock-closed"></ion-icon>
+                <input asp-for="Input.Password" type="password" required/>
+                <label asp-for="Input.Password"></label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
 
-        <button type="submit" class="submit-Btn">Register</button>
+            <div class="input-field">
+                <ion-icon name="lock-closed"></ion-icon>
+                <input asp-for="Input.ConfirmPassword" type="password" required/>
+                <label asp-for="Input.ConfirmPassword"></label>
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
 
-        <div class="switch-form">
-            <p>Already have an account?
-            <a href="#">Login</a></p>
-        </div>
+            <div class="check-box">
+                <label><input type='checkbox' id='remember' required/> I agree to the terms & conditions</label>
+            </div>
 
-    </form>
+            <button type="submit" class="submit-Btn">Register</button>
+
+            <div class="switch-form">
+                <p>Already have an account?
+                <a href="#">Login</a></p>
+            </div>
+        </form>
+        <div class="form-image"></div>
+
+    </div>
 </div>
 
 @section Scripts {
