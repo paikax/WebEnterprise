@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using NToastNotify;
+using WebEnterprise.Constants;
 using WebEnterprise.Data;
 using WebEnterprise.Models;
 using WebEnterprise.Utils;
@@ -67,7 +68,7 @@ namespace WebEnterprise.Areas.Identity.Pages.Account
 
             [Required(ErrorMessage = "Please select your Gender")]
             [Display(Name = "Gender")]
-            public string Gender { get; set; }
+            public StringEnums.GenderType Gender { get; set; }
 
             
 
@@ -114,6 +115,9 @@ namespace WebEnterprise.Areas.Identity.Pages.Account
                     UserName = Input.Email,
                     Email = Input.Email,
                     FullName = Input.FullName,
+                    PhoneNumber = Input.Phone,
+                    DoB = Input.DoB,
+                    Gender = Input.Gender.ToValue()
                 };
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
@@ -135,7 +139,7 @@ namespace WebEnterprise.Areas.Identity.Pages.Account
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                     var userRegistered = _db.Users.FirstOrDefault(_ => _.Email.ToLower() == Input.Email.ToLower());
-                    
+
                     if (!userRegistered.EmailConfirmed)
                     {
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });

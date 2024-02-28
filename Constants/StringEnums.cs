@@ -21,7 +21,7 @@ public static class StringEnums
         var fieldInfo = type.GetField(thisEnum.ToString());
         if (fieldInfo != null)
         {
-            var attrs = fieldInfo.GetCustomAttributes(typeof(StringValues), false) as StringValue[];
+            var attrs = fieldInfo.GetCustomAttributes(typeof(StringValue), false) as StringValue[];
             if (attrs != null && attrs.Length > 0)
             {
                 output = attrs[0].Value;
@@ -37,4 +37,15 @@ public static class StringEnums
         [StringValue("Approved")] Approved,
         [StringValue("Rejected")] Rejected,
     }
+    
+    public enum GenderType
+    {
+        [StringValue("Male")]
+        Male,
+        [StringValue("Female")]
+        Female,
+        [StringValue("Other")]
+        Other
+    }
+
 }
