@@ -539,8 +539,10 @@ footer {
     display: flex;
     flex-direction: row;
     width: 60%;
+    min-width: 350px;
     box-shadow: 0 0 10px 0 var(--primary-color);
     border-radius: 20px;
+    margin: 20px 0;
 }
 
 .form-image {
@@ -551,6 +553,7 @@ footer {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
 }
+
 .input-form {
     display: flex;
     flex: 3;
@@ -558,11 +561,10 @@ footer {
     justify-content: center;
     align-items: center;
     max-width: 100%;
-    min-width: 300px;
+    min-width: 350px;
     background: white;
     padding: 20px;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    border-radius: 20px;
 }
 
 .input-field {
@@ -678,6 +680,7 @@ ion-icon {
 .switch-form {
     display: flex;
     justify-content: center;
+    margin-top: 15px;
 }
 
 .switch-form a{
