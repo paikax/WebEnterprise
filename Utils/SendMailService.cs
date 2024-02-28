@@ -48,7 +48,7 @@ public class SendMailService : ISendMailService
         }
         catch (Exception ex)
         {
-            Directory.CreateDirectory("mailsserver");
+            Directory.CreateDirectory("mailssave");
             var emailsavefile = string.Format(@"mailssave/{0}.eml", Guid.NewGuid());
             await email.WriteToAsync(emailsavefile);
 
