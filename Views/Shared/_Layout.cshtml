@@ -51,6 +51,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Student</a>
                     </li>
+                    @if (HttpContextAccessor.HttpContext.User.IsInRole(WebEnterprise.Constants.Roles.AdminRole))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Authenticated/Users">User Management</a>
+                                </li>
+                            }
                     <li class="nav-item">
                         <a class="nav-link" href="/Identity/Account/Register?returnUrl=@Context.Request.Path">Register</a>
                     </li>
