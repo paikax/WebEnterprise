@@ -69,13 +69,7 @@ namespace WebEnterprise.Areas.Identity.Pages.Account
             [Required(ErrorMessage = "Please select your Gender")]
             [Display(Name = "Gender")]
             public StringEnums.GenderType Gender { get; set; }
-
             
-
-            [Required(ErrorMessage = "Phone number is required")]
-            [Display(Name = "Phone Number")]
-            public string Phone { get; set; }
-
             [Required(ErrorMessage = "Date of Birth is required")]
             [Display(Name = "Date of Birth")]
             public string DoB { get; set; }
@@ -114,8 +108,7 @@ namespace WebEnterprise.Areas.Identity.Pages.Account
                 {
                     UserName = Input.Email,
                     Email = Input.Email,
-                    FullName = Input.FullName,
-                    PhoneNumber = Input.Phone,
+                    FullName = Input.FullName,      
                     DoB = Input.DoB,
                     Gender = Input.Gender.ToValue()
                 };

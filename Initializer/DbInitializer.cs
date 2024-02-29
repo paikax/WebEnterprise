@@ -69,33 +69,6 @@ public class DbInitializer : IDbInitializer
 
             // add that user (admin) to admin role
             _userManager.AddToRoleAsync(admin, Constants.Roles.AdminRole).GetAwaiter().GetResult();
-            
-            
-            // create user Science coordinator 
-            _userManager.CreateAsync(new User()
-            {
-                UserName = "sciencecoordinator@gmail.com",
-                Email = "sciencecoordinator@gmail.com",
-                FullName = "Science Coordinator",
-                EmailConfirmed = true,
-            }, "String123@").GetAwaiter().GetResult();
-            
-            
-            var scienceCoordinator= _db.Users.FirstOrDefault(a => a.Email == "sciencecoordinator@gmail.com");
-            _userManager.AddToRoleAsync(scienceCoordinator, Constants.Roles.CoordinatorRole).GetAwaiter().GetResult();
-            
-            // create user University Marketing coordinator Manger 
-            _userManager.CreateAsync(new User()
-            {
-                UserName = "universitymarketingmanager@gmail.com",
-                Email = "universitymarketingmanager@gmail.com",
-                FullName = "university Marketing Manager",
-                EmailConfirmed = true,
-            }, "String123@").GetAwaiter().GetResult();
-            
-            
-            var UniversityMarketingManager= _db.Users.FirstOrDefault(a => a.Email == "universitymarketingmanager@gmail.com");
-            _userManager.AddToRoleAsync(UniversityMarketingManager, Constants.Roles.UniversityMarketingManagersRole).GetAwaiter().GetResult();
         }   
         
 }
