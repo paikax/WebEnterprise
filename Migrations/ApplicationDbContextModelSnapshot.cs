@@ -345,6 +345,26 @@ namespace WebEnterprise.Migrations
                     b.ToTable("Faculties");
                 });
 
+            modelBuilder.Entity("WebEnterprise.Models.SchoolSystemData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("AcademicYear")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ClosureDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SchoolSystemDatas");
+                });
+
             modelBuilder.Entity("WebEnterprise.Models.TermAndCondition", b =>
                 {
                     b.Property<int>("Id")

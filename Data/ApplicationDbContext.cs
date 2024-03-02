@@ -17,6 +17,7 @@ namespace WebEnterprise.Data
         public DbSet<Comment> Comments { get; set; }
         public DbSet<TermAndCondition> TermsAndConditions { get; set; }
         public DbSet<ContributionClosureDate> ClosureDates { get; set; }
+        public DbSet<SchoolSystemData> SchoolSystemDatas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
