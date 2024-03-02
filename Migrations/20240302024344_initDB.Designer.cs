@@ -12,7 +12,7 @@ using WebEnterprise.Data;
 namespace WebEnterprise.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240229145402_initDB")]
+    [Migration("20240302024344_initDB")]
     partial class initDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -338,7 +338,7 @@ namespace WebEnterprise.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("RoleName")
+                    b.Property<string>("FaculityName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -371,16 +371,9 @@ namespace WebEnterprise.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("DoB")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("FacultyId")
-                        .HasColumnType("int");
 
                     b.Property<string>("FullName")
                         .IsRequired()
@@ -391,17 +384,12 @@ namespace WebEnterprise.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UpdatedBy")
+                    b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("FacultyId");
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasDiscriminator().HasValue("User");
                 });
@@ -494,15 +482,6 @@ namespace WebEnterprise.Migrations
                         .HasForeignKey("FacultyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Faculty");
-                });
-
-            modelBuilder.Entity("WebEnterprise.Models.User", b =>
-                {
-                    b.HasOne("WebEnterprise.Models.Faculty", "Faculty")
-                        .WithMany()
-                        .HasForeignKey("FacultyId");
 
                     b.Navigation("Faculty");
                 });

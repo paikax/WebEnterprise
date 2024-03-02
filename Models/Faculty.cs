@@ -6,5 +6,5 @@ public class Faculty
 {
     [Key]
     public int Id { get; set; }
-    public string RoleName { get; set; }
+    public string FaculityName { get; set; }
 }
