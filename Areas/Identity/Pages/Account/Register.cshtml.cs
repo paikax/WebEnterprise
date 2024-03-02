@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using NToastNotify;
+using WebEnterprise.Constants;
 using WebEnterprise.Data;
 using WebEnterprise.Models;
 using WebEnterprise.Utils;
@@ -65,6 +66,14 @@ namespace WebEnterprise.Areas.Identity.Pages.Account
             [Display(Name = "Full Name")]
             public string FullName { get; set; }
 
+            [Required(ErrorMessage = "Please select your Gender")]
+            [Display(Name = "Gender")]
+            public StringEnums.GenderType Gender { get; set; }
+            
+            [Required(ErrorMessage = "Date of Birth is required")]
+            [Display(Name = "Date of Birth")]
+            public string DoB { get; set; }
+
             [Required(ErrorMessage = "Password is required")]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [RegularExpression("^(?=.*[A-Z])(?=.*[a-z])(?=.*[^a-zA-Z0-9]).+$", ErrorMessage = "Please include at least one uppercase letter, one lowercase letter, and one special character.")]
@@ -79,7 +88,7 @@ namespace WebEnterprise.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
 
             // Set the default role to "Student"
-            public string UserRole { get; set; } = WebEnterprise.Constants.Roles.StudentRole;
+            [Required] public string Role { get; set; } = Constants.Roles.StudentRole;
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -99,7 +108,10 @@ namespace WebEnterprise.Areas.Identity.Pages.Account
                 {
                     UserName = Input.Email,
                     Email = Input.Email,
-                    FullName = Input.FullName,
+                    FullName = Input.FullName,      
+                    DoB = Input.DoB,
+                    Gender = Input.Gender.ToValue(),
+                    Role = Constants.Roles.StudentRole
                 };
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
@@ -107,7 +119,7 @@ namespace WebEnterprise.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
-                    await _userManager.AddToRoleAsync(user, Input.UserRole);
+                    await _userManager.AddToRoleAsync(user, Roles.StudentRole);
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -121,7 +133,7 @@ namespace WebEnterprise.Areas.Identity.Pages.Account
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                     var userRegistered = _db.Users.FirstOrDefault(_ => _.Email.ToLower() == Input.Email.ToLower());
-                    
+
                     if (!userRegistered.EmailConfirmed)
                     {
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });

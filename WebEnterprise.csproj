@@ -58,7 +58,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Authenticated\Controllers\" />
+    <Folder Include="mailssave\" />
   </ItemGroup>
 
 </Project>

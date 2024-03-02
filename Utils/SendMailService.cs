@@ -40,7 +40,7 @@ public class SendMailService : ISendMailService
 
         try
         {
-            await smtp.ConnectAsync(_mailSettings.Host, _mailSettings.Post, SecureSocketOptions.StartTls);
+            await smtp.ConnectAsync(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
             await smtp.AuthenticateAsync(_mailSettings.Mail, _mailSettings.Password);
 
             // send mail
@@ -48,9 +48,9 @@ public class SendMailService : ISendMailService
         }
         catch (Exception ex)
         {
-            Directory.CreateDirectory("mailsserver");
+            Directory.CreateDirectory("mailssave");
             var emailsavefile = string.Format(@"mailssave/{0}.eml", Guid.NewGuid());
-            await email.WriteToAsync(emailsavefile);
+            await email.WriteToAsync(emailsavefile);        
 
             _logger.LogInformation("Error send mail at: " + emailsavefile);
             _logger.LogError(ex.Message);
@@ -60,7 +60,7 @@ public class SendMailService : ISendMailService
 
         _logger.LogInformation("Send mail to " + mailContent.To);
     }
-
+        
     public async Task SendMailAsync(string email, string subject, string htmlMessage)
     {
         await SendMail(new MailContent()
