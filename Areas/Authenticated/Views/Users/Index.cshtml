@@ -1,7 +1,13 @@
 ﻿@model IEnumerable<WebEnterprise.Models.User>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Users Management";
+}
+
 
 <h1 class="mt-5 mb-4">User Management</h1>
 
+<div class="table-responsive">
     <table class="table table-striped">
         <thead class="thead-dark">
             <tr>
@@ -23,11 +29,14 @@
                     <td>@user.DoB</td>
                     <td>@user.Role</td> <!-- Display the user's role -->
                     <td>
-                        <a class="btn btn-primary btn-sm" asp-controller="Users" asp-action="Edit" asp-route-id="@user.Id">Edit</a>
-                        <a class="btn btn-info btn-sm" asp-controller="Users" asp-action="Details" asp-route-id="@user.Id">Details</a>
-                        <a class="btn btn-danger btn-sm" asp-controller="Users" asp-action="Delete" asp-route-id="@user.Id">Delete</a>
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-primary btn-sm" asp-controller="Users" asp-action="Edit" asp-route-id="@user.Id">Edit</a>
+                            <a class="btn btn-info btn-sm" asp-controller="Users" asp-action="Details" asp-route-id="@user.Id">Details</a>
+                            <a class="btn btn-danger btn-sm" asp-controller="Users" asp-action="Delete" asp-route-id="@user.Id">Delete</a>
+                        </div>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
+</div>

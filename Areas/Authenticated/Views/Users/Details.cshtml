@@ -1,8 +1,8 @@
 ﻿@model WebEnterprise.Models.User
 
 @{
-    ViewData["Title"] = "User Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "_Layout";
+    ViewData["Title"] = "User Detail";
 }
 
 <h1>User Details</h1>
@@ -11,25 +11,44 @@
     <div class="card-body">
         <h4 class="card-title">User Information</h4>
         <hr />
-        <dl class="row">
-            <dt class="col-sm-3">Full Name:</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.FullName)</dd>
-
-            <dt class="col-sm-3">Role:</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.Role)</dd>
-
-            <dt class="col-sm-3">Gender:</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.Gender)</dd>
-
-            <dt class="col-sm-3">Date of Birth:</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.DoB)</dd>
-
-            <dt class="col-sm-3">Created At:</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.CreatedAt)</dd>
-
-            <dt class="col-sm-3">Updated At:</dt>
-            <dd class="col-sm-9">@Html.DisplayFor(model => model.UpdatedAt)</dd>
-        </dl>
+        <div class="row">
+            <div class="col-md-3">
+                <strong>Full Name:</strong>
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.FullName)
+            </div>
+            <div class="col-md-3">
+                <strong>Role:</strong>
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Role)
+            </div>
+            <div class="col-md-3">
+                <strong>Gender:</strong>
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.Gender)
+            </div>
+            <div class="col-md-3">
+                <strong>Date of Birth:</strong>
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.DoB)
+            </div>
+            <div class="col-md-3">
+                <strong>Created At:</strong>
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.CreatedAt)
+            </div>
+            <div class="col-md-3">
+                <strong>Updated At:</strong>
+            </div>
+            <div class="col-md-9">
+                @Html.DisplayFor(model => model.UpdatedAt)
+            </div>
+        </div>
     </div>
 </div>
 

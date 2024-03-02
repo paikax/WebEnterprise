@@ -336,7 +336,7 @@ namespace WebEnterprise.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("RoleName")
+                    b.Property<string>("FaculityName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
