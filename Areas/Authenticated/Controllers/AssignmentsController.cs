@@ -18,10 +18,10 @@ public class AssignmentsController : Controller
     }
     
     // GET
-    public IActionResult Index()
-    {
-        return View();
-    }
+    // public IActionResult Index()
+    // {
+    //     return View();
+    // }
     
     // Assign coordinator to faculty
     // [HttpGet]
