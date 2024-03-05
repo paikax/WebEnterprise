@@ -10,9 +10,9 @@
 <form asp-action="Edit" method="post">
     <input type="hidden" asp-for="Id" />
     <div class="form-group">
-        <label asp-for="ClosureDate" class="control-label"></label>
-        <div class='input-group date' id='closureDatepicker'>
-            <input asp-for="ClosureDate" class="form-control" />
+        <label asp-for="OpenDate" class="control-label"></label>
+        <div class='input-group date' id='openDatepicker'>
+            <input asp-for="OpenDate" class="form-control" />
             <span class="input-group-addon">
                 <span class="glyphicon glyphicon-calendar"></span>
             </span>
@@ -20,10 +20,15 @@
         <span asp-validation-for="ClosureDate" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="AcademicYear" class="control-label"></label>
-        <input asp-for="AcademicYear" class="form-control" />
-        <span asp-validation-for="AcademicYear" class="text-danger"></span>
-    </div>
+            <label asp-for="ClosureDate" class="control-label"></label>
+            <div class='input-group date' id='closureDatepicker'>
+                <input asp-for="ClosureDate" class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+            <span asp-validation-for="ClosureDate" class="text-danger"></span>
+        </div>
     <div class="form-group">
         <input type="submit" value="Save" class="btn btn-primary" />
     </div>
@@ -35,10 +40,17 @@
 
     <script>
         $(document).ready(function () {
-            $('#closureDatepicker').datepicker({
+            $('#openDatepicker').datepicker({
                 format: 'yyyy-mm-dd',
                 autoclose: true
             });
         });
+        
+        $(document).ready(function () {
+                $('#closureDatepicker').datepicker({
+                    format: 'yyyy-mm-dd',
+                    autoclose: true
+                });
+            });
     </script>
 }

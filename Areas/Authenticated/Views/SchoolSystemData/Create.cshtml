@@ -18,12 +18,11 @@
             </div>
 
             <div class="input-field">
-                <ion-icon name="calendar"></ion-icon>
-                <input asp-for="AcademicYear" type="text" id="yearPiker" required autocomplete="off"/>
-                <label>Academic Year</label>
-                <span asp-validation-for="AcademicYear" class="text-danger"></span>
-            </div>
-
+                            <ion-icon name="calendar"></ion-icon>
+                            <input asp-for="OpenDate" type="text" id='openDatepicker' required autocomplete="off" />
+                            <label>Closure Date</label>
+                            <span asp-validation-for="OpenDate" class="text-danger"></span>
+                        </div>
             <button type="submit" class="submit-Btn" style="padding: 20px;">Create</button>
 
         </form>
@@ -43,7 +42,7 @@
         });
 
         $(document).ready(function () {
-            $('#yearPiker').datepicker({
+            $('#openDatepicker').datepicker({
                 format: 'dd/mm/yyyy',
                 autoclose: true
             });

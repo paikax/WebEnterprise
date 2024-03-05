@@ -14,10 +14,10 @@
         <thead>
             <tr>
                 <th>
-                    Closure Date
+                    Open Date
                 </th>
                 <th>
-                    Academic Year
+                    Closure Date
                 </th>
                 <th></th>
             </tr>
@@ -27,10 +27,10 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.ClosureDate)
+                        @Html.DisplayFor(modelItem => item.OpenDate)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.AcademicYear)
+                        @Html.DisplayFor(modelItem => item.ClosureDate)
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.Id">

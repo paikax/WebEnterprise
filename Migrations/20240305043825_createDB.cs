@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebEnterprise.Migrations
 {
-    public partial class initDb : Migration
+    public partial class createDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -75,8 +75,8 @@ namespace WebEnterprise.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ClosureDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AcademicYear = table.Column<int>(type: "int", nullable: false)
+                    OpenDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClosureDate = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
