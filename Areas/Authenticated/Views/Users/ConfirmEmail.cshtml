@@ -1,0 +1,16 @@
+﻿@model WebEnterprise.ViewModels.EmailConfirmation
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+<h2>Check Email</h2>
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" readonly="true">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Check</button>
+</form>
