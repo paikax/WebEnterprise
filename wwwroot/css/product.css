@@ -608,7 +608,6 @@ input[type=number] {
 
 }
 .table-responsive{
-
     overflow-x: auto;
 }
 .table {
@@ -621,7 +620,7 @@ input[type=number] {
     box-sizing: border-box;
 }
 .table-bordered{
-    border-width: 0px;
+    border-width: 1px;
     border-style: initial;
     border-color: initial;
     border-image: initial;

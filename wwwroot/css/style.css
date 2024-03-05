@@ -677,8 +677,8 @@ input[type="radio"] {
 }
 
 .submit-Btn:hover {
-    transform: translateY(-2px);
-    transition: .15s ease-in-out;
+    transform: scale(.99);
+    transition: .1s ease-in-out;
 }
 .switch-form {
     margin-top: 10px;
