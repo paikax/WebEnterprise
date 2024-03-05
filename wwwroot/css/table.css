@@ -5,9 +5,12 @@
     --text-color: #333;
     --border-color: #e5e5e5;
 }
-table {
-    width: 70%;
-    align-items: center ;
+
+.date-table {
+    box-shadow: 0 0 3px 0 black;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 table a:hover{
@@ -18,7 +21,6 @@ table a:hover{
 table ion-icon {
     font-size: 2rem;
     margin-right: 10px;
-
 }
 
 #delete {
@@ -36,19 +38,27 @@ table ion-icon {
     transform: scale(.95);
 }
 
-
-table td,
-table th {
+td,th,table {
     overflow: hidden;
     margin: 15px;
-    padding-left: 10px;
-    border-bottom: 1px solid black;
+    padding: 0 10px;
     font-size: 1.2rem;
     height: 50px;
 }
 
-thead th {
-    color: black;
+.date-table td:nth-child(3) {
+    width: 10%;
+    min-width: 130px;
+    text-align: right;
+}
+.date-table td:nth-child(2) {
+    border-left: 6px solid var(--primary-color) ;
+}
+.date-table tr:nth-child(even) {
+    background: #eeeeee;
+}
+thead tr, thead th {
+    color: white;
     border: none;
     font-size: 1.4rem;
 }
@@ -65,6 +75,11 @@ thead th {
     font-size: 1.25rem;
 }
 thead {
+    background: var(--primary-color);
+
     top: 0;
     position: sticky;
+}
+tbody {
+    padding-bottom: 10px;
 }

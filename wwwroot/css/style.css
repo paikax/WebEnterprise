@@ -578,7 +578,6 @@ footer {
     margin-bottom: 10px;
 }
 
-
 input[type="radio"] {
     accent-color: var(--primary-color);
 }
@@ -730,3 +729,4 @@ input[type="radio"] {
     border-radius: 15px;
     padding-left: 10px;
 }
+
