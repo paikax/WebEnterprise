@@ -1,18 +1,56 @@
-﻿html,
-body,
-.intro {
-    height: 100%;
+﻿:root {
+    --primary-color: #162938;
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --border-color: #e5e5e5;
 }
+table {
+    width: 70%;
+    align-items: center ;
+}
+
+table a:hover{
+    text-decoration: none;
+}
+
+
+table ion-icon {
+    font-size: 2rem;
+    margin-right: 10px;
+
+}
+
+#delete {
+    color: #ff2400;
+}
+
+#delete:hover {
+    transform: scale(.95);
+}
+
+#edit {
+    color: var(--primary-color);  
+}
+#edit:hover {
+    transform: scale(.95);
+}
+
 
 table td,
 table th {
-    text-overflow: ellipsis;
-    white-space: nowrap;
     overflow: hidden;
+    margin: 15px;
+    padding-left: 10px;
+    border-bottom: 1px solid black;
+    font-size: 1.2rem;
+    height: 50px;
 }
 
 thead th {
-    color: #fff;
+    color: black;
+    border: none;
+    font-size: 1.4rem;
 }
 
 .card {

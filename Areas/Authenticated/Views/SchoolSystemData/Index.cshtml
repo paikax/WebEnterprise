@@ -5,39 +5,44 @@
     Layout = "_Layout";
 }
 
-<h2>System Data Index</h2>
+<div class="page-container">
+    <h2>System Data Index</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+    <p><a asp-action="Create">Create New</a></p>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Closure Date
-            </th>
-            <th>
-                Academic Year
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <table class="Date-table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ClosureDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AcademicYear)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
+                <th>
+                    Closure Date
+                </th>
+                <th>
+                    Academic Year
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClosureDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AcademicYear)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">
+                            <ion-icon name="create-outline" id="edit"></ion-icon>
+                        </a>
+
+                        <a asp-action="Delete" asp-route-id="@item.Id">
+                            <ion-icon name="trash-outline" id="delete"></ion-icon>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
