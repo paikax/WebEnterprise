@@ -17,20 +17,4 @@ public class AssignmentsController : Controller
         _db = db;
     }
     
-    // GET
-    // public IActionResult Index()
-    // {
-    //     return View();
-    // }
-    
-    // Assign coordinator to faculty
-    // [HttpGet]
-    // public IActionResult AssignCoordinatorToFaculty(int id)
-    // {
-    //     if (id != null) facultyId = Convert.ToInt32(id);
-    //
-    //     var assignmentViewModal = new AssignmentViewModel();
-    //     assignmentViewModal.FacultyId = facultyId;
-    //     assignmentViewModal.AssignmentList = _db.Assigments;
-    // }
 }
