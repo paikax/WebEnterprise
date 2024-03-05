@@ -18,22 +18,22 @@
 <body>
 <div class="app">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">WEB ENTERPRISE</a>
 
-            <form class="search-form">
-                <input class="search-input" type="search" placeholder="Search" aria-label="Search">
-                <button class="search-btn" type="submit"><ion-icon name="search"></ion-icon></button>
-            </form>
+        <a class="navbar-brand" href="/Areas/UnAuthenticated/Views/Home/Index.cshtml">WEB ENTERPRISE</a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <form class="search-form">
+            <input class="search-input" type="search" placeholder="Search" aria-label="Search">
+            <button class="search-btn" type="submit"><ion-icon name="search"></ion-icon></button>
+        </form>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    @if (HttpContextAccessor.HttpContext.User.IsInRole(WebEnterprise.Constants.Roles.AdminRole))
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                @if (HttpContextAccessor.HttpContext.User.IsInRole(WebEnterprise.Constants.Roles.AdminRole))
                     {
                         <li class="nav-item">
                             <a class="nav-link" href="/Authenticated/SchoolSystemData">School System Data</a>
@@ -48,14 +48,13 @@
                             <a class="nav-link" href="#">Student</a>
                         </li>
                     }
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Identity/Account/Login">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Identity/Account/Register">Register</a>
-                    </li>
-                </ul>
-            </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Identity/Account/Login?returnUrl=@Context.Request.Path">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Identity/Account/Register?returnUrl=@Context.Request.Path">Register</a>
+                </li>
+            </ul>
         </div>
     </nav>
 
