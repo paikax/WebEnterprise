@@ -541,6 +541,7 @@ footer {
     width: 60%;
     box-shadow: 0 0 10px 0 var(--primary-color);
     border-radius: 20px;
+    margin-top: 10px;
 }
 
 .form-image {
@@ -561,8 +562,7 @@ footer {
     min-width: 300px;
     background: white;
     padding: 20px;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    border-radius: 20px;
 }
 
 .input-field {
@@ -641,7 +641,7 @@ ion-icon {
     right: 10px;
     transform: translateY(9px);
     font-size: 1.4rem;
-    color: #2b3494;
+    color: var(--primary-color);
     line-height: 57px;
 }
 .check-box {
