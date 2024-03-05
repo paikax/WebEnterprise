@@ -525,12 +525,14 @@ footer {
 }
 
 .page-container {
+    min-width: 350px;
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 }
 
 .form-container {
@@ -577,7 +579,6 @@ footer {
     margin-top: 30px;
     margin-bottom: 10px;
 }
-
 
 input[type="radio"] {
     accent-color: var(--primary-color);
@@ -730,3 +731,29 @@ input[type="radio"] {
     border-radius: 15px;
     padding-left: 10px;
 }
+
+.delete-form {
+    max-width: 650px;
+    display: flex;
+    flex-direction: row;
+}
+
+.delete-form button {
+    padding: 10px;
+    margin: 0 10px;
+    min-width: 150px;
+    width: 50%;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    font-weight: 550;
+    border: none;
+    background: #d8d8d8;
+    outline: none;
+}
+
+.delete-form button:hover {
+    filter: invert(1);
+}
+
+
+
