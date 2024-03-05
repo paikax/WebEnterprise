@@ -132,6 +132,12 @@ public class UsersController : Microsoft.AspNetCore.Mvc.Controller
                     existingUser.Gender = user.Gender;
                     existingUser.DoB = user.DoB;
                     existingUser.Role = user.Role;
+                    
+                    if (!string.IsNullOrWhiteSpace(user.Password))
+                    {
+                        string hashedPassword = _userManager.PasswordHasher.HashPassword(existingUser, user.Password);
+                        existingUser.PasswordHash = hashedPassword;
+                    }
                 }
             }
             catch (DbUpdateConcurrencyException)
