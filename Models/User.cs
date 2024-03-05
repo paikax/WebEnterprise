@@ -16,6 +16,14 @@ public class User : IdentityUser
     public string FullName { get; set; }
     public string Role { get; set; }
     
+    [Required(ErrorMessage = "Password is required")]
+    [DataType(DataType.Password)]
+    public string Password { get; set; }
+
+    [NotMapped]
+    [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+    public string ConfirmPassword { get; set; }
+    
     public string Gender { get; set; }
     
     public string DoB { get; set; }
