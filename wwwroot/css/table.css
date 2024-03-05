@@ -9,7 +9,28 @@
 .date-table {
     box-shadow: 0 0 3px 0 black;
     border-radius: 10px;
-    width: 100%;
+    width: 90%;
+    box-sizing: border-box;
+}
+
+#link-icon {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: maroon
+}
+
+#link-icon ion-icon {
+    font-size: 1.4rem;
+    transform: translateY(3px);
+}
+#link-icon:hover {
+    color: #0d0083;
+}
+
+.delete-table {
+    box-shadow: 0 0 3px 0 black;
+    border-radius: 10px;
+    width: 90%;
     box-sizing: border-box;
 }
 
@@ -76,7 +97,6 @@ thead tr, thead th {
 }
 thead {
     background: var(--primary-color);
-
     top: 0;
     position: sticky;
 }
