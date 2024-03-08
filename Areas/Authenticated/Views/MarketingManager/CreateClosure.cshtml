@@ -1,0 +1,35 @@
+﻿@model WebEnterprise.Models.ContributionClosureDate
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Create Closure</title>
+    <link href="~/css/mmdashboard.css" rel="stylesheet" />
+</head>
+<body>
+    <h2>Create Closure</h2>
+
+    <form asp-action="CreateClosure" method="post">
+        <div class="form-group">
+            <label asp-for="StartDate" class="control-label">Start Date:</label>
+            <input asp-for="StartDate" class="form-control" />
+            <span asp-validation-for="StartDate" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="EndDate" class="control-label">End Date:</label>
+            <input asp-for="EndDate" class="form-control" />
+            <span asp-validation-for="EndDate" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="FacultyId" class="control-label">Faculty:</label>
+            <select asp-for="FacultyId" class="form-control" asp-items="ViewBag.Faculties"></select>
+            <span asp-validation-for="FacultyId" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</body>
+</html>

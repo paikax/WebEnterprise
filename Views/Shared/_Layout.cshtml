@@ -1,4 +1,4 @@
-﻿@using WebEnterprise.Constants
+@using WebEnterprise.Constants
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @inject IHttpContextAccessor HttpContextAccessor
 <!DOCTYPE html>
@@ -10,16 +10,31 @@
     <script src="~/js/jquery-3.3.1.js"></script>
     <link rel="stylesheet" href="~/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/style.css" />
-    <link rel="stylesheet" href="~/css/table.css" />
-    <!-- Other CSS links here -->
+    <link rel="stylesheet" href="~/css/home.css">
+    <link rel="stylesheet" href="~/css/login.css">
+    <link rel="stylesheet" href="~/css/register.css">
+    <link rel="stylesheet" href="~/css/table.css">
+    <link rel="stylesheet" href="~/css/order.css"/>
+    <link rel="stylesheet" href="~/css/mmdashboard.css" />
+    @* <link rel="stylesheet" href="~/WebEnterprise.styles.css" asp-append-version="true" /> *@
+    <link rel="stylesheet" href="~/fonts/fontawesome/all.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-fVFYrEXjQ5Srqv5bTuChKX5/KVaz2Sb7pFPIL9VtZ17DRjD7sjRM3Rv4+X4c7FjP" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a61908a9a8.js" crossorigin="anonymous"></script>
+    
+    <!-- Alert -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        
+    <!-- Toastr -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"/>
+  
 </head>
 <body>
 <div class="app">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
         <a class="navbar-brand" href="/Areas/UnAuthenticated/Views/Home/Index.cshtml">WEB ENTERPRISE</a>
 
         <form class="search-form">
@@ -49,6 +64,9 @@
                             <a class="nav-link" href="#">Student</a>
                         </li>
                     }
+                <li class="nav-item">
+                      <a class="nav-link" href="@Url.Action("Dashboard", "Faculty", new { area = "Authenticated" })">Marketing Manager</a>
+                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/Identity/Account/Login?returnUrl=@Context.Request.Path">Login</a>
                 </li>

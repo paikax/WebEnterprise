@@ -1,0 +1,11 @@
+﻿@model WebEnterprise.Models.Faculty;
+
+
+<form id="createFacultyForm" action="@Url.Action("CreateFaculty", "Faculty", new { area = "Authenticated" })" method="post">
+    <div class="form-group">
+        <label for="roleName">Role Name:</label>
+        <input type="text" id="roleName" name="roleName" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

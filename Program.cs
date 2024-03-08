@@ -89,8 +89,16 @@ using (var scope = app.Services.CreateScope())
 
 
 app.MapControllerRoute(
+    name: "authenticated",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}",
+    defaults: new { area = "Authenticated" }
+);
+
+app.MapControllerRoute(
     name: "default",
-    pattern: "{area=UnAuthenticated}/{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area=UnAuthenticated}/{controller=Home}/{action=Index}/{id?}"
+);
+
 app.MapRazorPages();
 
 app.Run();

@@ -562,13 +562,11 @@ footer {
     max-width: 100%;
     min-width: 350px;
     background: white;
-    padding: 10px 20px 0 20px;
+    padding: 20px;
     border-radius: 20px;
-}
 
 .input-form h1 {
     font-weight: 600;
-
 }
 
 .input-field {
@@ -647,7 +645,7 @@ input[type="radio"] {
     right: 10px;
     transform: translateY(9px);
     font-size: 1.4rem;
-    color: #2b3494;
+    color: var(--primary-color);
     line-height: 57px;
 }
 .check-box {
