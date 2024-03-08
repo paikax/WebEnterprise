@@ -55,6 +55,7 @@
     <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Orders\OrderView.cshtml" />
     <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Orders\_Detail.cshtml" />
     <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Orders\_OrderDetails.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Assignments\Index.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

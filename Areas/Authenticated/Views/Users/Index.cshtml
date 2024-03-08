@@ -6,6 +6,7 @@
 
 
 <h1 class="mt-5 mb-4">User Management</h1>
+<a class="btn btn-success" asp-controller="Users" asp-action="Create">Create User</a>
 
 <div class="table-responsive">
     <table class="table table-striped">
@@ -32,6 +33,7 @@
                         <div class="btn-group" role="group">
                             <a class="btn btn-primary btn-sm" asp-controller="Users" asp-action="Edit" asp-route-id="@user.Id">Edit</a>
                             <a class="btn btn-info btn-sm" asp-controller="Users" asp-action="Details" asp-route-id="@user.Id">Details</a>
+                             <a asp-area="Authenticated" asp-controller="Users" asp-action="ConfirmEmail" asp-route-id="@user.Id" class="btn btn-success">Reset Password</a>
                             <a class="btn btn-danger btn-sm" asp-controller="Users" asp-action="Delete" asp-route-id="@user.Id">Delete</a>
                         </div>
                     </td>

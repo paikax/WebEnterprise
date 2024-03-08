@@ -4,31 +4,39 @@
     ViewBag.Title = "Delete semster";
     Layout = "_Layout";
 }
+<div class="page-container">
 
-<h2>Delete</h2>
+    <h1>Delete</h1>
+    <h3 style="color: maroon;">Delete this time?</h3>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>SystemData</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ClosureDate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ClosureDate)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AcademicYear)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AcademicYear)
-        </dd>
-    </dl>
-
-    <form asp-action="Delete" method="post">
+    <table class="delete-table" style="max-width: 650px">
+        <thead>
+            <tr>
+                <th>
+                    Open Date
+                </th>
+                <th>
+                    Closure Date
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.ClosureDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.OpenDate)
+                </td>
+            </tr>
+        </tbody>     
+    </table>
+    
+    <form asp-action="Delete" method="post" class="delete-form">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <button type="submit" asp-action="Index">Back to List</button>
+        <button type="submit" style="background: #ff2400;">Delete</button>
     </form>
 </div>
+
+

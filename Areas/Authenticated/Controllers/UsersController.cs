@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using WebEnterprise.Data;
 using WebEnterprise.Models;
 using Microsoft.AspNetCore.Identity;
+using WebEnterprise.ViewModels;
 
 
 namespace WebEnterprise.Areas.Authenticated.Controllers;
@@ -45,12 +46,65 @@ public class UsersController : Microsoft.AspNetCore.Mvc.Controller
     }
     
     [HttpGet]
+    public IActionResult Create()
+    {
+        var newUser = new User();
+    
+        var roles = _roleManager.Roles.Where(r => r.Name != Constants.Roles.AdminRole).ToList();
+        ViewBag.Roles = roles;
+
+        return View(newUser);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create(User user)
+    {
+        if (ModelState.IsValid)
+        {
+            // Hash the user's password before creating the user
+            string hashedPassword = _userManager.PasswordHasher.HashPassword(user, user.Password);
+
+            // Set the hashed password
+            user.PasswordHash = hashedPassword;
+            user.UserName = user.Email;
+            user.EmailConfirmed = true;
+
+            // Create the user
+            var result = await _userManager.CreateAsync(user);
+
+            if (result.Succeeded)
+            {
+                // Add user to selected role
+                var role = await _roleManager.FindByNameAsync(user.Role);
+                if (role != null)
+                {
+                    await _userManager.AddToRoleAsync(user, role.Name);
+                }
+
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+            }
+        }
+
+        // If we reach this point, something went wrong. Re-render the form with errors.
+        // Also, re-populate the roles dropdown
+        ViewBag.Roles = _roleManager.Roles.ToList();
+        return View(user);
+    }
+    
+    [HttpGet]
     public async Task<IActionResult> Edit(string id)
     {
         var user = await _db.Users.FindAsync(id);
 
-        // Get the current roles available in the system
-        var roles = await _roleManager.Roles.ToListAsync();
+        // Get the current roles available in the system, excluding the Admin role
+        var roles = _roleManager.Roles.Where(r => r.Name != Constants.Roles.AdminRole).ToList();
         ViewBag.Roles = roles;
 
         // Get the current role of the user
@@ -59,9 +113,6 @@ public class UsersController : Microsoft.AspNetCore.Mvc.Controller
 
         return View(user);
     }
-
-
-    
     
     [HttpPost]
     public async Task<IActionResult> Edit(User user)
@@ -74,11 +125,20 @@ public class UsersController : Microsoft.AspNetCore.Mvc.Controller
                 var existingUser = await _db.Users.FindAsync(user.Id);
 
                 // Update editable properties
-                existingUser.Email = user.Email;
-                existingUser.FullName = user.FullName;
-                existingUser.Gender = user.Gender;
-                existingUser.DoB = user.DoB;
-                existingUser.Role = user.Role;
+                if (existingUser != null)
+                {
+                    existingUser.Email = user.Email;
+                    existingUser.FullName = user.FullName;
+                    existingUser.Gender = user.Gender;
+                    existingUser.DoB = user.DoB;
+                    existingUser.Role = user.Role;
+                    
+                    if (!string.IsNullOrWhiteSpace(user.Password))
+                    {
+                        string hashedPassword = _userManager.PasswordHasher.HashPassword(existingUser, user.Password);
+                        existingUser.PasswordHash = hashedPassword;
+                    }
+                }
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -112,9 +172,7 @@ public class UsersController : Microsoft.AspNetCore.Mvc.Controller
         }
         return View(user);
     }
-
-
-
+    
     private bool UserExists(string id)
     {
         return _db.Users.Any(e => e.Id == id);
@@ -155,6 +213,72 @@ public class UsersController : Microsoft.AspNetCore.Mvc.Controller
 
         return RedirectToAction(nameof(Index));
     }
+    
+    [HttpGet]
+    public async Task<IActionResult> ConfirmEmail(string id)
+    {
+        var user = _db.Users.Find(id);
 
+        if (user == null) return View();
+
+        var emailConfirmation = new EmailConfirmation()
+        {
+            Email = user.Email
+        };
+
+        return View(emailConfirmation);
+    }
+    
+    [HttpPost]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> ConfirmEmail(EmailConfirmation emailConfirmation)
+    {
+        if (ModelState.IsValid)
+        {
+            var user = await _userManager.FindByEmailAsync(emailConfirmation.Email);
+            if (user != null)
+            {
+                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+                return RedirectToAction("ResetPassword", "Users"
+                    , new { token, email = user.Email });
+            }
+        }
+
+        return View(emailConfirmation);
+    }
+
+    [HttpGet]
+    [Authorize(Roles = Constants.Roles.AdminRole)]
+    public async Task<IActionResult> ResetPassword(string token, string email)
+    {
+        if (token == null || email == null) ModelState.AddModelError("", "Invalid password reset token");
+
+        var resetPasswordViewModel = new ResetPasswordViewModel()
+        {
+            Email = email,
+            Token = token
+        };
+
+        return View(resetPasswordViewModel);
+    }
+
+    [HttpPost]
+    [Authorize(Roles = Constants.Roles.AdminRole)]
+    public async Task<IActionResult> ResetPassword(ResetPasswordViewModel resetPasswordViewModel)
+    {
+        if (ModelState.IsValid)
+        {
+            var user = await _userManager.FindByEmailAsync(resetPasswordViewModel.Email);
+            if (user != null)
+            {
+                var result = await _userManager.ResetPasswordAsync(user, resetPasswordViewModel.Token,
+                    resetPasswordViewModel.Password);
+                if (result.Succeeded) return RedirectToAction(nameof(Index));
+            }
+        }
+
+        return View(resetPasswordViewModel);
+    }
 
 }

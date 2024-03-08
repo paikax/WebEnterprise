@@ -4,32 +4,34 @@
 @{
     ViewData["Title"] = "Log in";
 }
-<div class="container flex-center">
-    <h1 class="display-4 text-center">Login</h1>
-    <form method="post" class="input-form">
-         <div class="input-field">
-            <ion-icon name="mail"></ion-icon>
-            <input asp-for="Input.Email" type="email" required/>
-            <label asp-for="Input.Email"></label>
-            <span asp-validation-for="Input.Email" class="text-danger"></span>
-        </div>
-        <div class="input-field">
-            <ion-icon name="lock-closed"></ion-icon>
-            <input asp-for="Input.Password" type="password" required/>
-            <label asp-for="Input.Password"></label>
-            <span asp-validation-for="Input.Password" class="text-danger"></span>
-        </div>
+<div class="page-container">
+    <div class="form-container" style="width: 50%;">
+        <form method="post" class="input-form">
+            <h1>Login</h1>
+            <div class="input-field">
+                <ion-icon name="mail"></ion-icon>
+                <input asp-for="Input.Email" type="email" required/>
+                <label asp-for="Input.Email"></label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="input-field">
+                <ion-icon name="lock-closed"></ion-icon>
+                <input asp-for="Input.Password" type="password" required/>
+                <label asp-for="Input.Password"></label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
 
-         <div class="check-box">
-            <label><input type='checkbox' id='remember' /> Remember me</label>
-        </div>
+            <div class="check-box">
+                <label><input type='checkbox' id='remember' /> Remember me</label>
+            </div>
 
-        <button type="submit" class="submit-Btn">Login</button>
+            <button type="submit" class="submit-Btn">Login</button>
 
-        <div class="switch-form">
-            <p>Don't have account yet? <a href="/Identity/Account/Register">Register</a></p>
-        </div>
-    </form>
+            <div class="switch-form">
+                <p>Don't have account yet? <a href="/Identity/Account/Register">Register</a></p>
+            </div>
+        </form>
+    </div>
 </div>
 
 @section Scripts {
