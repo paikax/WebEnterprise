@@ -1,18 +1,87 @@
-﻿html,
-body,
-.intro {
-    height: 100%;
+﻿:root {
+    --primary-color: #162938;
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --border-color: #e5e5e5;
 }
 
-table td,
-table th {
-    text-overflow: ellipsis;
-    white-space: nowrap;
+.date-table {
+    box-shadow: 0 0 3px 0 black;
+    border-radius: 10px;
+    width: 90%;
+    box-sizing: border-box;
+}
+
+#link-icon {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: maroon
+}
+
+#link-icon ion-icon {
+    font-size: 1.4rem;
+    transform: translateY(3px);
+}
+#link-icon:hover {
+    color: #0d0083;
+}
+
+.delete-table {
+    box-shadow: 0 0 3px 0 black;
+    border-radius: 10px;
+    width: 90%;
+    box-sizing: border-box;
+}
+
+table a:hover{
+    text-decoration: none;
+}
+
+
+table ion-icon {
+    font-size: 2rem;
+    margin-right: 10px;
+}
+
+#delete {
+    color: #ff2400;
+}
+
+#delete:hover {
+    transform: scale(.95);
+}
+
+#edit {
+    color: var(--primary-color);  
+}
+#edit:hover {
+    transform: scale(.95);
+}
+
+td,th,table {
     overflow: hidden;
+    margin: 15px;
+    padding: 0 10px;
+    font-size: 1.2rem;
+    height: 50px;
 }
 
-thead th {
-    color: #fff;
+.date-table td:nth-child(3) {
+    width: 10%;
+    min-width: 130px;
+    text-align: right;
+}
+.date-table td:nth-child(2) {
+    border-left: 6px solid var(--primary-color) ;
+}
+.date-table tr:nth-child(even) {
+    background: #eeeeee;
+}
+thead tr, thead th {
+    color: white;
+    border: none;
+    font-size: 1.4rem;
 }
 
 .card {
@@ -27,6 +96,10 @@ thead th {
     font-size: 1.25rem;
 }
 thead {
+    background: var(--primary-color);
     top: 0;
     position: sticky;
+}
+tbody {
+    padding-bottom: 10px;
 }

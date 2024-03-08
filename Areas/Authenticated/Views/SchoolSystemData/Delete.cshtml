@@ -1,0 +1,42 @@
+﻿@model SchoolSystemData
+
+@{
+    ViewBag.Title = "Delete semster";
+    Layout = "_Layout";
+}
+<div class="page-container">
+
+    <h1>Delete</h1>
+    <h3 style="color: maroon;">Delete this time?</h3>
+
+    <table class="delete-table" style="max-width: 650px">
+        <thead>
+            <tr>
+                <th>
+                    Open Date
+                </th>
+                <th>
+                    Closure Date
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.ClosureDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.OpenDate)
+                </td>
+            </tr>
+        </tbody>     
+    </table>
+    
+    <form asp-action="Delete" method="post" class="delete-form">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" asp-action="Index">Back to List</button>
+        <button type="submit" style="background: #ff2400;">Delete</button>
+    </form>
+</div>
+
+

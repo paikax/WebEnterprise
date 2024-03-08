@@ -69,13 +69,7 @@ namespace WebEnterprise.Areas.Identity.Pages.Account
             [Required(ErrorMessage = "Please select your Gender")]
             [Display(Name = "Gender")]
             public StringEnums.GenderType Gender { get; set; }
-
             
-
-            [Required(ErrorMessage = "Phone number is required")]
-            [Display(Name = "Phone Number")]
-            public string Phone { get; set; }
-
             [Required(ErrorMessage = "Date of Birth is required")]
             [Display(Name = "Date of Birth")]
             public string DoB { get; set; }
@@ -94,7 +88,7 @@ namespace WebEnterprise.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
 
             // Set the default role to "Student"
-            public string UserRole { get; set; } = WebEnterprise.Constants.Roles.StudentRole;
+            [Required] public string Role { get; set; } = Constants.Roles.StudentRole;
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -114,10 +108,10 @@ namespace WebEnterprise.Areas.Identity.Pages.Account
                 {
                     UserName = Input.Email,
                     Email = Input.Email,
-                    FullName = Input.FullName,
-                    PhoneNumber = Input.Phone,
+                    FullName = Input.FullName,      
                     DoB = Input.DoB,
-                    Gender = Input.Gender.ToValue()
+                    Gender = Input.Gender.ToValue(),
+                    Role = Constants.Roles.StudentRole
                 };
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
@@ -125,7 +119,7 @@ namespace WebEnterprise.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
-                    await _userManager.AddToRoleAsync(user, Input.UserRole);
+                    await _userManager.AddToRoleAsync(user, Roles.StudentRole);
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));

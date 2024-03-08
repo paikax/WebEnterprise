@@ -1,0 +1,59 @@
+﻿@model WebEnterprise.Models.User
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Create User";
+}
+
+<h1>Create User</h1>
+
+<form asp-controller="Users" asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="FullName">Full Name</label>
+        <input type="text" class="form-control" id="FullName" name="FullName" value="@Model.FullName">
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Gender">Gender</label>
+        <select class="form-control" id="Gender" name="Gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        <span asp-validation-for="Gender" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="DoB">Date of Birth</label>
+        <input type="date" class="form-control" id="DoB" name="DoB" value="@Model.DoB">
+        <span asp-validation-for="DoB" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Role">Role</label>
+        <select class="form-control" id="Role" name="Role">
+            @foreach (var role in ViewBag.Roles)
+            {
+                <option value="@role.Name">@role.Name</option>
+            }
+        </select>
+        <span asp-validation-for="Role" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label for="Password">Password</label>
+        <input type="password" class="form-control" id="Password" name="Password">
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="ConfirmPassword">Confirm Password</label>
+        <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword">
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-controller="Users" asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

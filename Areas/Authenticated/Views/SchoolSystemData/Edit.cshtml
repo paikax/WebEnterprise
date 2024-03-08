@@ -1,0 +1,53 @@
+﻿@model SchoolSystemData
+
+@{
+    ViewBag.Title = "Edit semester";
+    Layout = "_Layout";
+}
+
+
+
+<div class="page-container">
+    <div class="form-container">
+        <form asp-action="Edit" class="input-form">
+            <h2>Edit</h2>
+            <div class="input-field">
+                <ion-icon name="calendar"></ion-icon>
+                <input asp-for="OpenDate" type="text" id='openDatepicker' required autocomplete="off" />
+                <label>Open Date</label>
+                <span asp-validation-for="OpenDate" class="text-danger"></span>
+            </div>
+
+            <div class="input-field">
+                <ion-icon name="calendar"></ion-icon>
+                <input asp-for="ClosureDate" type="text" id='closureDatepicker' required autocomplete="off" />
+                <label>Closure Date</label>
+                <span asp-validation-for="ClosureDate" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="submit-Btn" style="margin: 20px;">Edit</button>
+        </form>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+
+    <script>
+        $(document).ready(function () {
+            $('#closureDatepicker').datepicker({
+                format: 'dd/mm/yyyy',
+                autoclose: true
+            });
+        });
+
+        $(document).ready(function () {
+            $('#openDatepicker').datepicker({
+                format: 'dd/mm/yyyy',
+                autoclose: true
+            });
+        });     
+    </script>
+}

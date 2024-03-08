@@ -1,0 +1,50 @@
+﻿@model IEnumerable<WebEnterprise.Models.SchoolSystemData>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="page-container">
+    <h1>System Data Index</h1>
+
+    <a asp-action="Create" id="link-icon"><ion-icon name="calendar-outline"></ion-icon> Create New</a>
+   
+    <table class="date-table">
+        <thead>
+            <tr>
+                <th>
+                    Open Date
+                </th>
+                <th>
+                    Closure Date
+                </th>
+                <th>
+                    
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OpenDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClosureDate)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">
+                            <ion-icon name="create-outline" id="edit"></ion-icon>
+                        </a>
+
+                        <a asp-action="Delete" asp-route-id="@item.Id">
+                            <ion-icon name="trash-outline" id="delete"></ion-icon>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
