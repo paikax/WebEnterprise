@@ -6,7 +6,8 @@
 
 <div class="page-container">
     <h1>User Management</h1>
-    <a asp-controller="Users" asp-action="Create" id="link-icon" style="--color: #145522;"><ion-icon name="person-add"></ion-icon> Create User</a>
+    <a asp-controller="Users" asp-action="Create" id="link-icon" style="--color: #145522;"><ion-icon
+            name="person-add"></ion-icon> Create User</a>
     <table class="date-table">
         <thead>
             <tr>
@@ -27,16 +28,19 @@
                     <td>@user.Gender</td>
                     <td>@user.DoB</td>
                     <td>@user.Role</td>
-                    <td>
+                    <td style="width: 15%; min-width: 230px;">
                         <div style="width: 100%; display: flex; flex-wrap: nowrap;" role="group">
-                            <a asp-controller="Users" asp-action="Edit" asp-route-id="@user.Id" >
+                            <a asp-controller="Users" asp-action="Edit" asp-route-id="@user.Id">
                                 <ion-icon name="create-outline" id="table-button" style="--color: #0400d3;"></ion-icon>
                             </a>
                             <a asp-controller="Users" asp-action="Details" asp-route-id="@user.Id">
-                                <ion-icon name="information-circle-outline" id="table-button" style="--color: #00792e;"></ion-icon>
+                                <ion-icon name="information-circle-outline" id="table-button"
+                                    style="--color: #00792e;"></ion-icon>
                             </a>
-                            <a asp-area="Authenticated" asp-controller="Users" asp-action="ConfirmEmail" asp-route-id="@user.Id" >
-                                <ion-icon name="refresh-circle-outline" id="table-button" style="--color: #cbce00;"></ion-icon>
+                            <a asp-area="Authenticated" asp-controller="Users" asp-action="ConfirmEmail"
+                                asp-route-id="@user.Id">
+                                <ion-icon name="refresh-circle-outline" id="table-button"
+                                    style="--color: #cbce00;"></ion-icon>
                             </a>
                             <a asp-controller="Users" asp-action="Delete" asp-route-id="@user.Id">
                                 <ion-icon name="trash-outline" id="table-button" style="--color: #d41c00;"></ion-icon>

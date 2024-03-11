@@ -5,9 +5,6 @@
     --text-color: #333;
     --border-color: #e5e5e5;
 }
-table {
-    text-align: left;
-}
 
 .date-table {
     box-shadow: 0 0 3px 0 black;
@@ -15,7 +12,6 @@ table {
     width: 90%;
     box-sizing: border-box;
 }
-
 #link-icon {
     font-size: 1.2rem;
     font-weight: 500;
@@ -27,6 +23,7 @@ table {
     font-size: 1.4rem;
     transform: translateY(3px);
 }
+
 #link-icon:hover {
     color: #0d0083;
 }
@@ -54,6 +51,7 @@ table ion-icon {
 
 #table-button:hover {
     transform: scale(.95);
+    transition: .2s ease-in-out;
 }
 
 td,th,table {
@@ -102,4 +100,23 @@ thead {
 }
 tbody {
     padding-bottom: 10px;
+}
+
+.detail-table {
+    width: 100%;
+    margin: 0;
+    text-align: justify;
+}
+.detail-table th {
+    text-align: right;
+    width: 50%;
+}
+
+.card {
+    width: 50%;
+    box-shadow: 0 0 9px 0 var(--primary-color);
+}
+
+.card-body h4 {
+    text-align: center;
 }
