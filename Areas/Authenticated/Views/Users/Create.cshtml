@@ -4,56 +4,75 @@
     ViewData["Title"] = "Create User";
 }
 
-<h1>Create User</h1>
 
-<form asp-controller="Users" asp-action="Create" method="post">
-    <div class="form-group">
-        <label for="Email">Email</label>
-        <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email">
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label for="FullName">Full Name</label>
-        <input type="text" class="form-control" id="FullName" name="FullName" value="@Model.FullName">
-        <span asp-validation-for="FullName" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label for="Gender">Gender</label>
-        <select class="form-control" id="Gender" name="Gender">
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-        </select>
-        <span asp-validation-for="Gender" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label for="DoB">Date of Birth</label>
-        <input type="date" class="form-control" id="DoB" name="DoB" value="@Model.DoB">
-        <span asp-validation-for="DoB" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label for="Role">Role</label>
-        <select class="form-control" id="Role" name="Role">
-            @foreach (var role in ViewBag.Roles)
-            {
-                <option value="@role.Name">@role.Name</option>
-            }
-        </select>
-        <span asp-validation-for="Role" class="text-danger"></span>
-    </div>
-    
-    <div class="form-group">
-        <label for="Password">Password</label>
-        <input type="password" class="form-control" id="Password" name="Password">
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label for="ConfirmPassword">Confirm Password</label>
-        <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword">
-        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-    </div>
+<div class="page-container">
+    <div class="form-container">
+        <form asp-controller="Users" asp-action="Create" class="input-form" method="post">
+            <h1>Create User</h1>
 
+            <div class="input-field">
+                <ion-icon name="mail"></ion-icon>
+                <input type="email" id="Email" name="Email" value="@Model.Email" required>
+                <label>Email</label>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
 
-    <button type="submit" class="btn btn-primary">Create</button>
-    <a asp-controller="Users" asp-action="Index" class="btn btn-secondary">Cancel</a>
-</form>
+            <div class="input-field">
+                <ion-icon name="person"></ion-icon>
+                <input type="text" id="FullName" name="FullName" value="@Model.FullName" required>
+                <label>Full Name</label>
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+
+            <div class="input-field">
+                <ion-icon name="transgender"></ion-icon>
+                <select id="Gender" name="Gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <label>Gender</label>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+
+            <div class="input-field">
+                <ion-icon name="calendar"></ion-icon>
+                <input type="date" id="DoB" name="DoB" value="@Model.DoB" required>
+                <label>Date of Birth</label>
+                <span asp-validation-for="DoB" class="text-danger"></span>
+            </div>
+
+            <div class="input-field">
+                <ion-icon name="people"></ion-icon>
+                <select id="Role" name="Role">
+                    @foreach (var role in ViewBag.Roles)
+                    {
+                        <option value="@role.Name">@role.Name</option>
+                    }
+                </select>
+                <label>Role</label>
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+        
+            <div class="input-field">
+                <ion-icon name="lock-closed"></ion-icon>
+                <input type="password" id="Password" name="Password" required>
+                <label for="Password">Password</label>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="input-field">
+                <ion-icon name="lock-closed"></ion-icon>
+                <input type="password" id="ConfirmPassword" name="ConfirmPassword" required>
+                <label for="ConfirmPassword">Confirm Password</label>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <div class="submit-form">
+                <a asp-controller="Users" asp-action="Index" style="--color: #ff2400;" id="form-Btn">Cancel</a>
+                <button type="submit" style="--color: #28b3fe;" id="form-Btn">Create</button>
+            </div>
+        </form> 
+    </div>
+</div>
+

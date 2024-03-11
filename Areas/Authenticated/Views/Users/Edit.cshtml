@@ -3,75 +3,75 @@
     Layout = "_Layout";
     ViewData["Title"] = "Edit user";
 }
+<div class="page-container">
+    <div class="form-container">
+        <form asp-action="Edit" method="post" class="input-form">
+            <h1>Edit User</h1>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
 
-<h1>Edit User</h1>
-<form asp-action="Edit" method="post" class="needs-validation">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="Id" />
-    <div class="form-group row">
-        <label asp-for="Email" class="col-sm-3 col-form-label">Email</label>
-        <div class="col-sm-9">
-            <input asp-for="Email" class="form-control" required />
-            <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
+            <div class="input-field">
+                <ion-icon name="mail"></ion-icon>
+                <input asp-for="Email" required />
+                <label>Email</label>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="input-field">
+                <ion-icon name="person"></ion-icon>
+                <input asp-for="FullName" required />
+                <label>Full Name</label>
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+
+            <div class="input-field">
+                <ion-icon name="transgender"></ion-icon>
+                <select asp-for="Gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <label asp-for="Gender">Gender</label>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+
+            <div class="input-field">
+                <ion-icon name="calendar"></ion-icon>
+                <input asp-for="DoB" type="date" required />
+                <label asp-for="DoB">Date of Birth</label>
+                <span asp-validation-for="DoB" class="text-danger"></span>
+            </div>
+
+            <div class="input-field">
+                <ion-icon name="people"></ion-icon>
+                <select asp-for="Role" required>
+                    @foreach (var role in ViewBag.Roles)
+                    {
+                        <option value="@role.Name">@role.Name</option>
+                    }
+                </select>
+                <label asp-for="Role">Role</label>
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+
+            <div class="input-field">
+                <ion-icon name="lock-closed"></ion-icon>
+                <input asp-for="Password" type="password" required />
+                <label>Password</label>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="input-field">
+                <ion-icon name="lock-closed"></ion-icon>
+                <input asp-for="ConfirmPassword" type="password" required />
+                <label>Confirm Password</label>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <div class="submit-form">
+                <a asp-action="Index" style="--color: #ff2400;" id="form-Btn">Cancel</a>
+                <button type="submit" style="--color: #28b3fe;" id="form-Btn">Save</button>
+            </div>
+        </form>
     </div>
-    <div class="form-group row">
-        <label asp-for="FullName" class="col-sm-3 col-form-label">Full Name</label>
-        <div class="col-sm-9">
-            <input asp-for="FullName" class="form-control" required />
-            <span asp-validation-for="FullName" class="text-danger"></span>
-        </div>
-    </div>
-    <!-- Add Password and ConfirmPassword fields -->
-    <div class="form-group row">
-        <label asp-for="Password" class="col-sm-3 col-form-label">Password</label>
-        <div class="col-sm-9">
-            <input asp-for="Password" class="form-control" type="password" required />
-            <span asp-validation-for="Password" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label asp-for="ConfirmPassword" class="col-sm-3 col-form-label">Confirm Password</label>
-        <div class="col-sm-9">
-            <input asp-for="ConfirmPassword" class="form-control" type="password" required />
-            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-        </div>
-    </div>
-    <!-- End of Password and ConfirmPassword fields -->
-    <div class="form-group row">
-        <label asp-for="Gender" class="col-sm-3 col-form-label">Gender</label>
-        <div class="col-sm-9">
-            <select asp-for="Gender" class="form-control" required>
-                <option value="">Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-            </select>
-            <span asp-validation-for="Gender" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label asp-for="DoB" class="col-sm-3 col-form-label">Date of Birth</label>
-        <div class="col-sm-9">
-            <input asp-for="DoB" class="form-control" type="date" required />
-            <span asp-validation-for="DoB" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label asp-for="Role" class="col-sm-3 col-form-label">Role</label>
-        <div class="col-sm-9">
-            <select asp-for="Role" class="form-control" required>
-                <option value="">Select Role</option>
-                @foreach (var role in ViewBag.Roles)
-                {
-                    <option value="@role.Name">@role.Name</option>
-                }
-            </select>
-            <span asp-validation-for="Role" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="offset-sm-3 col-sm-9">
-            <button type="submit" class="btn btn-primary">Save</button>
-        </div>
-    </div>
-</form>
+</div>

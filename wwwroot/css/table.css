@@ -5,6 +5,9 @@
     --text-color: #333;
     --border-color: #e5e5e5;
 }
+table {
+    text-align: left;
+}
 
 .date-table {
     box-shadow: 0 0 3px 0 black;
@@ -16,7 +19,8 @@
 #link-icon {
     font-size: 1.2rem;
     font-weight: 500;
-    color: maroon
+    color: var(--color);
+    border: none;
 }
 
 #link-icon ion-icon {
@@ -43,19 +47,12 @@ table ion-icon {
     font-size: 2rem;
     margin-right: 10px;
 }
-
-#delete {
-    color: #ff2400;
+#table-button {
+    color: var(--color);
+    margin: 0 5px;
 }
 
-#delete:hover {
-    transform: scale(.95);
-}
-
-#edit {
-    color: var(--primary-color);  
-}
-#edit:hover {
+#table-button:hover {
     transform: scale(.95);
 }
 
@@ -67,16 +64,19 @@ td,th,table {
     height: 50px;
 }
 
-.date-table td:nth-child(3) {
+#table-button-right {
     width: 10%;
     min-width: 130px;
     text-align: right;
 }
-.date-table td:nth-child(2) {
+#border-left {
     border-left: 6px solid var(--primary-color) ;
 }
 .date-table tr:nth-child(even) {
     background: #eeeeee;
+}
+thead {
+    user-select: none;
 }
 thead tr, thead th {
     color: white;

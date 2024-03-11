@@ -4,55 +4,58 @@
     Layout = "_Layout";
     ViewData["Title"] = "User Detail";
 }
+<div class="page-container">
 
-<h1>User Details</h1>
 
-<div class="card">
-    <div class="card-body">
-        <h4 class="card-title">User Information</h4>
-        <hr />
-        <div class="row">
-            <div class="col-md-3">
-                <strong>Full Name:</strong>
-            </div>
-            <div class="col-md-9">
-                @Html.DisplayFor(model => model.FullName)
-            </div>
-            <div class="col-md-3">
-                <strong>Role:</strong>
-            </div>
-            <div class="col-md-9">
-                @Html.DisplayFor(model => model.Role)
-            </div>
-            <div class="col-md-3">
-                <strong>Gender:</strong>
-            </div>
-            <div class="col-md-9">
-                @Html.DisplayFor(model => model.Gender)
-            </div>
-            <div class="col-md-3">
-                <strong>Date of Birth:</strong>
-            </div>
-            <div class="col-md-9">
-                @Html.DisplayFor(model => model.DoB)
-            </div>
-            <div class="col-md-3">
-                <strong>Created At:</strong>
-            </div>
-            <div class="col-md-9">
-                @Html.DisplayFor(model => model.CreatedAt)
-            </div>
-            <div class="col-md-3">
-                <strong>Updated At:</strong>
-            </div>
-            <div class="col-md-9">
-                @Html.DisplayFor(model => model.UpdatedAt)
+    <h1>User Details</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">User Information</h4>
+            <hr />
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>Full Name:</strong>
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.FullName)
+                </div>
+                <div class="col-md-3">
+                    <strong>Role:</strong>
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.Role)
+                </div>
+                <div class="col-md-3">
+                    <strong>Gender:</strong>
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.Gender)
+                </div>
+                <div class="col-md-3">
+                    <strong>Date of Birth:</strong>
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.DoB)
+                </div>
+                <div class="col-md-3">
+                    <strong>Created At:</strong>
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.CreatedAt)
+                </div>
+                <div class="col-md-3">
+                    <strong>Updated At:</strong>
+                </div>
+                <div class="col-md-9">
+                    @Html.DisplayFor(model => model.UpdatedAt)
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<p>
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a> |
-    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
-</p>
+    <p>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a> |
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </p>
+</div>
