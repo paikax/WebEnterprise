@@ -1,0 +1,28 @@
+﻿@model WebEnterprise.Models.ContributionClosureDate
+
+@{
+    ViewBag.Title = "Create submission";
+    Layout = "_Layout";
+}
+
+<h1>Create Submission Closure</h1>
+
+<div class="card">
+    <div class="card-body">
+        <form asp-action="CreateClosure">
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label">Start Date:</label>
+                <input asp-for="StartDate" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDate" class="control-label">End Date:</label>
+                <input asp-for="EndDate" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="FacultyId" class="control-label">Faculty:</label>
+                <select asp-for="FacultyId" class="form-control" asp-items="ViewBag.Faculties"></select>
+            </div>
+            <button type="submit" class="btn btn-success">Create</button>
+        </form>
+    </div>
+</div>
