@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using NToastNotify;
@@ -86,13 +87,14 @@ namespace WebEnterprise.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
-
-            // Set the default role to "Student"
-            [Required] public string Role { get; set; } = Constants.Roles.StudentRole;
+            
+            [Required] public string Role { get; set; }
+            public IEnumerable<SelectListItem> RoleList { get; set; }
         }
 
         public async Task OnGetAsync(string returnUrl = null)
         {
+            GetRoles();
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
@@ -111,16 +113,20 @@ namespace WebEnterprise.Areas.Identity.Pages.Account
                     FullName = Input.FullName,      
                     DoB = Input.DoB,
                     Gender = Input.Gender.ToValue(),
-                    Role = Constants.Roles.StudentRole
+                    Role = Input.Role
                 };
-
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                
                 
                 if (result.Succeeded)
                 {
+                    if (Input.Role == Constants.Roles.CoordinatorRole)
+                        await _userManager.AddToRolesAsync(user, new[] { "Coordinator" });
+                    else if (Input.Role == Constants.Roles.UniversityMarketingManagerRole)
+                        await _userManager.AddToRolesAsync(user, new[] { "UniversityMarketingManager" });
+                    else await _userManager.AddToRolesAsync(user, new[] { "Student" });
                     _logger.LogInformation("User created a new account with password.");
-                    await _userManager.AddToRoleAsync(user, Roles.StudentRole);
-
+                    
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(
@@ -134,7 +140,7 @@ namespace WebEnterprise.Areas.Identity.Pages.Account
 
                     var userRegistered = _db.Users.FirstOrDefault(_ => _.Email.ToLower() == Input.Email.ToLower());
 
-                    if (!userRegistered.EmailConfirmed)
+                    if (userRegistered != null && !userRegistered.EmailConfirmed)
                     {
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
                     }
@@ -151,7 +157,21 @@ namespace WebEnterprise.Areas.Identity.Pages.Account
                 }
             }
 
+            GetRoles();
             return Page();
+        }
+        
+        private void GetRoles()
+        {
+            Input = new InputModel()
+            {
+                RoleList = _roleManager.Roles.Where(x => x.Name != "Admin")
+                    .Select(x => x.Name).Select(x => new SelectListItem()
+                    {
+                        Text = x,
+                        Value = x
+                    })
+            };
         }
     }
 }

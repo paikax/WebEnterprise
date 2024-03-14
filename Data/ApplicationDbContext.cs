@@ -13,6 +13,7 @@ namespace WebEnterprise.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<Faculty> Faculties { get; set; }
+        public DbSet<Assignment> Assignments { get; set; }
         public DbSet<Contribution> Contributions { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<TermAndCondition> TermsAndConditions { get; set; }

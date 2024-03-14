@@ -1,0 +1,42 @@
+﻿@model WebEnterprise.ViewModels.AssignViewModel
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Assign Coordinator to Faculty";
+}
+
+<div class="container mt-4">
+    <h2>Assign Coordinator to Faculty</h2>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-controller="Assignments" asp-action="Assign" method="post">
+                <div class="form-group">
+                    <label asp-for="FacultyId">Faculty</label>
+                    <select asp-for="FacultyId" class="form-control">
+                        <option value="">-- Select Faculty --</option>
+                        @foreach (var faculty in Model.Faculties)
+                        {
+                            <option value="@faculty.Id">@faculty.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="FacultyId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SelectedCoordinatorId">Coordinator</label>
+                    <select asp-for="SelectedCoordinatorId" class="form-control">
+                        <option value="">-- Select Coordinator --</option>
+                        @foreach (var coordinator in Model.Coordinators)
+                        {
+                            <option value="@coordinator.Id">@coordinator.FullName</option>
+                        }
+                    </select>
+                    <span asp-validation-for="SelectedCoordinatorId" class="text-danger"></span>
+                </div>
+                <!-- Display ModelState error message -->
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <button type="submit" class="btn btn-primary">Assign</button>
+            </form>
+        </div>
+    </div>
+</div>

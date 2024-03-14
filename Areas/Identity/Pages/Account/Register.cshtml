@@ -6,8 +6,8 @@
 
 <div class="page-container">
     <div class="form-container">
-        <form method="post" class="input-form">
-            <h1>Register</h1>
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post" class="input-form">
+            <h1>Create an account</h1>
             <div class="input-field">
                 <ion-icon name="mail"></ion-icon>
                 <input asp-for="Input.Email" type="email" required/>
@@ -53,6 +53,15 @@
                 <label asp-for="Input.ConfirmPassword"></label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
+            
+            <div>
+                <label id="role-label" >Role</label>
+                @Html.DropDownListFor(n => n.Input.Role, Model.Input.RoleList,
+                    "Please select the role", new { @class = "form-control", @required = "required" })
+                <span id="role-validation" class="text-danger">@Html.ValidationMessageFor(m => m.Input.Role)</span>
+            </div>
+
+            <input type="hidden" asp-for="Input.RoleList" />
 
             <div class="check-box">
                 <label><input type='checkbox' id='remember' required/> I agree to the terms & conditions</label>

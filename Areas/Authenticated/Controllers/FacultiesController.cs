@@ -1,28 +1,31 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebEnterprise.Data;
 using WebEnterprise.Models;
 
-namespace WebEnterprise.Areas.Authenticated.Controllers.MarketingManager
+namespace WebEnterprise.Areas.Authenticated.Controllers
 {
-    [Area("Authenticated")]
-    public class FacultyController : Controller
+    [Area(Constants.Areas.AuthenticatedArea)]
+    [Authorize(Roles = Constants.Roles.UniversityMarketingManagerRole)]
+    public class FacultiesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public FacultyController(ApplicationDbContext context)
+        public FacultiesController(ApplicationDbContext context)
         {
             _context = context;
         }
-        public IActionResult Dashboard()
+        public IActionResult Index()
         {
             var faculties = _context.Faculties.ToList();
-            return View("~/Areas/Authenticated/Views/MarketingManager/FacultyView.cshtml", faculties);
+            return View(faculties);
         }
 
         public IActionResult CreateFaculty()
         {
-            return View("~/Areas/Authenticated/Views/MarketingManager/CreateFaculty.cshtml");
+            var faculty = new Faculty();
+            return View(faculty);
         }
 
         [HttpPost]
@@ -32,9 +35,9 @@ namespace WebEnterprise.Areas.Authenticated.Controllers.MarketingManager
             {
                 _context.Faculties.Add(faculty);
                 _context.SaveChanges();
-                return RedirectToAction(nameof(Dashboard));
+                return RedirectToAction(nameof(Index));
             }
-            return View("~/Areas/Authenticated/Views/MarketingManager/FacultyView.cshtml", faculty);
+            return View("CreateFaculty", faculty);
         }
 
         public async Task<IActionResult> EditFaculty(int? id)
@@ -49,7 +52,7 @@ namespace WebEnterprise.Areas.Authenticated.Controllers.MarketingManager
             {
                 return NotFound();
             }
-            return View("~/Areas/Authenticated/Views/MarketingManager/EditFaculty.cshtml",faculty);
+            return View("EditFaculty",faculty);
         }
 
         [HttpPost]
@@ -79,9 +82,9 @@ namespace WebEnterprise.Areas.Authenticated.Controllers.MarketingManager
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Dashboard));
+                return RedirectToAction(nameof(Index));
             }
-            return View("~/Areas/Authenticated/Views/MarketingManager/EditFaculty.cshtml", faculty);
+            return View("EditFaculty", faculty);
         }
 
         public async Task<IActionResult> DeleteFaculty(int? id)
@@ -100,7 +103,7 @@ namespace WebEnterprise.Areas.Authenticated.Controllers.MarketingManager
             _context.Faculties.Remove(faculty);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction(nameof(Dashboard));
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpPost, ActionName("DeleteFaculty")]
@@ -110,7 +113,7 @@ namespace WebEnterprise.Areas.Authenticated.Controllers.MarketingManager
             var faculty = await _context.Faculties.FindAsync(id);
             _context.Faculties.Remove(faculty);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Dashboard));
+            return RedirectToAction(nameof(Index));
         }
         private bool FacultyExists(int id)
         {

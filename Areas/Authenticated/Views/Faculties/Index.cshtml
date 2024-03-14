@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebEnterprise.Models.Faculty>
+@{
+    ViewData["Title"] = "Faculties";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Manage Faculties</h2>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <a href="@Url.Action("CreateFaculty")" class="btn btn-primary">Add New Faculty</a>
+        </div>
+        <div class="col-md-6">
+            <input id="myInput" type="text" class="form-control" placeholder="Search...">
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="tblData">
+            @foreach (var faculty in Model)
+            {
+                <tr>
+                    <td>@faculty.Id</td>
+                    <td>@faculty.Name</td>
+                    <td>
+                        <a href="@Url.Action("EditFaculty", new { id = faculty.Id })" class="btn btn-sm btn-primary">Edit</a>
+                        <a href="@Url.Action("DeleteFaculty", new { id = faculty.Id })" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

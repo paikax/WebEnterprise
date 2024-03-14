@@ -230,6 +230,30 @@ namespace WebEnterprise.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("WebEnterprise.Models.Assignment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CoordinatorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("FacultyId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CoordinatorId");
+
+                    b.HasIndex("FacultyId");
+
+                    b.ToTable("Assignments");
+                });
+
             modelBuilder.Entity("WebEnterprise.Models.Comment", b =>
                 {
                     b.Property<int>("Id")
@@ -336,7 +360,7 @@ namespace WebEnterprise.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("FaculityName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -356,6 +380,9 @@ namespace WebEnterprise.Migrations
                     b.Property<string>("ClosureDate")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FacultyId")
+                        .HasColumnType("int");
 
                     b.Property<string>("OpenDate")
                         .IsRequired()
@@ -400,10 +427,6 @@ namespace WebEnterprise.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -466,6 +489,25 @@ namespace WebEnterprise.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("WebEnterprise.Models.Assignment", b =>
+                {
+                    b.HasOne("WebEnterprise.Models.User", "Coordinator")
+                        .WithMany()
+                        .HasForeignKey("CoordinatorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebEnterprise.Models.Faculty", "Faculty")
+                        .WithMany()
+                        .HasForeignKey("FacultyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Coordinator");
+
+                    b.Navigation("Faculty");
                 });
 
             modelBuilder.Entity("WebEnterprise.Models.Comment", b =>

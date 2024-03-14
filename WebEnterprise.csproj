@@ -52,6 +52,9 @@
     <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Orders\_Detail.cshtml" />
     <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Orders\_OrderDetails.cshtml" />
     <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Assignments\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Closures\CreateClosure.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Closures\EditClosure.cshtml" />
+    <_ContentIncludedByDefault Remove="Areas\Authenticated\Views\Closures\Index.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

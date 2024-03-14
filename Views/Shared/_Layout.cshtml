@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="~/css/register.css">
     <link rel="stylesheet" href="~/css/table.css">
     <link rel="stylesheet" href="~/css/order.css"/>
-    <link rel="stylesheet" href="~/css/mmdashboard.css" />
     @* <link rel="stylesheet" href="~/WebEnterprise.styles.css" asp-append-version="true" /> *@
     <link rel="stylesheet" href="~/fonts/fontawesome/all.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -49,24 +48,25 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                @if (HttpContextAccessor.HttpContext.User.IsInRole(WebEnterprise.Constants.Roles.AdminRole))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Authenticated/SchoolSystemData">School System Data</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Authenticated/Users">User Management</a>
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Student</a>
-                        </li>
-                    }
-                <li class="nav-item">
-                      <a class="nav-link" href="@Url.Action("Dashboard", "Faculty", new { area = "Authenticated" })">Marketing Manager</a>
-                 </li>
+                @if (User.IsInRole(WebEnterprise.Constants.Roles.AdminRole))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Authenticated/SchoolSystemData">School System Data</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Authenticated/Users">User Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Authenticated/Assignments">Assign Coordinator</a>
+                    </li>
+                }
+                else if (User.IsInRole(WebEnterprise.Constants.Roles.UniversityMarketingManagerRole))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Authenticated/Faculties">Faculty</a>
+                    </li>
+                }
+
                 <li class="nav-item">
                     <a class="nav-link" href="/Identity/Account/Login?returnUrl=@Context.Request.Path">Login</a>
                 </li>
