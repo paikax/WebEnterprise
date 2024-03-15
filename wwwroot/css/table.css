@@ -73,10 +73,13 @@ td,th,table {
 .date-table tr:nth-child(even) {
     background: #eeeeee;
 }
-thead {
+.date-table thead {
+    background: var(--primary-color);
+    top: 0;
+    position: sticky;
     user-select: none;
 }
-thead tr, thead th {
+.date-table thead tr, .date-table thead th {
     color: white;
     border: none;
     font-size: 1.4rem;
@@ -93,11 +96,7 @@ thead tr, thead th {
 .table-scroll table thead th {
     font-size: 1.25rem;
 }
-thead {
-    background: var(--primary-color);
-    top: 0;
-    position: sticky;
-}
+
 tbody {
     padding-bottom: 10px;
 }
