@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<WebEnterprise.Models.SchoolSystemData>
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Semester Management";
     Layout = "_Layout";
 }
 
@@ -12,22 +12,28 @@
    
     <table class="date-table">
         <thead>
-            <tr>
-                <th>
-                    Open Date
-                </th>
-                <th>
-                    Closure Date
-                </th>
-                <th>
-                    
-                </th>
-            </tr>
+        <tr>
+            <th>
+                Semester
+            </th>
+            <th>
+                Open Date
+            </th>
+            <th>
+                Closure Date
+            </th>
+            <th>
+
+            </th>
+        </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
                 <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Semester)
+                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.OpenDate)
                     </td>

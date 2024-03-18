@@ -13,6 +13,12 @@
             <h2>Edit</h2>
             <div class="input-field">
                 <ion-icon name="calendar"></ion-icon>
+                <input asp-for="Semester" type="text" required autocomplete="off" />
+                <label>Semester</label>
+                <span asp-validation-for="Semester" class="text-danger"></span>
+            </div>
+            <div class="input-field">
+                <ion-icon name="calendar"></ion-icon>
                 <input asp-for="OpenDate" type="text" id='openDatepicker' required autocomplete="off" />
                 <label>Open Date</label>
                 <span asp-validation-for="OpenDate" class="text-danger"></span>

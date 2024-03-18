@@ -8,7 +8,7 @@ public class Contribution
     public int Id { get; set; }
     public string Status { get; set; }
     public string Title { get; set; }
-    public string Content { get; set; } // Content of the article
+    public string Content { get; set; } // Content of the article 
     public string ImageUrl { get; set; } // URL to the uploaded image
     public DateTime SubmissionDate { get; set; }
     public bool SelectedForPublication { get; set; }
