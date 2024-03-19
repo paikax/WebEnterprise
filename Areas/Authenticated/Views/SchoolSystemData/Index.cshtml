@@ -11,21 +11,21 @@
     <a asp-action="Create" id="link-icon"><ion-icon name="calendar-outline"></ion-icon> Create New</a>
    
     <table class="date-table">
-        <thead>
-        <tr>
-            <th>
-                Semester
-            </th>
-            <th>
-                Open Date
-            </th>
-            <th>
-                Closure Date
-            </th>
-            <th>
+         <thead>
+            <tr>
+                <th>
+                    Semester
+                </th>
+                <th style="border-left: 1px solid white;">
+                    Open Date
+                </th>
+                <th style="border-left: 1px solid white;">
+                    Closure Date
+                </th>
+                <th>
 
-            </th>
-        </tr>
+                </th>
+            </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
@@ -34,19 +34,19 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Semester)
                     </td>
-                    <td>
+                    <td id="border-left">
                         @Html.DisplayFor(modelItem => item.OpenDate)
                     </td>
-                    <td>
+                    <td id="border-left">
                         @Html.DisplayFor(modelItem => item.ClosureDate)
                     </td>
-                    <td>
+                    <td id="table-button-right" style="width: 10%; min-width: 130px;">
                         <a asp-action="Edit" asp-route-id="@item.Id">
-                            <ion-icon name="create-outline" id="edit"></ion-icon>
+                            <ion-icon name="create-outline" id="table-button" style="--color: #162938;"></ion-icon>
                         </a>
 
                         <a asp-action="Delete" asp-route-id="@item.Id">
-                            <ion-icon name="trash-outline" id="delete"></ion-icon>
+                            <ion-icon name="trash-outline" id="table-button" style="--color: #ff2400;"></ion-icon>
                         </a>
                     </td>
                 </tr>

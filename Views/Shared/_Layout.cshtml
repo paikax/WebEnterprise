@@ -49,37 +49,36 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 @if (User.IsInRole(WebEnterprise.Constants.Roles.AdminRole))
-                {
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Authenticated/SchoolSystemData">School System Data</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Authenticated/Users">User Management</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Authenticated/Assignments">Assign Coordinator</a>
-                    </li>
-                }
-                else if (User.IsInRole(WebEnterprise.Constants.Roles.UniversityMarketingManagerRole))
-                {
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Authenticated/Faculties">Faculty</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Authenticated/DateSubmissions">Create submission</a>
-                    </li>
-                }
-                else if (User.IsInRole(WebEnterprise.Constants.Roles.CoordinatorRole))
-                {
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Authenticated/Faculties">View student submissions</a>
-                    </li>
-                }
-                {
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Authenticated/DateSubmissions">Contributions</a>
-                    </li>
-                }
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Authenticated/SchoolSystemData">School System Data</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Authenticated/Users">User Management</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Authenticated/Assignments">Assign Coordinator</a>
+                        </li>
+                    }
+                    else if (User.IsInRole(WebEnterprise.Constants.Roles.UniversityMarketingManagerRole))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Authenticated/Faculties">Faculty</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Authenticated/DateSubmissions">Create submission</a>
+                        </li>
+                    }
+                    else if (User.IsInRole(WebEnterprise.Constants.Roles.CoordinatorRole))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Authenticated/Faculties">View student submissions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Authenticated/DateSubmissions">Contributions</a>
+                        </li>
+                    }
+
 
                 <li class="nav-item">
                     <a class="nav-link" href="/Identity/Account/Login?returnUrl=@Context.Request.Path">Sign in</a>
