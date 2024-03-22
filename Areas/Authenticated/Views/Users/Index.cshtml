@@ -35,7 +35,7 @@
                     <td>@user.DoB</td>
                     <td>@user.Role</td>
                     <td style="width: 15%; min-width: 230px;">
-                        <div style="width: 100%; display: flex; flex-wrap: nowrap;" role="group">
+                        <div style="width: 100%; display: flex; flex-wrap: nowrap; justify-content: end;" role="group">
                             <a asp-controller="Users" asp-action="Edit" asp-route-id="@user.Id">
                                 <ion-icon name="create-outline" id="table-button" style="--color: #0400d3;"></ion-icon>
                             </a>

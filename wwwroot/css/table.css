@@ -35,6 +35,15 @@
     box-sizing: border-box;
 }
 
+.delete-table thead {
+    background: var(--primary-color);
+}
+
+.delete-table th {
+    color: #fff;
+    user-select: none;
+}
+
 table a:hover{
     text-decoration: none;
 }
@@ -68,7 +77,7 @@ td,th,table {
     text-align: right;
 }
 #border-left {
-    border-left: 6px solid var(--primary-color) ;
+    border-left: 3px solid var(--primary-color) ;
 }
 .date-table tr:nth-child(even) {
     background: #eeeeee;
@@ -137,5 +146,4 @@ tbody {
 
 #group-button:hover {
     filter: brightness(1.1);
-
 }
