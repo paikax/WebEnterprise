@@ -12,6 +12,7 @@ namespace WebEnterprise.Models
         public string Status { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
+        public string CoordinatorComment { get; set; }
         public string ImageUrl { get; set; }
         public DateTime SubmissionDate { get; set; }
         public bool SelectedForPublication { get; set; }

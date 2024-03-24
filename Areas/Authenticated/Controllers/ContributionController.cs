@@ -409,14 +409,54 @@ namespace WebEnterprise.Areas.Authenticated.Controllers
             try
             {
                 await _context.SaveChangesAsync();
-                return Ok(); // Status 200: OK
+                return Ok();
             }
             catch (DbUpdateException)
             {
                 // Log the error
-                return StatusCode(500); // Status 500: Internal Server Error
+                return StatusCode(500);
             }
         }
+
+        public IActionResult AddComment(int contributionId)
+        {
+            // Retrieve the contribution from the database based on the ID
+            var contribution = _context.Contributions.FirstOrDefault(c => c.Id == contributionId);
+            return View("~/Areas/Authenticated/Views/Contribution/AddComment.cshtml",contribution);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddComment(int contributionId, string commentText)
+        {
+            try
+            {
+                // Retrieve the contribution by its ID
+                var contribution = await _context.Contributions.FindAsync(contributionId);
+                if (contribution == null)
+                {
+                    return NotFound();
+                }
+
+                // Update the comment attribute of the contribution
+                contribution.CoordinatorComment = commentText;
+
+                // Save changes to the database
+                await _context.SaveChangesAsync();
+
+                // Redirect to the Coordinator Index page
+                return RedirectToAction(nameof(CoordinatorIndex));
+            }
+            catch (Exception ex)
+            {
+                // Handle errors
+                ModelState.AddModelError(string.Empty, "An error occurred while adding the comment: " + ex.Message);
+                return View("~/Areas/Authenticated/Views/Contribution/AddComment.cshtml");
+            }
+        }
+
+
+
+
 
 
     }

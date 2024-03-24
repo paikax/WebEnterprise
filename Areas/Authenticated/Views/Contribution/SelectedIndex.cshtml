@@ -14,6 +14,8 @@
             <tr>
                 <th>Title</th>
                 <th>Content</th>
+                <th>Image</th>
+                <th>File Download</th>
                 <th>Submission Date</th>
                 <!-- Add more columns as needed -->
             </tr>
@@ -24,6 +26,8 @@
                 <tr>
                     <td>@contribution.Title</td>
                     <td>@contribution.Content</td>
+                    <td><img src="@Url.Content(contribution.ImageUrl)" alt="Image" style="max-width: 100px; max-height: 100px;" /></td>
+                    <td><a href="@Url.Action("DownloadContribution", "Contribution", new { facultyId = contribution.FacultyId, id = contribution.Id })">Download</a></td>
                     <td>@contribution.SubmissionDate</td>
                     <!-- Add more cells as needed -->
                 </tr>
