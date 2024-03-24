@@ -33,6 +33,8 @@ var mailsettings = builder.Configuration.GetSection("MailSettings");
 builder.Services.Configure<MailSettings> (mailsettings);
 builder.Services.AddTransient<ISendMailService, SendMailService>();
 
+
+
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Identity/Account/Login";

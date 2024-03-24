@@ -31,7 +31,7 @@ public static class StringEnums
         return output;
     }
     
-    public enum CategoryStatus 
+    public enum ContributionStatus 
     {
         [StringValue("Pending")] Pending,
         [StringValue("Approved")] Approved,

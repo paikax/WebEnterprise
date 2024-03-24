@@ -1,0 +1,37 @@
+﻿@model List<Contribution>
+
+@{
+    ViewBag.Title = "Approved Contributions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Approved Contributions</h2>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Submission Date</th>
+                <!-- Add more columns as needed -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contribution in Model)
+            {
+                <tr>
+                    <td>@contribution.Title</td>
+                    <td>@contribution.Content</td>
+                    <td>@contribution.SubmissionDate</td>
+                    <!-- Add more cells as needed -->
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No approved contributions found.</p>
+}

@@ -62,8 +62,11 @@
                 }
                 else if (User.IsInRole(WebEnterprise.Constants.Roles.UniversityMarketingManagerRole))
                 {
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("SelectedIndex", "Contribution", new { area = "Authenticated"})">View approved submissions</a>
+                        </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Authenticated/Faculties">Faculty</a>
+                        <a class="nav-link" href="/Authenticated/Faculties">Create Faculty</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/Authenticated/DateSubmissions">Create submission</a>
@@ -72,10 +75,26 @@
                 else if (User.IsInRole(WebEnterprise.Constants.Roles.CoordinatorRole))
                 {
                     <li class="nav-item">
-                        <a class="nav-link" href="/Authenticated/Faculties">View student submissions</a>
+                        <a class="nav-link" href="@Url.Action("CoordinatorIndex", "Contribution", new { area = "Authenticated"})">View student submissions</a>
                     </li>
-                }
-                {
+                 }
+                 else
+                  {
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index", "Contribution", new { area = "Authenticated" })">View all submissions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">???</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">???</a>
+                        </li>
+
+                    <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Create", "Contribution", new { area = "Authenticated" })">Create student submissions</a>
+                    </li>
+                  }
+                    {
                     <li class="nav-item">
                         <a class="nav-link" href="/Authenticated/DateSubmissions">Contributions</a>
                     </li>
