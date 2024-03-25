@@ -1,4 +1,4 @@
-@using WebEnterprise.Constants
+﻿@using WebEnterprise.Constants
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @inject IHttpContextAccessor HttpContextAccessor
 <!DOCTYPE html>
@@ -67,6 +67,12 @@
                     else if (User.IsInRole(WebEnterprise.Constants.Roles.UniversityMarketingManagerRole))
                     {
                         <li class="nav-item">
+                            <a class="nav-link" href="/Authenticated/DateSubmissions">Contribution date</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("SelectedIndex", "Contributions", new { area = "Authenticated"})">View approved submissions</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/Authenticated/Faculties">Faculty</a>
                         </li>
                         <li class="nav-item">
@@ -76,20 +82,37 @@
                     else if (User.IsInRole(WebEnterprise.Constants.Roles.CoordinatorRole))
                     {
                         <li class="nav-item">
-                            <a class="nav-link" href="/Authenticated/Faculties">View student submissions</a>
+                            <a class="nav-link" href="@Url.Action("CoordinatorIndex", "Contributions", new { area = "Authenticated"})">View student submissions</a>
                         </li>
+                     }
+                     else
+                      {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index", "Contributions", new { area = "Authenticated" })">View all submissions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">???</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="">???</a>
+                            </li>
+
+                        <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Create", "Contributions", new { area = "Authenticated" })">Create student submissions</a>
+                        </li>
+                      }
+                        {
                         <li class="nav-item">
                             <a class="nav-link" href="/Authenticated/DateSubmissions">Contributions</a>
                         </li>
                     }
-                    else {
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Identity/Account/Login?returnUrl=@Context.Request.Path">Sign in</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Identity/Account/Register?returnUrl=@Context.Request.Path">Create Account</a>
-                        </li>
-                    }
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Identity/Account/Login?returnUrl=@Context.Request.Path">Sign in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Identity/Account/Register?returnUrl=@Context.Request.Path">Create Account</a>
+                    </li>
             </ul>
         </div>
     </nav>

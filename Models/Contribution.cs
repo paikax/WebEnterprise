@@ -8,13 +8,26 @@ public class Contribution
     public int Id { get; set; }
     public string Status { get; set; }
     public string Title { get; set; }
-    public string Content { get; set; } // Content of the article 
-    public string ImageUrl { get; set; } // URL to the uploaded image
+    public string Content { get; set; }
+    public string CoordinatorComment { get; set; }
+    public string ImageUrl { get; set; }
     public DateTime SubmissionDate { get; set; }
     public bool SelectedForPublication { get; set; }
     public bool TermsAndConditionsAccepted { get; set; }
     public string StudentId { get; set; }
     public User Student { get; set; }
-    public int FacultyId { get; set; } // Foreign key for Faculty
-    public Faculty Faculty { get; set; } // Navigation property
+    public int FacultyId { get; set; }
+    public Faculty Faculty { get; set; }
+    public string FilePath { get; set; } // Reference to the uploaded file
+    public byte[] FileContent { get; set; }
+}
+
+// ViewModel to handle file uploads
+public class ContributionViewModel
+{
+    public IFormFile File { get; set; } // For file upload (e.g., .doc, .pdf)
+
+    public IFormFile Image { get; set; } // For image upload
+
+    // Other properties for the Contribution entity
 }

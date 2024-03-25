@@ -31,6 +31,12 @@ public class DateSubmissionsController : Controller
     {
         // Retrieve faculties for dropdown list
         var faculties = _context.Faculties.ToList();
+        
+        // Check if closure dates exist for any faculties
+        var facultiesWithClosure = _context.ClosureDates.Select(c => c.FacultyId).ToList();
+        
+        // Filter out faculties that already have closure dates
+        var availableFaculties = faculties.Where(f => !facultiesWithClosure.Contains(f.Id)).ToList();
 
         // Pass faculties to the view
         ViewBag.Faculties = new SelectList(faculties, "Id", "Name");

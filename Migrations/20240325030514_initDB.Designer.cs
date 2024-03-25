@@ -12,8 +12,8 @@ using WebEnterprise.Data;
 namespace WebEnterprise.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240318094517_initDb")]
-    partial class initDb
+    [Migration("20240325030514_initDB")]
+    partial class initDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -293,8 +293,20 @@ namespace WebEnterprise.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CoordinatorComment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("FacultyId")
                         .HasColumnType("int");
+
+                    b.Property<byte[]>("FileContent")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
@@ -382,9 +394,6 @@ namespace WebEnterprise.Migrations
                     b.Property<string>("ClosureDate")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("FacultyId")
-                        .HasColumnType("int");
 
                     b.Property<string>("OpenDate")
                         .IsRequired()

@@ -8,10 +8,10 @@
     <h1>User Management</h1>
 
     <div class="manage-filter"role="group">
-        <a style="--color: #b7b7b7;" id="group-button" @((ViewBag.SelectedRole == null) ? "active" : "")" href="@Url.Action("Index", "Users")">All Users</a>
-        <a style="--color: #dbc351;" id="group-button" @((ViewBag.SelectedRole == "coordinator") ? "active" : "")" href="@Url.Action("Index", "Users", new { roleFilter = "coordinator" })">Coordinators</a>
-        <a style="--color: #28b3fe;" id="group-button" @((ViewBag.SelectedRole == "student") ? "active" : "")" href="@Url.Action("Index", "Users", new { roleFilter = "student" })">Students</a>
-        <a style="--color: #145522;" id="group-button" @((ViewBag.SelectedRole == "UniversityMarketingManager") ? "active" : "")" href="@Url.Action("Index", "Users", new { roleFilter = "UniversityMarketingManager" })">University Marketing Managers</a>
+        <a style="--color: #b7b7b7;" id="group-button" @((ViewBag.SelectedRole == null) ? "active" : "") href="@Url.Action("Index", "Users")">All Users</a>
+        <a style="--color: #dbc351;" id="group-button" @((ViewBag.SelectedRole == "coordinator") ? "active" : "") href="@Url.Action("Index", "Users", new { roleFilter = "coordinator" })">Coordinators</a>
+        <a style="--color: #28b3fe;" id="group-button" @((ViewBag.SelectedRole == "student") ? "active" : "") href="@Url.Action("Index", "Users", new { roleFilter = "student" })">Students</a>
+        <a style="--color: #145522;" id="group-button" @((ViewBag.SelectedRole == "UniversityMarketingManager") ? "active" : "") href="@Url.Action("Index", "Users", new { roleFilter = "UniversityMarketingManager" })">University Marketing Managers</a>
     </div>
 
     <table class="date-table">

@@ -35,9 +35,14 @@ namespace WebEnterprise.Areas.Authenticated.Controllers
         {
             var viewModel = new AssignViewModel
             {
-                Coordinators = _db.Users.Where(u => u.Role == Constants.Roles.CoordinatorRole).ToList(),
                 Faculties = _db.Faculties.ToList()
             };
+
+            // Get coordinators who are not already assigned to any faculty
+            viewModel.Coordinators = _db.Users
+                .Where(u => u.Role == Constants.Roles.CoordinatorRole &&
+                            !_db.Assignments.Any(a => a.CoordinatorId == u.Id))
+                .ToList();
 
             return View(viewModel);
         }

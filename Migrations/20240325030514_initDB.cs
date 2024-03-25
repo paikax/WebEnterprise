@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebEnterprise.Migrations
 {
-    public partial class initDb : Migration
+    public partial class initDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -76,8 +76,7 @@ namespace WebEnterprise.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Semester = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     OpenDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ClosureDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FacultyId = table.Column<int>(type: "int", nullable: false)
+                    ClosureDate = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -259,12 +258,15 @@ namespace WebEnterprise.Migrations
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CoordinatorComment = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SubmissionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     SelectedForPublication = table.Column<bool>(type: "bit", nullable: false),
                     TermsAndConditionsAccepted = table.Column<bool>(type: "bit", nullable: false),
                     StudentId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    FacultyId = table.Column<int>(type: "int", nullable: false)
+                    FacultyId = table.Column<int>(type: "int", nullable: false),
+                    FilePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FileContent = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
                 },
                 constraints: table =>
                 {
