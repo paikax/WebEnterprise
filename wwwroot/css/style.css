@@ -1,5 +1,7 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marmelad&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Exo&display=swap');
+
 
 
 
@@ -674,7 +676,7 @@ input[type="radio"] {
     right: 10px;
     transform: translateY(9px);
     font-size: 1.4rem;
-    color: #2b3494;
+    color: #00508d;
     line-height: 57px;
 }
 .check-box {
