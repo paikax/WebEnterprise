@@ -84,35 +84,24 @@
                         <li class="nav-item">
                             <a class="nav-link" href="@Url.Action("CoordinatorIndex", "Contributions", new { area = "Authenticated"})">View student submissions</a>
                         </li>
-                     }
-                     else
-                      {
-                            <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index", "Contributions", new { area = "Authenticated" })">View all submissions</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">???</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="">???</a>
-                            </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index", "Contributions", new { area = "Authenticated" })">View all submissions</a>
+                        </li>
+                        @* <li class="nav-item">
+                            <a class="nav-link" href="">???</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">???</a>
+                        </li> *@
 
                         <li class="nav-item">
                                 <a class="nav-link" href="@Url.Action("Create", "Contributions", new { area = "Authenticated" })">Create student submissions</a>
                         </li>
-                      }
-                        {
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Authenticated/DateSubmissions">Contributions</a>
-                        </li>
-                    }
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Identity/Account/Login?returnUrl=@Context.Request.Path">Sign in</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Identity/Account/Register?returnUrl=@Context.Request.Path">Create Account</a>
-                    </li>
+                    }  
+            <partial name="_LoginPartial"/>
             </ul>
         </div>
     </nav>
