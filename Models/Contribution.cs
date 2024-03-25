@@ -35,3 +35,4 @@ namespace WebEnterprise.Models
         // Other properties for the Contribution entity
     }
 }
+

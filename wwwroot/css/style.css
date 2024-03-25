@@ -1,4 +1,7 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo&display=swap');
+
+
 
 :root {
     --primary-color: #162938;
@@ -12,7 +15,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Exo', sans-serif;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -39,7 +42,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 input[type=date]:required:invalid::-webkit-datetime-edit {
     color: transparent;
-    
 }
 input[type="date"]:focus {
     user-select: none;
@@ -532,8 +534,8 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
+
 
 .form-container {
     display: flex;
@@ -545,6 +547,11 @@ footer {
     margin-top: 10px;
 }
 
+#border {
+    box-shadow: 0 0 10px 0 var(--primary-color);
+    border-radius: 20px;
+}
+
 .form-image {
     flex: 2;
     background: url(../images/greenleaves.png);
@@ -554,6 +561,7 @@ footer {
     border-bottom-right-radius: 20px;
 }
 .input-form {
+    position: relative;
     display: flex;
     flex: 3;
     flex-direction: column;
@@ -562,11 +570,13 @@ footer {
     max-width: 100%;
     min-width: 350px;
     background: white;
-    padding: 20px;
+    padding: 10px 20px;
     border-radius: 20px;
+}
 
 .input-form h1 {
     font-weight: 600;
+    margin-top: 10px;
 }
 
 .input-field {
@@ -576,6 +586,23 @@ footer {
     border-bottom: 2px solid var(--primary-color);
     margin-top: 30px;
     margin-bottom: 10px;
+}
+
+.input-field > select {
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    color: var(--primary-color);
+    font-weight: 600;
+    padding-left: 5px;
+}
+
+.input-field select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
 }
 
 input[type="radio"] {
@@ -622,8 +649,6 @@ input[type="radio"] {
     padding-left: 5px;
 }
 
-
-
 .input-field > label {
     position: absolute;
     top: 50%;
@@ -640,12 +665,16 @@ input[type="radio"] {
     top: -5px;
 }
 
+.input-field select:focus~label , .input-field select:valid~label {
+    top: -5px;
+}
+
 .input-field ion-icon , .radio-field ion-icon{
     position: absolute;
     right: 10px;
     transform: translateY(9px);
     font-size: 1.4rem;
-    color: var(--primary-color);
+    color: #2b3494;
     line-height: 57px;
 }
 .check-box {
@@ -679,6 +708,7 @@ input[type="radio"] {
     transform: scale(.99);
     transition: .1s ease-in-out;
 }
+
 .switch-form {
     margin-top: 10px;
     display: flex;
@@ -692,6 +722,35 @@ input[type="radio"] {
 }
 .switch-form a:hover{
     text-decoration: underline;
+}
+
+.submit-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+    margin: 10px 0;
+}
+
+#form-Btn {
+    width: 170px;
+    height: 100%;
+    border-radius: 10px;
+    background: var(--color);
+    border: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 550;
+    text-decoration: none;
+    margin: 0 30px;
+}
+
+#form-Btn:hover {
+    filter: brightness(.9);
 }
 
 .search-form {
@@ -745,13 +804,28 @@ input[type="radio"] {
     font-size: 1.3rem;
     font-weight: 550;
     border: none;
-    background: #d8d8d8;
+    background: var(--bgColor);
     outline: none;
 }
 
 .delete-form button:hover {
-    filter: invert(1);
+    color: #fff;
+    background: var(--color);
 }
+
+.back-icon {
+    position: absolute;
+    font-size: 2.5rem;
+    top: 20px;
+    left: 30px;
+    color: var(--primary-color);
+    height: 40px;
+}
+
+.back-icon ion-icon:hover {
+    color: #cccccc;
+}
+
 
 
 

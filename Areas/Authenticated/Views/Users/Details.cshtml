@@ -5,54 +5,40 @@
     ViewData["Title"] = "User Detail";
 }
 
-<h1>User Details</h1>
-
-<div class="card">
-    <div class="card-body">
-        <h4 class="card-title">User Information</h4>
-        <hr />
-        <div class="row">
-            <div class="col-md-3">
-                <strong>Full Name:</strong>
-            </div>
-            <div class="col-md-9">
-                @Html.DisplayFor(model => model.FullName)
-            </div>
-            <div class="col-md-3">
-                <strong>Role:</strong>
-            </div>
-            <div class="col-md-9">
-                @Html.DisplayFor(model => model.Role)
-            </div>
-            <div class="col-md-3">
-                <strong>Gender:</strong>
-            </div>
-            <div class="col-md-9">
-                @Html.DisplayFor(model => model.Gender)
-            </div>
-            <div class="col-md-3">
-                <strong>Date of Birth:</strong>
-            </div>
-            <div class="col-md-9">
-                @Html.DisplayFor(model => model.DoB)
-            </div>
-            <div class="col-md-3">
-                <strong>Created At:</strong>
-            </div>
-            <div class="col-md-9">
-                @Html.DisplayFor(model => model.CreatedAt)
-            </div>
-            <div class="col-md-3">
-                <strong>Updated At:</strong>
-            </div>
-            <div class="col-md-9">
-                @Html.DisplayFor(model => model.UpdatedAt)
+<div class="page-container">
+    <div class="card" style="margin: 10px">
+        <div class="card-body" style="text-align: center;">
+            <h1>User Details</h1>
+            <table class="detail-table">
+                <tr>
+                    <th>Full Name</th>
+                    <td>@Html.DisplayFor(model => model.FullName)</td>
+                </tr>
+                <tr>
+                    <th>Date of Birth</th>
+                    <td>@Html.DisplayFor(model => model.DoB)</td>
+                </tr>
+                <tr>
+                    <th>Role</th>
+                    <td>@Html.DisplayFor(model => model.Role)</td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td>@Html.DisplayFor(model => model.Gender)</td>
+                </tr>
+                <tr>
+                    <th>Created At</th>
+                    <td>@Html.DisplayFor(model => model.CreatedAt)</td>
+                </tr>
+                <tr>
+                    <th>Updated At</th>
+                    <td>@Html.DisplayFor(model => model.UpdatedAt)</td>
+                </tr>
+            </table>
+            <div class="submit-form">
+                <a asp-action="Index" style="--color: #ff2400;" id="form-Btn">Back to List</a>
+                <a asp-action="Edit" asp-route-id="@Model.Id" style="--color: #28b3fe;" id="form-Btn">Save</a>
             </div>
         </div>
     </div>
 </div>
-
-<p>
-    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a> |
-    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
-</p>
