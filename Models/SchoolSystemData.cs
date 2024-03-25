@@ -6,6 +6,5 @@
         public string Semester { get; set; }
         public string OpenDate { get; set; }
         public string ClosureDate { get; set; }
-        public int FacultyId { get; set; } 
     }
 }

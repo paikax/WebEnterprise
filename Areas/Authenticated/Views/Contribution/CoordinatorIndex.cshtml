@@ -1,0 +1,112 @@
+﻿@model List<WebEnterprise.Models.Contribution>
+
+@{
+    ViewBag.Title = "Coordinator Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Coordinator Index</h2>
+
+@if (Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Comment</th>
+                <th>Submission Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contribution in Model)
+            {
+                <tr>
+                    <td>@contribution.Title</td>
+                    <td>@contribution.Content</td>
+                    <td>@contribution.CoordinatorComment</td>
+                    <td>@contribution.SubmissionDate.ToShortDateString()</td>
+                    <td>
+                        @if (contribution.Status == "Pending")
+                        {
+                            <button type="button" class="btn btn-success approve-btn" data-contribution-id="@contribution.Id">Approve</button>
+                            <button type="button" class="btn btn-danger reject-btn" data-contribution-id="@contribution.Id">Reject</button>
+                        }
+                        else
+                        {
+                            <span class="badge badge-info">@contribution.Status</span>
+                        }
+
+                        @if ((DateTime.Now - contribution.SubmissionDate).TotalDays >= 14)
+                        {
+                            <a class="btn btn-primary" href="@Url.Action("AddComment", "Contribution", new { contributionId = contribution.Id })">Comment (Disabled)</a>
+                        }
+                        else
+                        {
+                            <a class="btn btn-primary" href="@Url.Action("AddComment", "Contribution", new { contributionId = contribution.Id })">Comment</a>
+
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No contributions found.</p>
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $(".approve-btn").click(function () {
+                var contributionId = $(this).data("contribution-id");
+                updateContributionStatus(contributionId, "Approve");
+            });
+
+            $(".reject-btn").click(function () {
+                var contributionId = $(this).data("contribution-id");
+                updateContributionStatus(contributionId, "Reject");
+            });
+
+            $(".comment-btn").click(function () {
+                var contributionId = $(this).data("contribution-id");
+                $("#commentFormContainer-" + contributionId).show();
+            });
+
+            $(".submit-comment-btn").click(function () {
+                var contributionId = $(this).data("contribution-id");
+                var commentText = $("#commentText-" + contributionId).val(); // Use relative selector
+                $.ajax({
+                    url: "@Url.Action("AddComment", "Contribution")",
+                    method: "POST",
+                    data: { contributionId: contributionId, commentText: commentText },
+                    success: function (response) {
+                        location.reload();
+                    },
+                    error: function () {
+                        alert("An error occurred while adding the comment.");
+                    }
+                });
+            });
+
+            function updateContributionStatus(contributionId, status) {
+                $.ajax({
+                    url: "@Url.Action("UpdateStatus", "Contribution")",
+                    method: "POST",
+                    data: { id: contributionId, status: status },
+                    success: function (response) {
+                        // Reload the page or update the UI as needed
+                        location.reload(); // Example: Reload the page to reflect changes
+                    },
+                    error: function () {
+                        // Handle errors
+                        alert("An error occurred while updating the contribution status.");
+                    }
+                });
+            }
+        });
+    </script>
+}

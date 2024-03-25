@@ -1,0 +1,72 @@
+﻿@model WebEnterprise.ViewModels.ContributionIndexViewModel
+@using System.Globalization
+
+
+@{
+    ViewBag.Title = "Contributions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Contributions</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Submission Time</th>
+            <th>Image</th>
+            <th>Document</th>
+            <th>Actions</th> <!-- New column for actions -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var contribution in Model.Contributions)
+        {
+            <tr>
+                <!-- Contribution table rows -->
+                <td>@contribution.Title</td>
+                <td>@contribution.Content</td>
+                <td>@contribution.SubmissionDate</td>
+                <td><img src="@Url.Content(contribution.ImageUrl)" alt="Image" style="max-width: 100px; max-height: 100px;" /></td>
+                <td><a href="@Url.Action("DownloadContribution", "Contribution", new { facultyId = contribution.FacultyId, id = contribution.Id })">Download</a></td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Contribution Actions">
+                        <a href="@Url.Action("Edit", new { id = contribution.Id })" class="btn btn-primary">Edit</a>
+                        <a href="@Url.Action("Delete", new { id = contribution.Id })" class="btn btn-danger">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    var schoolSystemData = Model.SchoolSystemDatas.FirstOrDefault(); // Assuming there's only one SchoolSystemData
+}
+
+@if (schoolSystemData != null)
+{
+    if (DateTime.TryParseExact(schoolSystemData.ClosureDate, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime closureDate))
+    {
+        if (DateTime.Now < closureDate)
+        {
+            var daysLeft = (closureDate - DateTime.Now).Days;
+            <p>Editing and deleting contributions is allowed.</p>
+            <p>Days left: @daysLeft days</p>
+        }
+        else
+        {
+            <p>Editing and deleting contributions is not allowed as the closure date has passed.</p>
+        }
+    }
+    else
+    {
+        <p>Invalid closure date format.</p>
+    }
+
+}
+else
+{
+    <p>School system data not found.</p>
+}

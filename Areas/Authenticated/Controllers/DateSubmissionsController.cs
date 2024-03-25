@@ -26,18 +26,24 @@ public class DateSubmissionsController : Controller
 
         return View("~/Areas/Authenticated/Views/DateSubmissions/Index.cshtml", closures);
     }
-    
+
     public IActionResult Create()
     {
-        // Retrieve faculties for dropdown list
+        // Retrieve all faculties
         var faculties = _context.Faculties.ToList();
 
-        // Pass faculties to the view
-        ViewBag.Faculties = new SelectList(faculties, "Id", "Name");
+        // Check if closure dates exist for any faculties
+        var facultiesWithClosure = _context.ClosureDates.Select(c => c.FacultyId).ToList();
+
+        // Filter out faculties that already have closure dates
+        var availableFaculties = faculties.Where(f => !facultiesWithClosure.Contains(f.Id)).ToList();
+
+        // Pass available faculties to the view
+        ViewBag.Faculties = new SelectList(availableFaculties, "Id", "Name");
 
         return View("~/Areas/Authenticated/Views/DateSubmissions/Create.cshtml");
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> CreateClosure(ContributionClosureDate closure)
     {
