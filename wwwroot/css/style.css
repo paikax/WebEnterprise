@@ -1,4 +1,7 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo&display=swap');
+
+
 
 :root {
     --primary-color: #162938;
@@ -12,7 +15,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Exo', sans-serif;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -558,6 +561,7 @@ footer {
     border-bottom-right-radius: 20px;
 }
 .input-form {
+    position: relative;
     display: flex;
     flex: 3;
     flex-direction: column;
@@ -800,13 +804,28 @@ input[type="radio"] {
     font-size: 1.3rem;
     font-weight: 550;
     border: none;
-    background: #d8d8d8;
+    background: var(--bgColor);
     outline: none;
 }
 
 .delete-form button:hover {
-    filter: invert(1);
+    color: #fff;
+    background: var(--color);
 }
+
+.back-icon {
+    position: absolute;
+    font-size: 2.5rem;
+    top: 20px;
+    left: 30px;
+    color: var(--primary-color);
+    height: 40px;
+}
+
+.back-icon ion-icon:hover {
+    color: #cccccc;
+}
+
 
 
 

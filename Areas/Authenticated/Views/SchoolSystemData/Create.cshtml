@@ -7,7 +7,8 @@
 
 <div class="page-container">
     <div class="form-container">
-        <form asp-action="Create" class="input-form">
+        <form asp-action="Create" class="input-form" style="position: relative;">
+
             <h1>Create</h1>
             <div class="input-field">
                 <ion-icon name="calendar"></ion-icon>
@@ -30,7 +31,7 @@
                 <span asp-validation-for="ClosureDate" class="text-danger"></span>
             </div>
 
-           
+            <a asp-action="Index" class="back-icon"><ion-icon name="arrow-back-circle"></ion-icon></a>
             <button type="submit" class="submit-Btn" style="margin: 20px;">Create</button>
         </form>
 
