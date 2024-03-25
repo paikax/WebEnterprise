@@ -12,17 +12,18 @@
     width: 90%;
     box-sizing: border-box;
 }
-
 #link-icon {
     font-size: 1.2rem;
     font-weight: 500;
-    color: maroon
+    color: var(--color);
+    border: none;
 }
 
 #link-icon ion-icon {
     font-size: 1.4rem;
     transform: translateY(3px);
 }
+
 #link-icon:hover {
     color: #0d0083;
 }
@@ -34,6 +35,15 @@
     box-sizing: border-box;
 }
 
+.delete-table thead {
+    background: var(--primary-color);
+}
+
+.delete-table th {
+    color: #fff;
+    user-select: none;
+}
+
 table a:hover{
     text-decoration: none;
 }
@@ -43,20 +53,14 @@ table ion-icon {
     font-size: 2rem;
     margin-right: 10px;
 }
-
-#delete {
-    color: #ff2400;
+#table-button {
+    color: var(--color);
+    margin: 0 5px;
 }
 
-#delete:hover {
+#table-button:hover {
     transform: scale(.95);
-}
-
-#edit {
-    color: var(--primary-color);  
-}
-#edit:hover {
-    transform: scale(.95);
+    transition: .2s ease-in-out;
 }
 
 td,th,table {
@@ -67,18 +71,24 @@ td,th,table {
     height: 50px;
 }
 
-.date-table td:nth-child(3) {
+#table-button-right {
     width: 10%;
     min-width: 130px;
     text-align: right;
 }
-.date-table td:nth-child(2) {
-    border-left: 6px solid var(--primary-color) ;
+#border-left {
+    border-left: 3px solid var(--primary-color) ;
 }
 .date-table tr:nth-child(even) {
     background: #eeeeee;
 }
-thead tr, thead th {
+.date-table thead {
+    background: var(--primary-color);
+    top: 0;
+    position: sticky;
+    user-select: none;
+}
+.date-table thead tr, .date-table thead th {
     color: white;
     border: none;
     font-size: 1.4rem;
@@ -95,11 +105,45 @@ thead tr, thead th {
 .table-scroll table thead th {
     font-size: 1.25rem;
 }
-thead {
-    background: var(--primary-color);
-    top: 0;
-    position: sticky;
-}
+
 tbody {
     padding-bottom: 10px;
+}
+
+.detail-table {
+    width: 100%;
+    margin: 0;
+    text-align: justify;
+}
+.detail-table th {
+    text-align: right;
+    width: 50%;
+}
+
+.card {
+    width: 50%;
+    box-shadow: 0 0 9px 0 var(--primary-color);
+}
+
+.card-body h4 {
+    text-align: center;
+}
+.manage-filter {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    justify-content: center;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#group-button {
+    background: var(--color);
+    color: #ffffff;
+    padding: 10px 15px;
+
+}
+
+#group-button:hover {
+    filter: brightness(1.1);
 }

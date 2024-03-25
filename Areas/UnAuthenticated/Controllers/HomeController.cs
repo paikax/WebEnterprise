@@ -23,7 +23,7 @@ namespace WebEnterprise.Areas.UnAuthenticated.Controllers
             _db = db;
             _toastNotification = toastNotification;
         }
-
+        
         public IActionResult Index(int id, string searchString = "")
         {
             return View();

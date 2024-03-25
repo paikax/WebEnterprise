@@ -1,8 +1,10 @@
-﻿namespace WebEnterprise.Models;
-
-public class SchoolSystemData
+﻿namespace WebEnterprise.Models
 {
-    public int Id { get; set; }
-    public string OpenDate { get; set; }
-    public string ClosureDate { get; set; }
+    public class SchoolSystemData
+    {
+        public int Id { get; set; }
+        public string Semester { get; set; }
+        public string OpenDate { get; set; }
+        public string ClosureDate { get; set; }
+    }
 }

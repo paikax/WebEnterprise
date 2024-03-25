@@ -1,0 +1,42 @@
+﻿@model List<WebEnterprise.Models.ContributionClosureDate>
+
+@{
+    ViewBag.Title = "Edit date submission";
+    Layout = "_Layout";
+}
+
+
+<h1 class="mb-4">Submission Closure Dates</h1>
+
+<div class="text-right mb-3">
+    <a href="@Url.Action("Create", "DateSubmissions")" class="btn btn-primary">Create New Submission Closure</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Faculty</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var closure in Model)
+            {
+                <tr>
+                    <td>@closure.StartDate.ToShortDateString()</td>
+                    <td>@closure.EndDate.ToShortDateString()</td>
+                    <td>@closure.Faculty.Name</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" asp-action="EditClosure" asp-route-id="@closure.Id">Edit</a> 
+                        <form asp-action="DeleteClosure" asp-route-id="@closure.Id" onsubmit="return confirm('Are you sure you want to delete this closure?');">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

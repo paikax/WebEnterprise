@@ -45,13 +45,13 @@ public class DbInitializer : IDbInitializer
             if (_db.Roles.Any(r => r.Name == Constants.Roles.AdminRole)) return;
             if (_db.Roles.Any(r => r.Name == Constants.Roles.CoordinatorRole)) return;
             if (_db.Roles.Any(r => r.Name == Constants.Roles.StudentRole)) return;
-            if (_db.Roles.Any(r => r.Name == Constants.Roles.UniversityMarketingManagersRole)) return;
+            if (_db.Roles.Any(r => r.Name == Constants.Roles.UniversityMarketingManagerRole)) return;
 
             // this will deploy if there no have any role yet
             _roleManager.CreateAsync(new IdentityRole(Constants.Roles.AdminRole)).GetAwaiter().GetResult();
             _roleManager.CreateAsync(new IdentityRole(Constants.Roles.CoordinatorRole)).GetAwaiter().GetResult();
             _roleManager.CreateAsync(new IdentityRole(Constants.Roles.StudentRole)).GetAwaiter().GetResult();
-            _roleManager.CreateAsync(new IdentityRole(Constants.Roles.UniversityMarketingManagersRole)).GetAwaiter()
+            _roleManager.CreateAsync(new IdentityRole(Constants.Roles.UniversityMarketingManagerRole)).GetAwaiter()
                 .GetResult();
             
             // create user admin
@@ -61,6 +61,7 @@ public class DbInitializer : IDbInitializer
                 Email = "admin@gmail.com",
                 FullName = "Admin",
                 EmailConfirmed = true,
+                Role = "Admin",
             }, "Admin123@").GetAwaiter().GetResult();
 
 

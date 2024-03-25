@@ -1,0 +1,31 @@
+﻿@model List<WebEnterprise.Models.Assignment>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Assignments";
+}
+
+<div class="page-container">
+    <h1>Assignments</h1>
+
+    <a id="link-icon" href="@Url.Action("Assign", "Assignments")"><ion-icon name="bookmarks-outline" style="margin-right: 5px"></ion-icon>New Assignment</a>
+
+    <table class="date-table">
+        <thead>
+            <tr>
+                <th>Faculty</th>
+                <th>Coordinator</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var assignment in Model)
+            {
+                <tr>
+                    <td>@assignment.Faculty.Name</td>
+                    <td>@assignment.Coordinator.FullName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

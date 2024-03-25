@@ -1,0 +1,58 @@
+﻿@model IEnumerable<WebEnterprise.Models.Faculty>
+@{
+    ViewData["Title"] = "Faculties";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-container">
+    <h1>Manage Faculties</h1>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <a href="@Url.Action("CreateFaculty")" id="link-icon">
+                <ion-icon name="add"></ion-icon> Add New Faculty
+            </a>
+        </div>
+
+        <div class="col-md-6">
+            <input id="myInput" type="text" class="form-control" placeholder="Search...">
+        </div>
+    </div>
+
+    <table class="date-table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th style="border-left: 1px solid white;">
+                    Name
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody id="tblData">
+            @foreach (var faculty in Model)
+            {
+                <tr>
+                    <td>
+                        @faculty.Id
+                    </td>
+                    <td id="border-left">
+                        @faculty.Name
+                    </td>
+                    <td>
+                        <a href="@Url.Action("EditFaculty", new { id = faculty.Id })" >
+                            <ion-icon name="create-outline" id="table-button" style="--color: #162938;"></ion-icon>
+                        </a>
+                        <a href="@Url.Action("DeleteFaculty", new { id = faculty.Id })" >
+                            <ion-icon name="trash-outline" id="table-button" style="--color: #ff2400;"></ion-icon>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

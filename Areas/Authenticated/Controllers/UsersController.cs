@@ -28,75 +28,82 @@ public class UsersController : Microsoft.AspNetCore.Mvc.Controller
     }
     
     [HttpGet]
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(string roleFilter)
     {
-        // taking current login user ID
         var claimsIdentity = (ClaimsIdentity)User.Identity;
         var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
 
-        var userList = await _db.Users.Where(x => x.Id != claim.Value).ToListAsync();
-    
-        // Eagerly load roles for all users
-        foreach (var user in userList)
+        IQueryable<User> userList = _db.Users.Where(x => x.Id != claim.Value);
+
+        if (!string.IsNullOrEmpty(roleFilter))
+        {
+            userList = userList.Where(u => u.Role == roleFilter);
+        }
+
+        var filteredUserList = await userList.ToListAsync();
+
+        foreach (var user in filteredUserList)
         {
             await _userManager.GetRolesAsync(user);
         }
 
-        return View(userList);
-    }
-    
-    [HttpGet]
-    public IActionResult Create()
-    {
-        var newUser = new User();
-    
-        var roles = _roleManager.Roles.Where(r => r.Name != Constants.Roles.AdminRole).ToList();
-        ViewBag.Roles = roles;
+        ViewBag.SelectedRole = roleFilter; // Pass selected role to view
 
-        return View(newUser);
+        return View(filteredUserList);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> Create(User user)
-    {
-        if (ModelState.IsValid)
-        {
-            // Hash the user's password before creating the user
-            string hashedPassword = _userManager.PasswordHasher.HashPassword(user, user.Password);
-
-            // Set the hashed password
-            user.PasswordHash = hashedPassword;
-            user.UserName = user.Email;
-            user.EmailConfirmed = true;
-
-            // Create the user
-            var result = await _userManager.CreateAsync(user);
-
-            if (result.Succeeded)
-            {
-                // Add user to selected role
-                var role = await _roleManager.FindByNameAsync(user.Role);
-                if (role != null)
-                {
-                    await _userManager.AddToRoleAsync(user, role.Name);
-                }
-
-                return RedirectToAction(nameof(Index));
-            }
-            else
-            {
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
-            }
-        }
-
-        // If we reach this point, something went wrong. Re-render the form with errors.
-        // Also, re-populate the roles dropdown
-        ViewBag.Roles = _roleManager.Roles.ToList();
-        return View(user);
-    }
+    // [HttpGet]
+    // public IActionResult Create()
+    // {
+    //     var newUser = new User();
+    //
+    //     var roles = _roleManager.Roles.Where(r => r.Name != Constants.Roles.AdminRole).ToList();
+    //     ViewBag.Roles = roles;
+    //
+    //     return View(newUser);
+    // }
+    //
+    // [HttpPost]
+    // public async Task<IActionResult> Create(User user)
+    // {
+    //     if (ModelState.IsValid)
+    //     {
+    //         // Hash the user's password before creating the user
+    //         string hashedPassword = _userManager.PasswordHasher.HashPassword(user, user.Password);
+    //
+    //         // Set the hashed password
+    //         user.PasswordHash = hashedPassword;
+    //         user.UserName = user.Email;
+    //         user.EmailConfirmed = true;
+    //
+    //         // Create the user
+    //         var result = await _userManager.CreateAsync(user);
+    //
+    //         if (result.Succeeded)
+    //         {
+    //             // Add user to selected role
+    //             var role = await _roleManager.FindByNameAsync(user.Role);
+    //             if (role != null)
+    //             {
+    //                 await _userManager.AddToRoleAsync(user, role.Name);
+    //             }
+    //
+    //             return RedirectToAction(nameof(Index));
+    //         }
+    //         else
+    //         {
+    //             foreach (var error in result.Errors)
+    //             {
+    //                 ModelState.AddModelError(string.Empty, error.Description);
+    //             }
+    //         }
+    //     }
+    //
+    //     // If we reach this point, something went wrong. Re-render the form with errors.
+    //     // Also, re-populate the roles dropdown
+    //     ViewBag.Roles = _roleManager.Roles.ToList();
+    //     return View(user);
+    // }
     
     [HttpGet]
     public async Task<IActionResult> Edit(string id)
@@ -132,12 +139,6 @@ public class UsersController : Microsoft.AspNetCore.Mvc.Controller
                     existingUser.Gender = user.Gender;
                     existingUser.DoB = user.DoB;
                     existingUser.Role = user.Role;
-                    
-                    if (!string.IsNullOrWhiteSpace(user.Password))
-                    {
-                        string hashedPassword = _userManager.PasswordHasher.HashPassword(existingUser, user.Password);
-                        existingUser.PasswordHash = hashedPassword;
-                    }
                 }
             }
             catch (DbUpdateConcurrencyException)

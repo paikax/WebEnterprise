@@ -4,13 +4,18 @@
     ViewData["Title"] = "Users Management";
 }
 
+<div class="page-container">
+    <h1>User Management</h1>
 
-<h1 class="mt-5 mb-4">User Management</h1>
-<a class="btn btn-success" asp-controller="Users" asp-action="Create">Create User</a>
+    <div class="manage-filter"role="group">
+        <a style="--color: #b7b7b7;" id="group-button" @((ViewBag.SelectedRole == null) ? "active" : "") href="@Url.Action("Index", "Users")">All Users</a>
+        <a style="--color: #dbc351;" id="group-button" @((ViewBag.SelectedRole == "coordinator") ? "active" : "") href="@Url.Action("Index", "Users", new { roleFilter = "coordinator" })">Coordinators</a>
+        <a style="--color: #28b3fe;" id="group-button" @((ViewBag.SelectedRole == "student") ? "active" : "") href="@Url.Action("Index", "Users", new { roleFilter = "student" })">Students</a>
+        <a style="--color: #145522;" id="group-button" @((ViewBag.SelectedRole == "UniversityMarketingManager") ? "active" : "") href="@Url.Action("Index", "Users", new { roleFilter = "UniversityMarketingManager" })">University Marketing Managers</a>
+    </div>
 
-<div class="table-responsive">
-    <table class="table table-striped">
-        <thead class="thead-dark">
+    <table class="date-table">
+        <thead>
             <tr>
                 <th>Email</th>
                 <th>Full Name</th>
@@ -28,13 +33,24 @@
                     <td>@user.FullName</td>
                     <td>@user.Gender</td>
                     <td>@user.DoB</td>
-                    <td>@user.Role</td> <!-- Display the user's role -->
-                    <td>
-                        <div class="btn-group" role="group">
-                            <a class="btn btn-primary btn-sm" asp-controller="Users" asp-action="Edit" asp-route-id="@user.Id">Edit</a>
-                            <a class="btn btn-info btn-sm" asp-controller="Users" asp-action="Details" asp-route-id="@user.Id">Details</a>
-                             <a asp-area="Authenticated" asp-controller="Users" asp-action="ConfirmEmail" asp-route-id="@user.Id" class="btn btn-success">Reset Password</a>
-                            <a class="btn btn-danger btn-sm" asp-controller="Users" asp-action="Delete" asp-route-id="@user.Id">Delete</a>
+                    <td>@user.Role</td>
+                    <td style="width: 15%; min-width: 230px;">
+                        <div style="width: 100%; display: flex; flex-wrap: nowrap; justify-content: end;" role="group">
+                            <a asp-controller="Users" asp-action="Edit" asp-route-id="@user.Id">
+                                <ion-icon name="create-outline" id="table-button" style="--color: #0400d3;"></ion-icon>
+                            </a>
+                            <a asp-controller="Users" asp-action="Details" asp-route-id="@user.Id">
+                                <ion-icon name="information-circle-outline" id="table-button"
+                                    style="--color: #00792e;"></ion-icon>
+                            </a>
+                            <a asp-area="Authenticated" asp-controller="Users" asp-action="ConfirmEmail"
+                                asp-route-id="@user.Id">
+                                <ion-icon name="refresh-circle-outline" id="table-button"
+                                    style="--color: #cbce00;"></ion-icon>
+                            </a>
+                            <a asp-controller="Users" asp-action="Delete" asp-route-id="@user.Id">
+                                <ion-icon name="trash-outline" id="table-button" style="--color: #d41c00;"></ion-icon>
+                            </a>
                         </div>
                     </td>
                 </tr>

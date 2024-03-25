@@ -6,8 +6,8 @@
 
 <div class="page-container">
     <div class="form-container">
-        <form method="post" class="input-form">
-            <h1>Register</h1>
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post" class="input-form">
+            <h1>Create an account</h1>
             <div class="input-field">
                 <ion-icon name="mail"></ion-icon>
                 <input asp-for="Input.Email" type="email" required/>
@@ -21,15 +21,15 @@
                 <label asp-for="Input.FullName"></label>
                 <span asp-validation-for="Input.FullName" class="text-danger"></span>
             </div>
-
-            <div class="radio-field">
+            
+            <div class="input-field">
                 <ion-icon name="transgender"></ion-icon>
+                <select asp-for="Input.Gender" name="Gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
                 <label asp-for="Input.Gender"></label>
-                <div class="radio-box">
-                    <label><input asp-for="Input.Gender" type="radio" name="gender" id="male" value="male"> Male</label>
-                    <label><input asp-for="Input.Gender" type="radio" name="gender" id="female" value="female"> Female</label> 
-                    <label><input asp-for="Input.Gender" type="radio" name="gender" id="other" value="other"> Other</label> 
-                </div>
                 <span asp-validation-for="Input.Gender" class="text-danger"></span>
             </div>
             
@@ -53,6 +53,15 @@
                 <label asp-for="Input.ConfirmPassword"></label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
+            
+            <div class="input-field">
+                <ion-icon name="people"></ion-icon>
+                @Html.DropDownListFor(n => n.Input.Role, Model.Input.RoleList, new { @required = "required" })
+                <label id="role-label" >Role</label>
+                <span id="role-validation" class="text-danger">@Html.ValidationMessageFor(m => m.Input.Role)</span>
+            </div>
+
+            <input type="hidden" asp-for="Input.RoleList" />
 
             <div class="check-box">
                 <label><input type='checkbox' id='remember' required/> I agree to the terms & conditions</label>
