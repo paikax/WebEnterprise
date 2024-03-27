@@ -5,25 +5,26 @@
     Layout = "_Layout";
 }
 <div class="page-container">
-
-    <div class="card">
-        <div class="card-body">
-            <form asp-action="CreateClosure">
-                <h1>Create Submission Closure</h1>
-                <div class="input-field">
-                    <label asp-for="StartDate" class="control-label">Start Date:</label>
-                    <input asp-for="StartDate" class="form-control" />
-                </div>
-                <div class="input-field">
-                    <label asp-for="EndDate" class="control-label">End Date:</label>
-                    <input asp-for="EndDate" class="form-control" />
-                </div>
-                <div class="input-field">
-                    <label asp-for="FacultyId" class="control-label">Faculty:</label>
-                    <select asp-for="FacultyId" class="form-control" asp-items="ViewBag.Faculties"></select>
-                </div>
-                <button type="submit" class="submit-Btn">Create</button>
-            </form>
-        </div>
+    <div class="form-container">
+        <form asp-action="CreateClosure" class="input-form">
+            <h1>Create Submission Closure</h1>
+            <div class="input-field">
+                <ion-icon name="calendar"></ion-icon>
+                <input asp-for="StartDate" required />
+                <label asp-for="StartDate">Start Date</label>
+            </div>
+            <div class="input-field">
+                <ion-icon name="calendar"></ion-icon>
+                <input asp-for="EndDate" required/>
+                <label asp-for="EndDate">End Date</label>
+            </div>
+            <div class="input-field">
+                <ion-icon name="bookmark"></ion-icon>
+                <select asp-for="FacultyId" asp-items="ViewBag.Faculties"></select>
+                <label asp-for="FacultyId">Faculty</label>
+            </div>
+            <a asp-action="Index" class="back-icon"><ion-icon name="arrow-back-circle"></ion-icon></a>
+            <button type="submit" class="submit-Btn">Create</button>
+        </form>
     </div>
 </div>
