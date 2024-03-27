@@ -54,6 +54,25 @@ input[type="date"] {
     -webkit-user-select: none;
     -o-user-select: none;
 }
+input[type="file"]:invalid~label {
+    top: -5px;
+}
+
+input[type="file"]{
+   position: absolute;
+   top: 10px;
+}
+
+#input-file-btn{
+    user-select: all;
+    cursor: pointer;
+    display: inline-block;
+    width: 100%;
+}
+
+.input-file-btn:hover {
+    background: #004040;
+}
 
 .wrapper {
     display: flex;
@@ -639,7 +658,7 @@ input[type="radio"] {
     user-select: none;
 }
 
-.input-field > input{
+.input-field > input , textarea{
     border: none;
     outline: none;
     width: 100%;
@@ -649,7 +668,14 @@ input[type="radio"] {
     padding-left: 5px;
 }
 
-.input-field > label {
+#textarea-input {
+    position: absolute;
+    top: 10%;
+    left: 5px;
+    transform: translateY(-10%);transition: .5s;
+}
+    
+.input-field label {
     position: absolute;
     top: 50%;
     left: 5px;
@@ -661,13 +687,13 @@ input[type="radio"] {
     transition: .5s;
 }
 
-.input-field input:focus~label , .input-field input:valid~label {
+.input-field input:focus~label , .input-field input:valid~label, .input-field select:focus~label , .input-field select:valid~label {
     top: -5px;
+}
+.input-field textarea:focus~#textarea-input , .input-field textarea:valid~#textarea-input {
+    top: -25px;
 }
 
-.input-field select:focus~label , .input-field select:valid~label {
-    top: -5px;
-}
 
 .input-field ion-icon , .radio-field ion-icon{
     position: absolute;
@@ -679,7 +705,7 @@ input[type="radio"] {
 }
 .check-box {
     width: 100%;
-    margin-top: 20px;
+    padding: 10px;
 }
 
 .check-box input{
@@ -826,6 +852,17 @@ input[type="radio"] {
     color: #cccccc;
 }
 
+#logout{
+    background: transparent;
+    color: #fff;
+    opacity: .7;
+    border: none;
+    outline: none;
+    font-size: 1.6rem;
+    transform: translateY(4px);
+}
 
-
+#logout:hover {
+    opacity: 1;
+}
 

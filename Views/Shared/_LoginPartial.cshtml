@@ -3,24 +3,27 @@
 @inject UserManager<IdentityUser> UserManager
 
 
+
 @if (SignInManager.IsSignedIn(User))
 {
+    @* <li class="nav-item">
+        <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+    </li> *@
     <li class="nav-item">
-        <a  class="header__nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
-    </li>
-    <li class="nav-item">
-        <form  class="" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="header__nav-link-button">Logout</button>
+        <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button type="submit" id="logout"><ion-icon name="log-out-outline"></ion-icon></button>
         </form>
     </li>
 }
-else
-{
-    <li class="header__top-item">
-        <a class="header__nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a>
+else {
+     <li class="nav-item">
+        <a class="nav-link" href="/Authenticated/DateSubmissions">Contributions</a>
     </li>
-    <li class="header__top-item">
-        <a class="header__nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    <li class="nav-item">
+        <a class="nav-link" href="/Identity/Account/Login?returnUrl=@Context.Request.Path">Sign in</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/Identity/Account/Register?returnUrl=@Context.Request.Path">Create Account</a>
     </li>
 }
 
