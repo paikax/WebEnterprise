@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebEnterprise.Data;
 using WebEnterprise.Models;
+using WebEnterprise.Utils;
 using WebEnterprise.ViewModels;
 
 namespace WebEnterprise.Areas.Authenticated.Controllers;
@@ -17,12 +18,14 @@ public class ContributionsController : Controller
     private readonly ApplicationDbContext _context;
     private readonly UserManager<IdentityUser> _userManager;
     private readonly IWebHostEnvironment _environment;
+    private readonly ISendMailService _sendMailService;
     
-    public ContributionsController(ApplicationDbContext context, UserManager<IdentityUser> userManager, IWebHostEnvironment environment)
+    public ContributionsController(ApplicationDbContext context,  ISendMailService sendMailService, UserManager<IdentityUser> userManager, IWebHostEnvironment environment)
     {
         _context = context;
         _userManager = userManager;
         _environment = environment;
+        _sendMailService = sendMailService;
     }
 
     [Area(Constants.Areas.AuthenticatedArea)]
@@ -180,6 +183,38 @@ public class ContributionsController : Controller
             _context.Add(contribution);
             Console.WriteLine(contribution);
             await _context.SaveChangesAsync();
+            
+            // Retrieve the faculty to which the contribution is being submitted
+            var facultyOfContribution = await _context.Faculties.FirstOrDefaultAsync(f => f.Id == contribution.FacultyId);
+            if (facultyOfContribution == null)
+            {
+                ModelState.AddModelError(string.Empty, "Invalid faculty for the contribution.");
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Retrieve the coordinator assigned to the faculty
+            var assignment = await _context.Assignments.FirstOrDefaultAsync(a => a.FacultyId == facultyOfContribution.Id);
+            if (assignment == null)
+            {
+                ModelState.AddModelError(string.Empty, "No coordinator assigned to this faculty.");
+                return RedirectToAction(nameof(Index));
+            }
+
+            var coordinator = await _userManager.FindByIdAsync(assignment.CoordinatorId);
+            if (coordinator == null)
+            {
+                ModelState.AddModelError(string.Empty, "Coordinator not found for the assigned faculty.");
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Existing code to save the contribution goes here
+
+            // Send email notification to the assigned coordinator
+            var subject = "New Contribution Posted";
+            var message = $"A new contribution has been posted to {facultyOfContribution.Name}. Title: {contribution.Title}. Please review it.";
+            await _sendMailService.SendMailAsync(coordinator.Email, subject, message);
+            
+            
             return RedirectToAction(nameof(Index));
         }
         catch (Exception ex)
