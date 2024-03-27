@@ -7,8 +7,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<div class="page-container">
-    <div class="form-container">
+<div class="page-container"/>
+    <div class="form-container"/>
         <form id="contributionForm" asp-action="Create" method="post" enctype="multipart/form-data" class="input-form">
             <h1 style="margin-bottom: -10px">Create new submission</h1>
             <div class="input-field">
@@ -16,13 +16,11 @@
                 <input type="text" id="Title" name="Title" required />
                 <label>Title</label>
             </div>
-
             <div class="input-field" style="height: 100px; border: 2px solid #162938;">
                 <ion-icon name="document-text-outline"></ion-icon>
                 <textarea id="Content" name="Content" required></textarea>
                 <label id="textarea-input">Content</label>
             </div>
-
             <div class="input-field">
                 <ion-icon name="images-outline"></ion-icon>
                 <input type="file" id="ImageFile" name="imageFile"  required/>
@@ -30,7 +28,6 @@
                     Image File
                 </label>
             </div>
-
             <div class="input-field">
                 <ion-icon name="document-attach-outline"></ion-icon>
                 <input type="file" id="DocumentFile" name="documentFile" required/>
@@ -38,48 +35,47 @@
                     Document File (.doc or .pdf)
                 </label>
             </div>
-
             <div class="input-field">
                 <!-- Hidden field for FacultyId -->
                 <label for="FacultyId">Faculty:</label>
                 <select asp-for="FacultyId" asp-items="ViewBag.Faculties"></select>
             </div>
-
             <div class="check-box">
-                <label><input type="checkbox" id="termsAndConditionsAccepted" name="termsAndConditionsAccepted" value="true" required> I agree to the <a href="/terms-and-conditions" target="_blank">terms and conditions</a>
+                <label>
+                    <input type="checkbox" id="termsAndConditionsAccepted" name="termsAndConditionsAccepted" value="true" required> I agree to the
+                    <a href="/terms-and-conditions" target="_blank">terms and conditions</a>
                 </label>
             </div>
-
             <input type="submit" value="Create" class="submit-Btn" data-toggle="modal" data-target="#facultySelectionModal" />
         </form>
-    <div>
-<div>
+    <div/>
+</div>
 
 
 @section Scripts {
     <script>
-        $(document).ready(function () {
-            $('#contributionForm').submit(function (e) {
-                e.preventDefault(); // Prevent the form from submitting normally
+    $(document).ready(function () {
+        $('#contributionForm').submit(function (e) {
+            e.preventDefault(); // Prevent the form from submitting normally
 
-                // Retrieve the selected faculty ID from the form
-                var selectedFacultyId = $('#FacultyId').val();
+            // Retrieve the selected faculty ID from the form
+            var selectedFacultyId = $('#FacultyId').val();
 
-                // AJAX request to check the closure date
-                $.get('@Url.Action("CheckClosureDate", "Contributions")', { facultyId: selectedFacultyId })
-                    .done(function (result) {
-                        if (result.closureDatePassed) {
-                            // Closure date has passed, show alert
-                            alert("You cannot create a submission because the closure date has passed.");
-                        } else {
-                            // Closure date is valid, submit the form
-                            $('#contributionForm').unbind('submit').submit();
-                        }
-                    })
-                    .fail(function () {
-                        alert("An error.");
-                    });
-            });
+            // AJAX request to check the closure date
+            $.get('@Url.Action("CheckClosureDate", "Contributions")', { facultyId: selectedFacultyId })
+                .done(function (result) {
+                    if (result.closureDatePassed) {
+                        // Closure date has passed, show alert
+                        alert("You cannot create a submission because the closure date has passed.");
+                    } else {
+                        // Closure date is valid, submit the form
+                        $('#contributionForm').unbind('submit').submit();
+                    }
+                })
+                .fail(function () {
+                    alert("An error.");
+                });
         });
-    </script>
+    });
+</script>
 }
