@@ -95,11 +95,12 @@
                         {
                             <!-- Other Users (No Role) -->
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("SelectedIndex", "Contributions", new { area = "Authenticated"})">View Selected Contributions</a>
+                                <a class="nav-link" href="@Url.Action("Index", "Contributions", new { area = "Authenticated" })">View Submissions</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="@Url.Action("Create", "Contributions", new { area = "Authenticated" })">Create Student Submissions</a>
                             </li>
+                            
                         }
                     }
                     else
