@@ -4,60 +4,70 @@
     ViewBag.Title = "Edit Contribution";
     Layout = "_Layout";
 }
+<div class="page-container">
+    <div class="form-container" >
+        <form asp-action="Edit" method="post" enctype="multipart/form-data" class="input-form">
+            <h1>Edit Contribution</h1>
+            <input type="hidden" asp-for="Id" />
 
-<h2>Edit Contribution</h2>
+            <div class="input-field">
+                <ion-icon name="book-outline"></ion-icon>
+                <input asp-for="Title" />
+                <label asp-for="Title">Title</label>
+            </div>
 
-<form asp-action="Edit" method="post" enctype="multipart/form-data">
-    <input type="hidden" asp-for="Id" />
+            <div class="input-field" style="height: 100px; border: 2px solid #162938;">
+                <ion-icon name="document-text-outline"></ion-icon>
+                <textarea asp-for="Content" required></textarea>
+                <label asp-for="Content" id="textarea-input">Content</label>
+            </div>
 
-    <div class="form-group">
-        <label asp-for="Title">Title:</label>
-        <input asp-for="Title" class="form-control" />
+            <div class="input-field">
+            <ion-icon name="bookmark-outline"></ion-icon>
+                <select asp-for="FacultyId" asp-items="ViewBag.Faculties"></select>
+                <label asp-for="FacultyId">Faculty</label>
+            </div>
+
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <div class="input-field image-field">
+                    <ion-icon name="images-outline"></ion-icon>
+                    <img src="@Url.Content(Model.ImageUrl)" alt="Current Image"/>
+                    <label>Current Image</label>
+                </div>
+            }
+
+            <div class="input-field">
+                <ion-icon name="images-outline"></ion-icon>
+                <input type="file" id="ImageFile" name="imageFile"/>
+                <label for="ImageFile">Image File</label>
+            </div>
+
+            @if (!string.IsNullOrEmpty(Model.FilePath))
+            {
+                <div class="input-field">
+                @* @Url.Content(Model.FilePath).Substring(9) *@
+                    <a href="@Url.Content(Model.FilePath)" target="_blank" id="download">
+                        <ion-icon name="cloud-download-outline" style="color: #036600; font-size: 1.5rem;"></ion-icon>
+                    </a>
+                    <input type="text" value="@Url.Content(Model.FilePath).Substring(9)" required readonly="true"/>
+                    <label for="download" style="width: 100%; user-select: auto;">Current Document File</label>
+                </div>
+            }
+
+            <div class="input-field">
+                <ion-icon name="document-attach-outline"></ion-icon>
+                <input type="file" id="DocumentFile" name="documentFile"/>
+                <label for="DocumentFile">New Document File (.doc or .pdf):</label>
+            </div>
+
+            <a asp-action="Index" class="back-icon"><ion-icon name="arrow-back-circle"></ion-icon></a>
+
+            <button type="submit" class="submit-Btn">Save Changes</button>
+        </form>
     </div>
-
-    <div class="form-group">
-        <label asp-for="Content">Content:</label>
-        <textarea asp-for="Content" class="form-control" rows="4"></textarea>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="FacultyId">Faculty:</label>
-        <select asp-for="FacultyId" class="form-control" asp-items="ViewBag.Faculties"></select>
-    </div>
-
-    <!-- Display current image if available -->
-    @if (!string.IsNullOrEmpty(Model.ImageUrl))
-    {
-        <div class="form-group">
-            <label>Current Image:</label>
-            <img src="@Url.Content(Model.ImageUrl)" alt="Current Image" style="max-width: 200px; max-height: 200px;" />
-        </div>
-    }
-
-    <div class="form-group">
-        <label for="ImageFile">Image File:</label>
-        <input type="file" id="ImageFile" name="imageFile" class="form-control-file" />
-    </div>
-
-    <!-- Display current document file if available -->
-    @if (!string.IsNullOrEmpty(Model.FilePath))
-    {
-        <div class="form-group">
-            <label>Current Document File:</label>
-            <a href="@Url.Content(Model.FilePath)" target="_blank">Download</a>
-        </div>
-    }
-
-    <div class="form-group">
-        <label for="DocumentFile">New Document File (.doc or .pdf):</label>
-        <input type="file" id="DocumentFile" name="documentFile" class="form-control-file" />
-    </div>
-
-    <!-- Add other form fields as needed -->
-
-    <button type="submit" class="btn btn-primary">Save Changes</button>
-</form>
+</div>
 
 @section Scripts {
-    // Add scripts as needed
+    @* Add scripts as needed *@
 }

@@ -29,9 +29,8 @@
                     <td>@contribution.Content</td>
                     <td>@contribution.SubmissionDate</td>
                     <td>
-                        <div style="background: url(@Url.Content(contribution.ImageUrl)) no-repeat;
-                            background-position: center;
-                            background-size: cover;" id="submission-img">
+                        <div id="submission-img">
+                            <img src="@Url.Content(contribution.ImageUrl)" alt="img" />
                         </div>
                     </td>
                     <td>

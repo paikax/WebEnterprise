@@ -12,7 +12,7 @@
         <form id="contributionForm" asp-action="Create" method="post" enctype="multipart/form-data" class="input-form">
             <h1 style="margin-bottom: -10px">Create new submission</h1>
             <div class="input-field">
-                <ion-icon name="bookmark-outline"></ion-icon>
+                <ion-icon name="book-outline"></ion-icon>
                 <input type="text" id="Title" name="Title" required />
                 <label>Title</label>
             </div>
@@ -36,7 +36,7 @@
                 </label>
             </div>
             <div class="input-field">
-                <!-- Hidden field for FacultyId -->
+                <ion-icon name="bookmark-outline"></ion-icon>
                 <select asp-for="FacultyId" asp-items="ViewBag.Faculties"></select>
                 <label for="FacultyId">Faculty:</label>
             </div>
@@ -46,9 +46,10 @@
                     <a href="/terms-and-conditions" target="_blank">terms and conditions</a>
                 </label>
             </div>
+            <a asp-action="Index" class="back-icon"><ion-icon name="arrow-back-circle"></ion-icon></a>
             <input type="submit" value="Create" class="submit-Btn" data-toggle="modal" data-target="#facultySelectionModal" />
         </form>
-    <div/>
+    </div>
 </div>
 
 

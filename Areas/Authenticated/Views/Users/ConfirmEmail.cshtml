@@ -10,8 +10,8 @@
             <h1>Check Email</h1>
             <div class="input-field">
                 <ion-icon name="mail"></ion-icon>
-                <input asp-for="Email" class="form-control" style="padding: 0 10px;" readonly="true">
-                <label></label>
+                <input asp-for="Email" style="padding: 0 10px;" readonly="@(true)">
+                <label>Email</label>
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <a asp-action="Index" class="back-icon"><ion-icon name="arrow-back-circle"></ion-icon></a>
