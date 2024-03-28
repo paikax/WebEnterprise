@@ -15,16 +15,12 @@ namespace WebEnterprise.Data
         public DbSet<Faculty> Faculties { get; set; }
         public DbSet<Assignment> Assignments { get; set; }
         public DbSet<Contribution> Contributions { get; set; }
-        public DbSet<Comment> Comments { get; set; }
-        public DbSet<TermAndCondition> TermsAndConditions { get; set; }
         public DbSet<ContributionClosureDate> ClosureDates { get; set; }
         public DbSet<SchoolSystemData> SchoolSystemDatas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            // Add any customizations to model configuration here
-            // For example, defining relationships, specifying constraints, etc.
         }
     }
 }
