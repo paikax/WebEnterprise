@@ -5,12 +5,13 @@
 }
 
 <div class="page-container">
-    <h1>Manage Faculties</h1>
 
-    <div class="row mb-3">
+    <h1 class="m-3">Manage Faculties</h1>
+
+    <div class="row">
         <div class="col-md-6">
             <a href="@Url.Action("CreateFaculty")" id="link-icon">
-                <ion-icon name="add"></ion-icon> Add New Faculty
+                <ion-icon name="bookmark" style="padding-right: 5px"></ion-icon>New Faculty
             </a>
         </div>
 
@@ -22,13 +23,13 @@
     <table class="date-table">
         <thead>
             <tr>
-                <th>
+                <th style="width: 80px;">
                     ID
                 </th>
                 <th style="border-left: 1px solid white;">
                     Name
                 </th>
-                <th>
+                <th style="border-left: 1px solid white; width: 150px;">
                     Action
                 </th>
             </tr>
@@ -37,7 +38,7 @@
             @foreach (var faculty in Model)
             {
                 <tr>
-                    <td>
+                    <td style="padding-left: 20px">
                         @faculty.Id
                     </td>
                     <td id="border-left">

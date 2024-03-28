@@ -7,8 +7,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<div class="page-container"/>
-    <div class="form-container"/>
+<div class="page-container">
+    <div class="form-container" >
         <form id="contributionForm" asp-action="Create" method="post" enctype="multipart/form-data" class="input-form">
             <h1 style="margin-bottom: -10px">Create new submission</h1>
             <div class="input-field">
@@ -37,8 +37,8 @@
             </div>
             <div class="input-field">
                 <!-- Hidden field for FacultyId -->
-                <label for="FacultyId">Faculty:</label>
                 <select asp-for="FacultyId" asp-items="ViewBag.Faculties"></select>
+                <label for="FacultyId">Faculty:</label>
             </div>
             <div class="check-box">
                 <label>

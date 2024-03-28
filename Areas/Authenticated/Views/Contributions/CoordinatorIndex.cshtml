@@ -5,58 +5,69 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Coordinator Index</h2>
+<div class="page-container">
 
-@if (Model.Count > 0)
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Content</th>
-                <th>Comment</th>
-                <th>Submission Date</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var contribution in Model)
-            {
+    <h1 class="m-3">Coordinator Index</h1>
+
+    @if (Model.Count > 0)
+    {
+        <table class="date-table">
+            <thead>
                 <tr>
-                    <td>@contribution.Title</td>
-                    <td>@contribution.Content</td>
-                    <td>@contribution.CoordinatorComment</td>
-                    <td>@contribution.SubmissionDate.ToShortDateString()</td>
-                    <td>
-                        @if (contribution.Status == "Pending")
-                        {
-                            <button type="button" class="btn btn-success approve-btn" data-contribution-id="@contribution.Id">Approve</button>
-                            <button type="button" class="btn btn-danger reject-btn" data-contribution-id="@contribution.Id">Reject</button>
-                        }
-                        else
-                        {
-                            <span class="badge badge-info">@contribution.Status</span>
-                        }
-
-                        @if ((DateTime.Now - contribution.SubmissionDate).TotalDays >= 14)
-                        {
-                            <a class="btn btn-primary" href="@Url.Action("AddComment", "Contributions", new { contributionId = contribution.Id })">Comment (Disabled)</a>
-                        }
-                        else
-                        {
-                            <a class="btn btn-primary" href="@Url.Action("AddComment", "Contributions", new { contributionId = contribution.Id })">Comment</a>
-
-                        }
-                    </td>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Comment</th>
+                    <th>Submission Date</th>
+                    <th>Action</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    <p>No contributions found.</p>
-}
+            </thead>
+            <tbody>
+                @foreach (var contribution in Model)
+                {
+                    <tr>
+                        <td>@contribution.Title</td>
+                        <td>@contribution.Content</td>
+                        <td>@contribution.CoordinatorComment</td>
+                        <td>@contribution.SubmissionDate.ToShortDateString()</td>
+                        <td>
+                            @if (contribution.Status == "Pending")
+                            {
+                                <button type="button" class="btn btn-success approve-btn" data-contribution-id="@contribution.Id">
+                                    <ion-icon name="checkmark-outline" id="table-button" style="--color: #47f100;"></ion-icon>
+                                </button>
+                                <button type="button" class="btn btn-danger reject-btn" data-contribution-id="@contribution.Id">
+                                    <ion-icon name="close-outline" id="table-button" style="--color: #cb3131;"></ion-icon>
+                                </button>
+                            }
+                            else
+                            {
+                                <span class="badge badge-info">@contribution.Status</span>
+                            }
+
+                            @if ((DateTime.Now - contribution.SubmissionDate).TotalDays >= 14)
+                            {
+                                <a href="@Url.Action("AddComment", "Contributions", new { contributionId = contribution.Id })">
+                                    <ion-icon name="pricetag-outline" id="table-button" style="--color: #aaaaaa;"></ion-icon>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("AddComment", "Contributions", new { contributionId = contribution.Id })">
+                                    <ion-icon name="pricetag-outline" id="table-button" style="--color: #162938;"></ion-icon>
+                                </a>
+
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No contributions found.</p>
+    }
+</div>
 
 @section Scripts {
     <script>
@@ -110,3 +121,4 @@ else
         });
     </script>
 }
+

@@ -43,10 +43,8 @@
                                 <ion-icon name="information-circle-outline" id="table-button"
                                     style="--color: #00792e;"></ion-icon>
                             </a>
-                            <a asp-area="Authenticated" asp-controller="Users" asp-action="ConfirmEmail"
-                                asp-route-id="@user.Id">
-                                <ion-icon name="refresh-circle-outline" id="table-button"
-                                    style="--color: #cbce00;"></ion-icon>
+                            <a asp-area="Authenticated" asp-controller="Users" asp-action="ConfirmEmail" asp-route-id="@user.Id">
+                                <ion-icon name="refresh-circle-outline" id="table-button" style="--color: #cbce00;"></ion-icon>
                             </a>
                             <a asp-controller="Users" asp-action="Delete" asp-route-id="@user.Id">
                                 <ion-icon name="trash-outline" id="table-button" style="--color: #d41c00;"></ion-icon>

@@ -5,26 +5,28 @@
     Layout = "_Layout";
 }
 
-<h1 class="mb-4">Edit Submission Closure</h1>
 
-<div class="card">
-    <div class="card-body">
-        <form asp-action="EditClosure">
+<div class="page-container">
+    <div class="form-container">
+        <form asp-action="EditClosure" class="input-form">
+            <h1>Edit Submission Closure</h1>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="StartDate" class="control-label">Start Date:</label>
-                <input asp-for="StartDate" class="form-control" />
+            <div class="input-field">
+            <ion-icon name="calendar"></ion-icon>
+                <input asp-for="StartDate" />
+                <label asp-for="StartDate">Start Date</label>
             </div>
-            <div class="form-group">
-                <label asp-for="EndDate" class="control-label">End Date:</label>
-                <input asp-for="EndDate" class="form-control" />
+            <div class="input-field">
+            <ion-icon name="calendar"></ion-icon>
+                <input asp-for="EndDate" />
+                <label asp-for="EndDate">End Date</label>
             </div>
-            <div class="form-group">
-                <label asp-for="FacultyId" class="control-label">Faculty:</label>
-                <select asp-for="FacultyId" class="form-control" asp-items="ViewBag.Faculties"></select>
-            </div>
-            <button type="submit" class="btn btn-primary">Save Changes</button>
-            <a href="javascript:history.go(-1)" class="btn btn-secondary">Cancel</a>
+            <div class="input-field">
+                <ion-icon name="bookmark"></ion-icon>
+                <select asp-for="FacultyId" asp-items="ViewBag.Faculties"></select>
+                <label asp-for="FacultyId">Faculty</label>
+            </div><a asp-action="Index" class="back-icon"><ion-icon name="arrow-back-circle"></ion-icon></a>
+            <button type="submit" class="submit-Btn">Save Changes</button>
         </form>
     </div>
 </div>
