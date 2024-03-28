@@ -439,6 +439,11 @@ public class ContributionsController : Controller
 
         // Update the status
         contribution.Status = status;
+        if (status == "Approve")
+        {
+            contribution.SelectedForPublication = true;
+        }
+        
         // Save changes to the database
         try
         {
@@ -452,6 +457,7 @@ public class ContributionsController : Controller
         }
     }
 
+    [HttpGet]
     public IActionResult AddComment(int contributionId)
     {
         // Retrieve the contribution from the database based on the ID
@@ -460,7 +466,7 @@ public class ContributionsController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddComment(int contributionId, string commentText)
+    public async Task<IActionResult> AddComment(int contributionId, string Content)
     {
         try
         {
@@ -472,7 +478,7 @@ public class ContributionsController : Controller
             }
 
             // Update the comment attribute of the contribution
-            contribution.CoordinatorComment = commentText;
+            contribution.CoordinatorComment = Content;
 
             // Save changes to the database
             await _context.SaveChangesAsync();
@@ -487,4 +493,5 @@ public class ContributionsController : Controller
             return View("AddComenet");
         }
     }
+
 }

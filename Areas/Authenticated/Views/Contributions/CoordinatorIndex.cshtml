@@ -32,10 +32,10 @@
                         <td>
                             @if (contribution.Status == "Pending")
                             {
-                                <button type="button" class="btn btn-success approve-btn" data-contribution-id="@contribution.Id">
+                                <button type="submit" class="btn btn-success approve-btn" data-contribution-id="@contribution.Id">
                                     <ion-icon name="checkmark-outline" id="table-button" style="--color: #47f100;"></ion-icon>
                                 </button>
-                                <button type="button" class="btn btn-danger reject-btn" data-contribution-id="@contribution.Id">
+                                <button type="submit" class="btn btn-danger reject-btn" data-contribution-id="@contribution.Id">
                                     <ion-icon name="close-outline" id="table-button" style="--color: #cb3131;"></ion-icon>
                                 </button>
                             }
@@ -121,4 +121,5 @@
         });
     </script>
 }
+
 
