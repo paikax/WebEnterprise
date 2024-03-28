@@ -29,8 +29,8 @@
                     <td>                           
                         <form asp-action="DeleteClosure" asp-route-id="@closure.Id" onsubmit="return confirm('Are you sure you want to delete this closure?');" style="display: flex; flex-wrap: nowrap;">
                             <a asp-action="EditClosure" asp-route-id="@closure.Id">
-                            <ion-icon name="create-outline" id="table-button" style="--color: #162938;"></ion-icon>
-                        </a> 
+                                <ion-icon name="create-outline" id="table-button" style="--color: #162938;"></ion-icon>
+                            </a> 
                             <button type="submit" style="border: none; outline: none; background: transparent">
                                 <ion-icon name="trash-outline" id="table-button" style="--color: #ff2400;"></ion-icon>
                             </button>

@@ -29,14 +29,14 @@
                         <td>@contribution.Content</td>
                         <td>@contribution.CoordinatorComment</td>
                         <td>@contribution.SubmissionDate.ToShortDateString()</td>
-                        <td>
+                        <td class="d-flex align-items-center">
                             @if (contribution.Status == "Pending")
                             {
-                                <button type="button" class="btn btn-success approve-btn" data-contribution-id="@contribution.Id">
-                                    <ion-icon name="checkmark-outline" id="table-button" style="--color: #47f100;"></ion-icon>
+                                <button type="button" data-contribution-id="@contribution.Id" id="none-Btn">
+                                    <ion-icon name="checkmark" id="table-button" style="--color: #47f100;"></ion-icon>
                                 </button>
-                                <button type="button" class="btn btn-danger reject-btn" data-contribution-id="@contribution.Id">
-                                    <ion-icon name="close-outline" id="table-button" style="--color: #cb3131;"></ion-icon>
+                                <button type="button" data-contribution-id="@contribution.Id" id="none-Btn">
+                                    <ion-icon name="close" id="table-button" style="--color: #cb3131;"></ion-icon>
                                 </button>
                             }
                             else
