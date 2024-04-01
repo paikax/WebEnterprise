@@ -53,55 +53,63 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                @if (User.IsInRole(WebEnterprise.Constants.Roles.AdminRole))
+                @if (User.Identity.IsAuthenticated)
                     {
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Authenticated/SchoolSystemData">School System Data</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Authenticated/Users">User Management</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Authenticated/Assignments">Assign Coordinator</a>
-                        </li>
-                    }
-                    else if (User.IsInRole(WebEnterprise.Constants.Roles.UniversityMarketingManagerRole))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Authenticated/DateSubmissions">Contribution date</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("SelectedIndex", "Contributions", new { area = "Authenticated"})">View approved submissions</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Authenticated/Faculties">Faculty</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Authenticated/DateSubmissions">Create submission</a>
-                        </li>
-                    }
-                    else if (User.IsInRole(WebEnterprise.Constants.Roles.CoordinatorRole))
-                    {
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("CoordinatorIndex", "Contributions", new { area = "Authenticated"})">View student submissions</a>
-                        </li>
+                        if (User.IsInRole(WebEnterprise.Constants.Roles.AdminRole))
+                        {
+                            <!-- Admin Links -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Authenticated/SchoolSystemData">School System Data</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Authenticated/Users">User Management</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Authenticated/Assignments">Assign Coordinator</a>
+                            </li>
+                        }
+                        else if (User.IsInRole(WebEnterprise.Constants.Roles.UniversityMarketingManagerRole))
+                        {
+                            <!-- University Marketing Manager Links -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Authenticated/DateSubmissions">Contribution Date</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("SelectedIndex", "Contributions", new { area = "Authenticated"})">View Approved Submissions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Authenticated/Faculties">Faculty</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Authenticated/DateSubmissions">Create Submission</a>
+                            </li>
+                        }
+                        else if (User.IsInRole(WebEnterprise.Constants.Roles.CoordinatorRole))
+                        {
+                            <!-- Coordinator Links -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("CoordinatorIndex", "Contributions", new { area = "Authenticated"})">View Student Submissions</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <!-- Other Users (No Role) -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index", "Contributions", new { area = "Authenticated" })">View Submissions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Create", "Contributions", new { area = "Authenticated" })">Create Student Submissions</a>
+                            </li>
+                            
+                        }
                     }
                     else
                     {
+                        <!-- Anonymous Users -->
                         <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index", "Contributions", new { area = "Authenticated" })">View all submissions</a>
+                            <a class="nav-link" href="@Url.Action("SelectedIndex", "Contributions", new { area = "Authenticated"})">View Selected Contributions</a>
                         </li>
-                        @* <li class="nav-item">
-                            <a class="nav-link" href="">???</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">???</a>
-                        </li> *@
-
-                        <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Create", "Contributions", new { area = "Authenticated" })">Create student submissions</a>
-                        </li>
-                    }  
+                    }
             <partial name="_LoginPartial"/>
             </ul>
         </div>
