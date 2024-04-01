@@ -522,7 +522,7 @@ footer {
   width: 60%;
   box-shadow: 0 0 10px 0 var(--primary-color);
   border-radius: 20px;
-  margin-top: 10px;
+  margin: 15px 0;
 }
 
 #border {
@@ -551,6 +551,7 @@ footer {
   background: white;
   padding: 10px 20px;
   border-radius: 20px;
+  text-align: center;
 }
 
 .input-form h1 {
@@ -567,7 +568,11 @@ footer {
   margin-bottom: 10px;
 }
 
-.input-field > select {
+.input-field select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
   border: none;
   outline: none;
   width: 100%;
@@ -577,48 +582,7 @@ footer {
   padding-left: 5px;
 }
 
-.input-field select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  text-indent: 1px;
-  text-overflow: '';
-}
-
-input[type="radio"] {
-  accent-color: var(--primary-color);
-}
-
-.radio-field {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 50px;
-  width: 100%;
-  margin: 20px 0;
-}
-
-.radio-field > label {
-  padding-left: 5px;
-}
-
-.radio-field > ion-icon {
-  transform: translateY(15px);
-}
-
-.radio-box {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  padding: 0 10%;
-  border-bottom: 2px solid var(--primary-color);
-}
-
-.radio-box > label {
-  font-size: 1.1rem;
-  user-select: none;
-}
-
-.input-field > input, textarea {
+.input-field input, .input-field textarea {
   border: none;
   outline: none;
   width: 100%;
@@ -627,14 +591,6 @@ input[type="radio"] {
   font-weight: 600;
   padding-left: 5px;
   padding-top: 2px;
-}
-
-#textarea-input {
-  position: absolute;
-  top: 10%;
-  left: 5px;
-  transform: translateY(-10%);
-  transition: .5s;
 }
 
 .input-field label {
@@ -648,25 +604,50 @@ input[type="radio"] {
   transition: .5s;
 }
 
-.input-field input:focus ~ label, .input-field input:valid ~ label, .input-field select:focus ~ label, .input-field select:valid ~ label {
-  top: -5px;
-}
-
-.input-field textarea:focus ~ #textarea-input, .input-field textarea:valid ~ #textarea-input {
-  top: -25px;
-}
-
 .input-field input[value]:not([value=""]) ~ label {
   top: -5px;
 }
 
-.input-field ion-icon, .radio-field ion-icon {
+.input-field ion-icon {
   position: absolute;
   right: 10px;
   transform: translateY(9px);
   font-size: 1.4rem;
   color: #2b3494;
   line-height: 57px;
+}
+
+input[type="radio"] {
+  accent-color: var(--primary-color);
+}
+
+.radio-box {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 10%;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.radio-box label {
+  font-size: 1.1rem;
+  user-select: none;
+}
+
+#textarea-input {
+  position: absolute;
+  top: 10%;
+  left: 5px;
+  transform: translateY(-10%);
+  transition: .5s;
+}
+
+.input-field input:focus ~ label, .input-field input:valid ~ label, .input-field select:focus ~ label, .input-field select:valid ~ label {
+  top: -5px;
+}
+
+.input-field textarea:focus ~ #textarea-input, .input-field textarea:valid ~ #textarea-input {
+  top: -25px;
 }
 
 .check-box {

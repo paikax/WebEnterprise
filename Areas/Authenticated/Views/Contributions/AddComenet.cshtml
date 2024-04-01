@@ -18,7 +18,7 @@
                 <textarea id="Content" name="Content" required></textarea>
                 <label id="textarea-input">Comment</label>
             </div>
-            <a asp-action="Index" class="back-icon"><ion-icon name="arrow-back-circle"></ion-icon></a>
+            <a href="@Url.Action("CoordinatorComment", "Contributions")" class="back-icon"><ion-icon name="arrow-back-circle"></ion-icon></a>
             <button type="submit" class="submit-Btn">Submit</button>
         </form>
     </div>
