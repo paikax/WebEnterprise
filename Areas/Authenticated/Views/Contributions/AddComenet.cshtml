@@ -11,14 +11,13 @@
             <h1 style="margin-bottom: -10px">Add Comment</h1>
             <div class="input-field">
                 <input type="text" id="contributionId" name="contributionId" value="@Model.Id" readonly />
-                <!-- Display the contribution ID for reference -->
             </div>
             <div class="input-field" style="height: 100px; border: 2px solid #162938;">
                 <ion-icon name="pricetag-outline"></ion-icon>
                 <textarea id="Content" name="Content" required></textarea>
                 <label id="textarea-input">Comment</label>
-            </div>
-            <a asp-action="Index" class="back-icon"><ion-icon name="arrow-back-circle"></ion-icon></a>
+            </div>            
+            <a href="@Url.Action("CoordinatorIndex","Contributions")" class="back-icon"><ion-icon name="arrow-back-circle"></ion-icon></a>
             <button type="submit" class="submit-Btn">Submit</button>
         </form>
     </div>
