@@ -430,25 +430,36 @@ public class ContributionsController : Controller
     [HttpPost]
     public async Task<IActionResult> UpdateStatus(int id, string status)
     {
-        // Find the contribution by ID
-        var contribution = await _context.Contributions.FindAsync(id);
-        if (contribution == null)
-        {
-            return NotFound();
-        }
-
-        // Update the status
-        contribution.Status = status;
-        if (status == "Approve")
-        {
-            contribution.SelectedForPublication = true;
-        }
-        
-        // Save changes to the database
         try
         {
+            // Find the contribution by ID
+            var contribution = await _context.Contributions.FindAsync(id);
+            if (contribution == null)
+            {
+                return NotFound();
+            }
+
+            // Update the status
+            contribution.Status = status;
+            if (status == "Approve")
+            {
+                contribution.SelectedForPublication = true;
+            }
+        
+            // Save changes to the database
             await _context.SaveChangesAsync();
-            return Ok();
+
+            // Redirect to a suitable action based on the status change
+            if(status == "Approve")
+            {
+                // If approved, redirect to a suitable action (e.g., SelectedIndex)
+                return RedirectToAction(nameof(SelectedIndex));
+            }
+            else
+            {
+                // If rejected or other status, redirect to CoordinatorIndex
+                return RedirectToAction(nameof(CoordinatorIndex));
+            }
         }
         catch (DbUpdateException)
         {
@@ -457,12 +468,13 @@ public class ContributionsController : Controller
         }
     }
 
+
     [HttpGet]
     public IActionResult AddComment(int contributionId)
     {
         // Retrieve the contribution from the database based on the ID
         var contribution = _context.Contributions.FirstOrDefault(c => c.Id == contributionId);
-        return View("AddComenet",contribution);
+        return View("AddComment",contribution);
     }
 
     [HttpPost]
@@ -490,7 +502,7 @@ public class ContributionsController : Controller
         {
             // Handle errors
             ModelState.AddModelError(string.Empty, "An error occurred while adding the comment: " + ex.Message);
-            return View("AddComenet");
+            return View("AddComment");
         }
     }
 

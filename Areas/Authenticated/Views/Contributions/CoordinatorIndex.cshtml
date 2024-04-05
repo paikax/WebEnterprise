@@ -32,10 +32,10 @@
                         <td class="d-flex align-items-center">
                             @if (contribution.Status == "Pending")
                             {
-                                <button type="button" data-contribution-id="@contribution.Id" id="none-Btn">
+                                <button type="button" class="approve-btn" data-contribution-id="@contribution.Id" id="none-Btn">
                                     <ion-icon name="checkmark" id="table-button" style="--color: #47f100;"></ion-icon>
                                 </button>
-                                <button type="button" data-contribution-id="@contribution.Id" id="none-Btn">
+                                <button type="button" class="reject-btn" data-contribution-id="@contribution.Id" id="none-Btn">
                                     <ion-icon name="close" id="table-button" style="--color: #cb3131;"></ion-icon>
                                 </button>
                             }
@@ -70,6 +70,7 @@
 </div>
 
 @section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
             $(".approve-btn").click(function () {
@@ -80,27 +81,6 @@
             $(".reject-btn").click(function () {
                 var contributionId = $(this).data("contribution-id");
                 updateContributionStatus(contributionId, "Reject");
-            });
-
-            $(".comment-btn").click(function () {
-                var contributionId = $(this).data("contribution-id");
-                $("#commentFormContainer-" + contributionId).show();
-            });
-
-            $(".submit-comment-btn").click(function () {
-                var contributionId = $(this).data("contribution-id");
-                var commentText = $("#commentText-" + contributionId).val(); // Use relative selector
-                $.ajax({
-                    url: "@Url.Action("AddComment", "Contributions")",
-                    method: "POST",
-                    data: { contributionId: contributionId, commentText: commentText },
-                    success: function (response) {
-                        location.reload();
-                    },
-                    error: function () {
-                        alert("An error occurred while adding the comment.");
-                    }
-                });
             });
 
             function updateContributionStatus(contributionId, status) {
@@ -121,5 +101,6 @@
         });
     </script>
 }
+
 
 
