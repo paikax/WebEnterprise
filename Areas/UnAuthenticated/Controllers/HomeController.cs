@@ -24,9 +24,16 @@ namespace WebEnterprise.Areas.UnAuthenticated.Controllers
             _toastNotification = toastNotification;
         }
         
-        public IActionResult Index(int id, string searchString = "")
+        public async Task<IActionResult> Index(int id, string searchString = "")
         {
-            return View();
+            // Retrieve contributions with status "Approved"
+            var approvedContributions =  await _db.Contributions
+                .Where(c => c.Status == "Approve")
+                .ToListAsync();
+
+            Console.WriteLine(approvedContributions);
+
+            return View(approvedContributions);
         }
 
         public IActionResult Privacy()
@@ -44,5 +51,6 @@ namespace WebEnterprise.Areas.UnAuthenticated.Controllers
         {
             return View();
         }
+        
     }
 }

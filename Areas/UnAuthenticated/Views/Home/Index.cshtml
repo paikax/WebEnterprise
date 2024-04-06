@@ -1,26 +1,57 @@
+@using Microsoft.VisualBasic
+@using WebEnterprise.Constants
+@model List<Contribution>
+
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Home";
 }
-@using Microsoft.VisualBasic
-@using WebEnterprise.Constants
 
 
 
-@* <div class="post-container">
-    <div class="acticle-container">
-        <div class="thumbnail">
 
-        </div>
-        <div class="acticle-title">
-            <h1>Acticle Title</h1>
-        </div>
-        <div class="acticle-info">
-            <h3>Category</h3>
-            <h5>12/12/2024</h5>
-        </div>
-    </div>
-</div> *@
+<div class="page-container">
+    <h1>Approved Contributions</h1>
+
+    @if (Model.Any())
+    {
+        <table class="date-table">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Image</th>
+                <th>File Download</th>
+                <th>Submission Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var contribution in Model)
+            {
+                <tr>
+                    <td>@contribution.Title</td>
+                    <td>@contribution.Content</td>
+                    <td>
+                        <div id="submission-img">
+                            <img src="@Url.Content(contribution.ImageUrl)" alt="img" />
+                        </div>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("DownloadContribution", "Contributions", new { facultyId = contribution.FacultyId, id = contribution.Id })">
+                            <ion-icon name="download-outline"id="table-button" style="--color: #31a500;"></ion-icon>
+                        </a>
+                    </td>
+                    <td>@contribution.SubmissionDate</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No approved contributions found.</p>
+    }
+</div>
 
 @section Scripts{
     <script>
