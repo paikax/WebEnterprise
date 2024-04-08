@@ -18,14 +18,14 @@
             @foreach (var contribution in Model)
             {
                 <div class="contribute-item">
-                    <div class="con-img" style="--url: url(@Url.Content(contribution.ImageUrl));"></div>
+                    <div class="con-img" style="background-image: url('@Url.Content(contribution.ImageUrl)');"></div>
 
                     <div class="cont-title-time">
                         <h2>@contribution.Title</h2>
                         <div class="con-action">
-                            <a href="@Url.Action("DownloadContribution", "Contributions", new { facultyId = contribution.FacultyId, id = contribution.Id })">
-                                <ion-icon name="download-outline" id="table-button" style="--color: #246707;" class="beatup-item"></ion-icon>
-                            </a>
+                            @* <a href="@Url.Action("DownloadContribution", "Contributions", new { facultyId = contribution.FacultyId, id = contribution.Id })"> *@
+                            @*     <ion-icon name="download-outline" id="table-button" style="--color: #246707;" class="beatup-item"></ion-icon> *@
+                            @* </a> *@
                             <h3>@contribution.SubmissionDate</h3>
                         </div>
                     </div>

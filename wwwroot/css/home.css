@@ -122,6 +122,10 @@
     padding-bottom: 2rem;
 }
 
+.contribute-item {
+    height: 250px;
+}
+
 .bestselling__heading-img {
     width: 4rem;
     height: 4rem;
