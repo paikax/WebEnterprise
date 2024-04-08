@@ -11,46 +11,35 @@
 
 
 <div class="page-container">
-    <h1>Approved Contributions</h1>
-
-    @if (Model.Any())
-    {
-        <table class="date-table">
-            <thead>
-            <tr>
-                <th>Title</th>
-                <th>Content</th>
-                <th>Image</th>
-                <th>File Download</th>
-                <th>Submission Date</th>
-            </tr>
-            </thead>
-            <tbody>
+    <h1>Student Contributions</h1>
+    <div class="homepage-container">
+        @if (Model.Any())
+        {
             @foreach (var contribution in Model)
             {
-                <tr>
-                    <td>@contribution.Title</td>
-                    <td>@contribution.Content</td>
-                    <td>
-                        <div id="submission-img">
-                            <img src="@Url.Content(contribution.ImageUrl)" alt="img" />
+                <div class="contribute-item">
+                    <div class="con-img" style="--url: url(@Url.Content(contribution.ImageUrl));"></div>
+
+                    <div class="cont-title-time">
+                        <h2>@contribution.Title</h2>
+                        <div class="con-action">
+                            <a href="@Url.Action("DownloadContribution", "Contributions", new { facultyId = contribution.FacultyId, id = contribution.Id })">
+                                <ion-icon name="download-outline" id="table-button" style="--color: #246707;" class="beatup-item"></ion-icon>
+                            </a>
+                            <h3>@contribution.SubmissionDate</h3>
                         </div>
-                    </td>
-                    <td>
-                        <a href="@Url.Action("DownloadContribution", "Contributions", new { facultyId = contribution.FacultyId, id = contribution.Id })">
-                            <ion-icon name="download-outline"id="table-button" style="--color: #31a500;"></ion-icon>
-                        </a>
-                    </td>
-                    <td>@contribution.SubmissionDate</td>
-                </tr>
+                    </div>
+                    <div class="con-content">
+                        <textarea readonly>@contribution.Content</textarea>
+                    </div>
+                </div>
             }
-            </tbody>
-        </table>
-    }
-    else
-    {
-        <p>No approved contributions found.</p>
-    }
+        }
+        else
+        {
+            <p>No approved contributions found.</p>
+        }
+    </div>
 </div>
 
 @section Scripts{
