@@ -12,9 +12,9 @@
 
 <div class="page-container">
     <h1>Student Contributions</h1>
-    <div class="homepage-container">
         @if (Model.Any())
         {
+        <div class="homepage-container">
             @foreach (var contribution in Model)
             {
                 <div class="contribute-item">
@@ -34,12 +34,12 @@
                     </div>
                 </div>
             }
+        </div>
         }
         else
         {
             <p>No approved contributions found.</p>
         }
-    </div>
 </div>
 
 @section Scripts{

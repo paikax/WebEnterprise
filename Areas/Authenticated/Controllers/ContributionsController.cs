@@ -211,7 +211,7 @@ public class ContributionsController : Controller
 
             // Send email notification to the assigned coordinator
             var subject = "New Contribution Posted";
-            var message = $"A new contribution has been posted to {facultyOfContribution.Name}. Title: {contribution.Title}. Please review it.";
+            var message = $"A new contribution has been posted to {facultyOfContribution.Name}. Title: {contribution.Title}. Please review it during 14 days.";
             await _sendMailService.SendMailAsync(coordinator.Email, subject, message);
             
             
