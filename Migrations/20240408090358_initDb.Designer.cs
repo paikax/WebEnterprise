@@ -12,7 +12,7 @@ using WebEnterprise.Data;
 namespace WebEnterprise.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240330141253_initDb")]
+    [Migration("20240408090358_initDb")]
     partial class initDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -256,31 +256,6 @@ namespace WebEnterprise.Migrations
                     b.ToTable("Assignments");
                 });
 
-            modelBuilder.Entity("WebEnterprise.Models.Comment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("CommentDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ContributionId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ContributionId");
-
-                    b.ToTable("Comments");
-                });
-
             modelBuilder.Entity("WebEnterprise.Models.Contribution", b =>
                 {
                     b.Property<int>("Id")
@@ -408,23 +383,6 @@ namespace WebEnterprise.Migrations
                     b.ToTable("SchoolSystemDatas");
                 });
 
-            modelBuilder.Entity("WebEnterprise.Models.TermAndCondition", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TermsAndConditions");
-                });
-
             modelBuilder.Entity("WebEnterprise.Models.User", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
@@ -523,17 +481,6 @@ namespace WebEnterprise.Migrations
                     b.Navigation("Coordinator");
 
                     b.Navigation("Faculty");
-                });
-
-            modelBuilder.Entity("WebEnterprise.Models.Comment", b =>
-                {
-                    b.HasOne("WebEnterprise.Models.Contribution", "Contribution")
-                        .WithMany()
-                        .HasForeignKey("ContributionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Contribution");
                 });
 
             modelBuilder.Entity("WebEnterprise.Models.Contribution", b =>
