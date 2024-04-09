@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Exo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo&display=swap');
 
 
 
@@ -907,7 +908,7 @@ input[type="radio"] {
     display: grid;
     padding: 0 10px;
     gap: 20px;
-    grid-template-columns: minmax(500px, 700px) minmax(500px, 700px) minmax(500px, 700px);
+    grid-template-columns: minmax(300px, 700px) minmax(300px, 700px) minmax(300px, 700px);
 }
 
 @media (max-width: 1280px){
@@ -927,7 +928,7 @@ input[type="radio"] {
     border-radius: 20px;
     padding: 10px;
     width: 100%;
-    height: 200px;
+    height: 300px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -955,7 +956,7 @@ input[type="radio"] {
     grid-area: cont-title-time; 
     display: flex;
     flex-direction: column;
-    height: 85px;
+    height: 95spx;
     h2 {
         font-weight: 800;
         font-size: 1.8rem;
