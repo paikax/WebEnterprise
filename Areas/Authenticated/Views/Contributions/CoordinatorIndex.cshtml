@@ -26,9 +26,13 @@
                 {
                     <tr>
                         <td>@contribution.Title</td>
-                        <td><textarea readonly>@contribution.Content</textarea></td>
-                        <td><textarea class="commentCoor" readonly>@contribution.CoordinatorComment</textarea></td>
+
+                        <td><textarea style="background: transparent;" readonly>@contribution.Content</textarea></td>
+
+                        <td><textarea style="background: transparent;" readonly>@contribution.CoordinatorComment</textarea></td>
+
                         <td>@contribution.SubmissionDate.ToShortDateString()</td>
+                        
                         <td class="d-flex align-items-center">
                             @if (contribution.Status == "Pending")
                             {

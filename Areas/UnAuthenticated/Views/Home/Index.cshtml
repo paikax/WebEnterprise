@@ -22,16 +22,20 @@
                     <div class="con-img" style="background-image: url('@Url.Content(contribution.ImageUrl)');"></div>
 
                     <div class="cont-title-time">
+
                         <h2>@contribution.Title</h2>
+
                         <div class="con-action">
                             <h3>@contribution.SubmissionDate</h3>
                         </div>
+                        
                     </div>
+                    
                     <div class="con-content">
                         <textarea readonly>@contribution.Content</textarea>
                     </div>
                 </div>
-                }
+            }
         </div>
     }
     else
