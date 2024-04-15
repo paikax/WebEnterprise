@@ -25,9 +25,9 @@
             @foreach (var contribution in Model.Contributions)
             {
                 <tr>
-                    <td>@contribution.Title</td>
+                    <td style="width: 30%;">@contribution.Title</td>
                     
-                    <td><textarea readonly>@contribution.Content</textarea></td>
+                    <td><textarea style="height: 100%; background: transparent;" readonly>@contribution.Content</textarea></td>
 
                     <td>@contribution.SubmissionDate</td>
                     <td>

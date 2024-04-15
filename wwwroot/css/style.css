@@ -905,7 +905,7 @@ input[type="radio"] {
 
 @media (max-width: 900px) {
   .homepage-container {
-    grid-template-columns: minmax(350px, 900px);
+    grid-template-columns: auto;
   }
 }
 

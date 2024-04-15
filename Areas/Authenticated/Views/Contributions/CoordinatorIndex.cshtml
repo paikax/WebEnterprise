@@ -25,7 +25,7 @@
                 @foreach (var contribution in Model)
                 {
                     <tr>
-                        <td>@contribution.Title</td>
+                        <td style="width: 30%;">@contribution.Title</td>
 
                         <td><textarea style="background: transparent;" readonly>@contribution.Content</textarea></td>
 
@@ -54,13 +54,13 @@
                                     <ion-icon name="pricetag-outline" id="table-button" style="--color: #aaaaaa;"></ion-icon>
                                 </a>
                             }
-                            else
+                            @* else
                             {
                                 <a href="@Url.Action("AddComment", "Contributions", new { contributionId = contribution.Id })">
                                     <ion-icon name="pricetag-outline" id="table-button" style="--color: #162938;"></ion-icon>
                                 </a>
 
-                            }
+                            } *@
                         </td>
                     </tr>
                 }
