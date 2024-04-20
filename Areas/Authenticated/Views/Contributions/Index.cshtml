@@ -17,6 +17,7 @@
                 <th>Title</th>
                 <th>Description</th>
                 <th>Submission Date</th>
+                <th>Faculty</th>
                 <th>Image</th>
                 <th>Action</th>
             </tr>
@@ -27,9 +28,10 @@
                 <tr>
                     <td style="width: 25%;">@contribution.Title</td>
 
-                    <td><textarea style="height: 100%; background: transparent;" readonly>@contribution.Content</textarea></td>
+                    <td><textarea style="background: transparent;" readonly>@contribution.Content</textarea></td>
 
                     <td>@contribution.SubmissionDate</td>
+                    <td>@contribution.Faculty.Name</td>
                     <td  style="width: 120px;">
                         <div id="submission-img">
                             <img src="@Url.Content(contribution.ImageUrl)" alt="img" />

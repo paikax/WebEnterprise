@@ -48,10 +48,10 @@
                 <div class="input-field">
                 @* @Url.Content(Model.FilePath).Substring(9) *@
                     <a href="@Url.Content(Model.FilePath)" target="_blank" id="download">
-                        <ion-icon name="cloud-download-outline" style="color: #036600; font-size: 1.5rem;"></ion-icon>
+                        <ion-icon name="download-outline" class="download-ani" style="font-size: 2rem; color: #035900;"></ion-icon>
                     </a>
                     <input type="text" value="@Url.Content(Model.FilePath).Substring(9)" required readonly="true"/>
-                    <label for="download" style="width: 100%; user-select: auto;">Current Document File</label>
+                    <label for="download" style="user-select: auto;">Current Document File</label>
                 </div>
             }
 

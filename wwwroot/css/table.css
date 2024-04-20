@@ -16,6 +16,7 @@
 
 .date-table textarea {
     width: 100%;
+    height: 100%;
     border: none;
     resize: none;
     cursor: default;
@@ -23,7 +24,9 @@
     margin-top: 9px;
     padding: 3px 0 0 3px;
     background: transparent;
+    scrollbar-width: 2px;
 }
+
 
 #link-icon {
     font-size: 1.2rem;

@@ -25,9 +25,12 @@ Layout = "~/Views/Shared/_Layout.cshtml";
         @foreach (var contribution in Model)
         {
         <tr>
-            <td>@contribution.Title</td>
-            <td>@contribution.Content</td>
-            <td>@contribution.CoordinatorComment</td>
+            <td style="width: 30%;">@contribution.Title</td>
+
+            <td style="width: 20%;"><textarea style="background: transparent;" readonly>@contribution.Content</textarea></td>
+
+            <td><textarea style="background: transparent;" readonly>@contribution.CoordinatorComment</textarea></td>
+
             <td>@contribution.SubmissionDate.ToShortDateString()</td>
             <td class="d-flex align-items-center">
                 @if (contribution.Status == "Pending")

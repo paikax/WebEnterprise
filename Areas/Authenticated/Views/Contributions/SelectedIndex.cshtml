@@ -25,7 +25,7 @@
             {
                 <tr>
                     <td>@contribution.Title</td>
-                    <td>@contribution.Content</td>
+                    <td><textarea readonly>@contribution.Content</textarea></td>
                     <td>
                          <div id="submission-img">
                             <img src="@Url.Content(contribution.ImageUrl)" alt="img" />
@@ -33,7 +33,7 @@
                     </td>
                     <td>
                         <a href="@Url.Action("DownloadContribution", "Contributions", new { facultyId = contribution.FacultyId, id = contribution.Id })">
-                            <ion-icon name="download-outline"id="table-button" style="--color: #31a500;"></ion-icon>
+                            <ion-icon name="download-outline" id="table-button" class="download-ani" style="--color: #31a500;"></ion-icon>
                         </a>
                     </td>
                     <td>@contribution.SubmissionDate</td>
