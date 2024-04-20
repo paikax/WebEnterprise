@@ -1,4 +1,4 @@
-﻿:root {
+﻿﻿:root {
     --primary-color: #162938;
     --white-color: #fff;
     --black-color: #000;
@@ -11,7 +11,20 @@
     border-radius: 10px;
     width: 90%;
     box-sizing: border-box;
+    font-weight: 500;
 }
+
+.date-table textarea {
+    width: 100%;
+    border: none;
+    resize: none;
+    cursor: default;
+    outline: none;
+    margin-top: 9px;
+    padding: 3px 0 0 3px;
+    background: transparent;
+}
+
 #link-icon {
     font-size: 1.2rem;
     font-weight: 500;
@@ -77,11 +90,17 @@ td,th,table {
     min-width: 130px;
     text-align: right;
 }
+
 #border-left {
     border-left: 3px solid var(--primary-color) ;
 }
+
 .date-table tr:nth-child(even) {
     background: #eeeeee;
+}
+
+.date-table td:nth-child(2){
+    width: 30%;
 }
 .date-table thead {
     background: var(--primary-color);

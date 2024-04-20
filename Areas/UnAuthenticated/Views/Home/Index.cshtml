@@ -14,27 +14,28 @@
     <h1>Student Contributions</h1>
         @if (Model.Any())
         {
-        <div class="homepage-container">
-            @foreach (var contribution in Model)
-            {
-                <div class="contribute-item">
-                    <div class="con-img" style="background-image: url('@Url.Content(contribution.ImageUrl)');"></div>
+            <div class="homepage-container">
+                @foreach (var contribution in Model)
+                {
+                    <div class="contribute-item">
+                        <div class="con-img" style="background-image: url('@Url.Content(contribution.ImageUrl)');"></div>
 
-                    <div class="cont-title-time">
-                        <h2>@contribution.Title</h2>
-                        <div class="con-action">
-                            @* <a href="@Url.Action("DownloadContribution", "Contributions", new { facultyId = contribution.FacultyId, id = contribution.Id })"> *@
-                            @*     <ion-icon name="download-outline" id="table-button" style="--color: #246707;" class="beatup-item"></ion-icon> *@
-                            @* </a> *@
-                            <h3>@contribution.SubmissionDate</h3>
+                        <div class="cont-title-time">
+
+                            <h2>@contribution.Title</h2>
+
+                            <div class="con-action">
+                                <h3>@contribution.SubmissionDate</h3>
+                            </div>
+                        
+                        </div>
+                    
+                        <div class="con-content">
+                            <textarea readonly>@contribution.Content</textarea>
                         </div>
                     </div>
-                    <div class="con-content">
-                        <textarea readonly>@contribution.Content</textarea>
-                    </div>
-                </div>
-            }
-        </div>
+                }
+            </div>
         }
         else
         {

@@ -25,10 +25,12 @@
             @foreach (var contribution in Model.Contributions)
             {
                 <tr>
-                    <td>@contribution.Title</td>
-                    <td>@contribution.Content</td>
+                    <td style="width: 25%;">@contribution.Title</td>
+
+                    <td><textarea style="height: 100%; background: transparent;" readonly>@contribution.Content</textarea></td>
+
                     <td>@contribution.SubmissionDate</td>
-                    <td>
+                    <td  style="width: 120px;">
                         <div id="submission-img">
                             <img src="@Url.Content(contribution.ImageUrl)" alt="img" />
                         </div>

@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+﻿@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Exo&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Exo&display=swap");
 :root {
   --primary-color: #162938;
@@ -850,7 +851,7 @@ input[type="radio"] {
 }
 
 #submission-img {
-  width: 200px;
+  width: 100px;
   height: 100px;
 }
 
@@ -893,7 +894,7 @@ input[type="radio"] {
   display: grid;
   padding: 0 10px;
   gap: 20px;
-  grid-template-columns: minmax(500px, 700px) minmax(500px, 700px) minmax(500px, 700px);
+  grid-template-columns: minmax(300px, 700px) minmax(300px, 700px) minmax(300px, 700px);
 }
 
 @media (max-width: 1280px) {
@@ -904,7 +905,7 @@ input[type="radio"] {
 
 @media (max-width: 900px) {
   .homepage-container {
-    grid-template-columns: minmax(350px, 900px);
+    grid-template-columns: auto;
   }
 }
 
@@ -913,14 +914,13 @@ input[type="radio"] {
   border-radius: 20px;
   padding: 10px;
   width: 100%;
-  height: 350px;
-  overflow: hidden;
+  height: 300px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   gap: 0px 0px;
   grid-auto-flow: row;
-  grid-template-areas: "con-img con-img con-img cont-title-time cont-title-time cont-title-time cont-title-time cont-title-time cont-title-time" "con-img con-img con-img con-content con-content con-content con-content con-content con-content" "con-img con-img con-img con-content con-content con-content con-content con-content con-content";
+  grid-template-areas: "con-img con-img con-img cont-title-time cont-title-time cont-title-time cont-title-time cont-title-time cont-title-time" "con-img con-img con-img con-content con-content con-content con-content con-content con-content" "con-img con-img con-img con-content con-content con-content con-content con-content con-content";
 }
 
 .contribute-item:hover {
@@ -940,14 +940,15 @@ input[type="radio"] {
   grid-area: cont-title-time;
   display: flex;
   flex-direction: column;
+  height: 95px;
 }
 
 .cont-title-time h2 {
   font-weight: 800;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   margin-left: 5px;
   width: 100%;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .cont-title-time .con-action {
@@ -958,7 +959,7 @@ input[type="radio"] {
 
 .cont-title-time .con-action h3 {
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .cont-title-time .con-action ion-icon {
@@ -968,36 +969,21 @@ input[type="radio"] {
 
 .con-content {
   grid-area: con-content;
+  height: 100%;
 }
 
 .con-content textarea {
   cursor: default;
   resize: none;
-  border: none;
   outline: none;
+  border: none;
   width: 100%;
+  height: 100%;
   border-top: 1px solid var(--primary-color);
   border-bottom: 1px solid var(--primary-color);
-  height: 100%;
   color: var(--primary-color);
   font-weight: 600;
   padding-left: 5px;
   padding-top: 2px;
   margin-left: 2px;
-}
-
-@keyframes beatup {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.95);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.beatup-item {
-  animation: beatup 1.2s ease-in-out infinite;
-}
+} 
