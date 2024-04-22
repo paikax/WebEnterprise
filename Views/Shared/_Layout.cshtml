@@ -37,7 +37,7 @@
   
 </head>
 <body>
-<div class="app">
+<div class="app" style="height: full; min-height: 100vh;" >
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" asp-action="Index" asp-area="" asp-controller="Home">WEB ENTERPRISE</a>
 
@@ -113,9 +113,17 @@
     </nav>
 
     <!-- Render the body -->
-    @RenderBody()
+    <div class="main-container">
+
+        @RenderBody()
+    </div>
 
 </div>
+<footer>
+    <div class="footer-link">
+        <p>&copy; 2024 - University - <a asp-action="Index" asp-area="" asp-controller="Home">Home</a> - <a href="#">Selected Contributions</a></p>
+    </div>
+</footer>
 
 <!-- Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>

@@ -17,6 +17,10 @@
   font-family: 'Exo', sans-serif;
 }
 
+html {
+  position: relative;
+}
+
 h1 {
   text-align: center;
   padding: 20px;
@@ -90,6 +94,7 @@ input[type="file"] {
 body {
   font-size: 100%;
   font-family: Roboto, serif;
+  height: 100vh;
 }
 
 /* header */
@@ -348,11 +353,31 @@ body {
   opacity: 0.6;
 }
 
+.main-container {
+  height: auto;
+  width: 100%;
+}
+
 /**/
 /* end header */
-/*footer*/
-footer {
-  color: #bdbdbd;
+/**/
+.footer-link {
+  width: 100%;
+  height: 30px;
+  background: #343a40;
+  color: white;
+  padding-top: 5px;
+  padding-left: 30px;
+}
+
+.footer-link a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #afafaf;
+}
+
+.footer-link a:hover {
+  color: white;
 }
 
 .footer__top {
